@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+	<script>
+		function launchCGI(x,y)
+		{
+			arguments = "burgNum="+x+"&hotDogNum="+y;
+			var xhttp=new XMLHttpRequest();
+			URL="lab3.cgi?"+arguments;
+			xhttp.open("GET",URL,false);
+			xhttp.send();
+			var response = document.getElementById('response');
+			response.innerHTML=xhttp.responseText;
+		}
+	</script>
+</head>
+<body>
+	<h1>Scully's Diner</h1>
+		<form onsubmit="launchCGI(hamburger.value,hotdog.value)">
+		Hamburgers: 	
+		<select name=hamburger>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<br>
+		Hot Dogs:
+		<select name=hotdog>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</selct>
+		</br>
+		
+		<input type="submit" value="Submit">
+		
+		</form>
+
+	<div id="response">
+	</div> 
+		
+		
+</body>
+</html>
