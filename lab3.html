@@ -8,14 +8,15 @@
 			URL="lab3.cgi?"+arguments;
 			xhttp.open("GET",URL,false);
 			xhttp.send();
-			var response = document.getElementById('response');
-			response.innerHTML=xhttp.responseText;
+			
+			document.getElementById('response').innerHTML=xhttp.responseText;
+			return false;
 		}
 	</script>
 </head>
 <body>
 	<h1>Scully's Diner</h1>
-		<form onsubmit="launchCGI(hamburger.value,hotdog.value)">
+		<form onsubmit="return launchCGI(hamburger.value,hotdog.value)">
 		Hamburgers: 	
 		<select name=hamburger>
 			<option value="1">1</option>
