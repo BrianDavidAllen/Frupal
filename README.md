@@ -8,8 +8,8 @@ It currently only sends a simple json object consisting of:
 
 ```javascript
 {
-  "name": "playerName",
   "action": "nameOfAction"
+  "name": "playerName",
 }
 ```
 
