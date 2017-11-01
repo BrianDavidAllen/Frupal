@@ -4,36 +4,21 @@
 
 #include "game.hpp"
 
-Game::Game() {
-    file = fopen( "current-game.dat", "r");
-    if(file == 0)
-        startNewGame();
-    else
-        loadExistingGame();   
-}
-
-Game::~Game() {
-    fclose(file);
-}
-
-void Game::loadExistingGame() {
-    
-}
-
-void Game::parseCommand(json command) {
-	string s = command.dump();
-	Log::debug("Command is " + s);
-	cout << s << endl;
-}
-
-void Game::startNewGame() {
-    Map map;
-}
-
 int main() {
+	//Just a simple encapsulation to read in the cgi
+	CgiReader cgi;
+
+	//Build the json object
+	json jsonFromClient = cgi.getCommand();
+	
+	//Turn the json into one long string
+	string stringifiedJson = jsonFromClient.dump();
+
+	//Let the client know we are sending in json format
     cout << "Content-Type:application/json; charset=utf-8" << endl << endl;
-    Game game;
-    CgiReader cgi;
-    game.parseCommand(cgi.getCommand());
+
+	//Send the actual json
+	cout << stringifiedJson << endl;
+
     return 0;
 }
