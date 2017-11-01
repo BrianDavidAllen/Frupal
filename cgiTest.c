@@ -12,5 +12,6 @@ void main(void)
 	strcpy(name,cgiGetValue(cgi, "p"));
 
 	printf("Content-Type: text/html;charset=us-ascii\n\n");
-	printf("<h1>%s</h1>\n,name);
+	printf("<h1>%s</h1>\n",name);
+
 }

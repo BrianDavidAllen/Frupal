@@ -1,38 +1,70 @@
 <!DOCTYPE html>
 <head>
 	<script>
-		function launchCGI(x,y)
+		function launchCGI(x,y,z)
 		{
-			arguments = "burgNum="+x+"&hotDogNum="+y;
-			var xhttp=new XMLHttpRequest();
-			URL="lab3.cgi?"+arguments;
-			xhttp.open("GET",URL,false);
-			xhttp.send();
+			if(z != 0)
+			{
+				arguments = "burgNum="+x+"&hotDogNum="+y+"&customerName="+z;
+				var xhttp=new XMLHttpRequest();
+				URL="lab3.cgi?"+arguments;
+				xhttp.open("GET",URL,false);
+				xhttp.send();
 			
-			document.getElementById('response').innerHTML=xhttp.responseText;
-			return false;
+				document.getElementById('response').innerHTML=xhttp.responseText;
+				return false;
+			}
+			else
+			{
+				alert("You did not enter a name. Please try again.");
+				return true;
+			}
 		}
 	</script>
+
+	<style>
+		*{
+			text-align:center;
+			font-family: Helvetica;
+			font-size: 1.2em;
+			margin: 10px 0;
+		}
+		
+		body{
+			background-image: url("https://i.kinja-img.com/gawker-media/image/upload/s--WxoHbq4S--/c_scale,f_auto,fl_progressive,q_80,w_800/zhfx5yjqctrxzxsmldsn.gif");
+			background-repeat: no-repeat;
+		}
+		h1{
+			margin-top: 27%;
+		}
+	
+	
+
+				
+	</style>	
 </head>
 <body>
 	<h1>Scully's Diner</h1>
-		<form onsubmit="return launchCGI(hamburger.value,hotdog.value)">
-		Hamburgers: 	
-		<select name=hamburger>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-		</select>
+	<h3>Please enter the amount of food you would like and a name to go with the order.</h3>
+		<form onsubmit="return launchCGI(hamburger.value,hotdog.value,customerName.value)">
+			Hamburgers: 	
+			<select name=hamburger>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
 		<br>
-		Hot Dogs:
-		<select name=hotdog>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-		</selct>
-		</br>
-		
-		<input type="submit" value="Submit">
+			Hot Dogs:
+			<select name=hotdog>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+		<br>
+			Name for the order:
+			<input type="text" name=customerName value="">
+		<br>
+		<input id="submit" type="submit" value="Submit">
 		
 		</form>
 
