@@ -5,46 +5,28 @@
 	<meta name="viewport" content="initial-scale=1, width=device-width">
 	<title>Frupal 0.1</title>
 	<link rel="stylesheet" href="css/style.css">
-	<script>
-		function sendJson(playerName, playerAction)
-		{
-			var req = new XMLHttpRequest();
-			req.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("reply").innerHTML = req.responseText;
-				}
-			};
-			req.open("POST", "frupal.cgi");
-            req.setRequestHeader("Content-Type", "application/json");
-            req.send(JSON.stringify({"name": playerName, "action": playerAction}));
-
-			return false;
-		}
-	</script>
+	<script src="js/frupal.js"></script>
 </head>
 <body>
-	<h1>Frupal 0.1</h1>
-	<article>
-		<h2>Send some JSON</h2>
-        <section>
-            <form name=order action="" method="get" onsubmit="return sendJson(playerName.value, playerAction.value)">
-			<table>
-			<tr><th>Player Name</th><th>Player Action</th></tr>
-            <tr><td><input type="text" name="playerName"></input></td><td>
-			<select name="playerAction">
-				<option value="north">Move north</option>
-				<option value="east">Move east</option>
-				<option value="south">Move south</option>
-				<option value="west">Move west</option>
-				<option value="tool">Use tool</option>
-			</select>
-			</td></tr>
-			</table>
-			<input type="submit"/ value="Send JSON">
-		</section>
-        <h2>Reply</h2>
-		<section style='background:white; color:black' id="reply">
-		</section>
+	<h1>Frupal 0.11</h1>
+    <article>
+        <h2>Instructions</h2>
+        <p>Use up, down, left, right and spacebar to find the Royal Jewels!</p>
+        <h2>Map</h2>
+        <section id="mapContainer">
+            <div id="map"></div>
+            <div id="player"></div>
+        </section>
+        <h2>Ye Olde Log</h2>
+        <div id="log"></div>
+        <h2>Raw JSON from server</h2>
+        <div id="rawJson"></div>
 	</article>
+    <script>
+        var game = new Game();
+        document.onkeydown = function(event) {
+            game.handleKeys(event); return false;
+        }
+    </script>
 </body>
 </html>

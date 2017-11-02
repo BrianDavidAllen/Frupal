@@ -61,11 +61,42 @@ html {
     width: 100%;
 }
 
+#map {
+    height: 200px;
+}
+
+#mapContainer {
+    position: relative;
+}
+
 p {
     margin-bottom: 1.4rem;
+}
+
+.plain {
+    background: green;
+}
+
+#player {
+    background: yellow;
+    border-radius: 10px;
+    height: 25px;
+    position: absolute;
+    width: 25px;
+    z-index: 1000
+}
+
+.tile {
+    height: 25px;
+    position: absolute;
+    width: 25px;
 }
 
 ul {
     margin-top: 0;
     margin-bottom: 1.4rem;
+}
+
+.water {
+    background: blue;
 }
