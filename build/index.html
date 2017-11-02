@@ -14,7 +14,7 @@
 					document.getElementById("reply").innerHTML = req.responseText;
 				}
 			};
-			req.open("POST", "http://dev.hypersweet.com/frupal/frupal.cgi");
+			req.open("POST", "frupal.cgi");
             req.setRequestHeader("Content-Type", "application/json");
             req.send(JSON.stringify({"name": playerName, "action": playerAction}));
 
