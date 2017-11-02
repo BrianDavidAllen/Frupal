@@ -12,7 +12,7 @@ Navigate to a directory under src/ with the code you wish to compile. For exampl
 
 g++ -std=c++11 -static *.cpp
 
-The *-std=c++11* tells the compiler to use the 2011 C++ standard, enabling some very handy features like initializer lists and the auto keyword. The *-static* flag tells the compiler to build into the executable functions used in included libraries like <string>. For security reasons, the PSU linux servers will not allow student cgi scripts to use the string library dynamically. 
+The *-std=c++11* option tells the compiler to use the 2011 C++ standard, enabling some very handy features like initializer lists and the auto keyword. The *-static* flag tells the compiler to build into the executable functions used in included libraries like *string*. For security reasons, the PSU linux servers will not allow student cgi scripts to use the string library dynamically. 
 
 ## Design Overview
 
