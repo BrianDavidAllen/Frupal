@@ -27,29 +27,33 @@ void Game::parseCommand(json input)
 {
     string command = input["command"];
     log = "";
+    int playerX = player.getX();
+    int playerY = player.getY();
 
     if(command == "up")
     {
         log = "You moved north.";
-        player.y -= 1;
+        player.setPosition(playerX, playerY-1);
     }
     else if(command == "down")
     {
         log = "You moved south.";
-        player.y += 1;
+        player.setPosition(playerX, playerY+1);
     }
     else if(command == "left")
     {
         log = "You moved west.";
-        player.x -= 1;
+        player.setPosition(playerX-1, playerY);
     }
     else if(command == "right")
     {
         log = "You moved east.";
-        player.x += 1;
+        player.setPosition(playerX+1, playerY);
     }
     else if(command == "space")
+    {
         log = "You hit space.";
+    }
 }
 
 void Game::saveGame()
@@ -63,15 +67,10 @@ void Game::sendData()
     //Create empty json object
     json toSend;
 
-    //Populate "player" object with coordinates
-    toSend["player"] = {
-        {"x", player.x },
-        {"y", player.y }
-    };
+    //toJson() use example
+    toSend["player"] = player.toJson();
 
-    /* Populate array of tiles with x & y coordinates
-     * and terrain type string. All randomized for now.
-     */
+    //Populate array of tiles.;
     toSend["tiles"] = nullptr;
     for(int x = 0; x < 8; ++x)
     {

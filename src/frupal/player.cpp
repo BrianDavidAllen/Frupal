@@ -13,3 +13,27 @@ Player::Player()
 Player::~Player()
 {
 }
+
+int Player::getX()
+{
+    return x;
+}
+
+int Player::getY()
+{
+    return y;
+}
+
+void Player::setPosition(int newX, int newY)
+{
+    x = newX;
+    y = newY;
+}
+
+json Player::toJson()
+{
+    json output;
+    output["x"] = x;
+    output["y"] = y;
+    return output;
+}
