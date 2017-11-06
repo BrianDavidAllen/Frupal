@@ -16,14 +16,17 @@ class Game
     public:
         Game();
         ~Game();
+        void endGame();
         void loadExistingGame();
         void parseCommand(json input);
+        bool playerIsDead();
         void saveGame();
         void sendData();
         void startNewGame();
 
     private:
         json current;
+        json toSend;
         Player player;
         string log;
 };

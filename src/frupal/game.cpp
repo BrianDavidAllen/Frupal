@@ -7,6 +7,7 @@
 Game::Game()
 {
     Player player;
+    json toSend;
 
     /* Check for existing game file.
      * Load existing game if it exists.
@@ -16,6 +17,11 @@ Game::Game()
 
 Game::~Game()
 {
+}
+
+void Game::endGame()
+{
+    //Punam, alert box here maybe?
 }
 
 void Game::loadExistingGame()
@@ -56,6 +62,11 @@ void Game::parseCommand(json input)
     }
 }
 
+bool Game::playerIsDead()
+{
+    //Punam, add check for player energy here
+}
+
 void Game::saveGame()
 {
     /* Save the new game state to file */
@@ -63,10 +74,6 @@ void Game::saveGame()
 
 void Game::sendData()
 {
-
-    //Create empty json object
-    json toSend;
-
     //toJson() use example
     toSend["player"] = player.toJson();
 
@@ -106,7 +113,14 @@ int main()
     Game game;
     CgiReader cgi;
     game.parseCommand(cgi.getCommand());
-    game.saveGame();
+    if(game.playerIsDead())
+    {
+        game.endGame();
+    }
+    else
+    {
+        game.saveGame();
+    }
     game.sendData();
     return 0;
 }
