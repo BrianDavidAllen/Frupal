@@ -19,10 +19,10 @@ Hero::Hero() : energy(100), whiffles(0), x(0), y(0), name(""), inventory("")
 }
 
 
-//Parameterized constructor: sets energy/whiffles/name/inventory to the passed in arguments
-Hero::Hero(int energy, int whiffles, int x, int y, string name, string inventory) : energy(energy), whiffles(whiffles), x(0), y(0), name(name), inventory(inventory)
+//Parameterized constructor: sets the name to a string passed in, everything else is set to default values
+Hero::Hero(int energy, int whiffles, int x, int y, string newName, string inventory) : energy(100), whiffles(0), x(0), y(0), name(newName), inventory("")
 {
-    setCoords(x,y);
+
 }
 
 //Hero destructor
@@ -54,10 +54,17 @@ string Hero::getName()
 }
 
 
-//Sets the Hero's whiffles to a value passed in, adds it to the hero's whiffles.
-void Hero::setWhiffles(int newWhiffles)
+//Sets the Hero's whiffles by adding to the hero's whiffles
+//Pass in a negative value to subtract from the hero's whiffles
+void Hero::changeWhiffles(int newWhiffles)
 {
     whiffles += newWhiffles;
+}
+
+//Sets the whiffles to a value passed in
+void Hero::setWhiffles(int newWhiffles)
+{
+    whiffles = newWhiffles;
 }
 
 //Rerturns the hero's whiffle count
@@ -82,10 +89,23 @@ string Hero::getInventory()
     return inventory;
 }
 
-//Sets the hero's energy, pass in a negative value to subtract
+//Change the hero's energy, pass in a negative value to subtract, positive to add
+void Hero::changeEnergy(int newEnergy)
+{
+
+    if(energy + newEnergy > 100)
+        energy = 100;
+    if(energy + newEnergy < 0)
+        energy = 0;
+
+    energy += newEnergy; 
+
+}
+
+//sets the energy to a value passed in
 void Hero::setEnergy(int newEnergy)
 {
-    energy += newEnergy; 
+    energy = newEnergy;
 }
 
 //Returns the hero's energy
@@ -112,3 +132,20 @@ int Hero::getY()
 {
     return y;
 }
+
+/*
+//toJson function
+json Hero::toJson()
+{
+   json output;
+
+   output["x"] = x;
+   output["y"] = y;
+   output["energy"] = energy;
+   output["name"] = name;
+   output["inventory"] = inventory;
+
+   return output;
+}
+*/
+
