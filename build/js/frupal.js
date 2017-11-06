@@ -37,6 +37,11 @@ function Game() {
         //Print the raw JSON text
         var rawJsonElement = document.getElementById("rawJson");
         rawJsonElement.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+        
+         var playerPosition = document.getElementById("coordinates");
+         playerPosition.innerHTML = "The player is at " + data.player.x + " Grovnick East and " +  data.player.y + " Grovnick North from the Origin";
+ 
+
 
         //Redraw the tiles
         var mapElement = document.getElementById("map");
