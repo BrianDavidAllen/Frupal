@@ -1,5 +1,4 @@
 #include "grovnick.hpp"
 
-Grovnick::Grovnick(int x, int y, int terrain, string content):
-	x(x), y(y), visited(false), terrain(terrain), content(content) {
-}
+Grovnick::Grovnick(const int x, const int y, const bool visible, const int terrain, const string content):
+	x(x), y(y), visible(visible), terrain(terrain), content(content) {}
