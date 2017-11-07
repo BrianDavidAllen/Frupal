@@ -2,7 +2,10 @@
 
 Map::Map() {}
 
-void Map::loadFile(fstream &file) {
+bool Map::loadFile(string identifier, int dimensions, fstream &file) {
+	this->identifier = identifier;
+	this->dimensions = dimensions;
+
 	string line;
 	// Get line from file
 	while(getline(file, line)) {
@@ -35,9 +38,10 @@ void Map::loadFile(fstream &file) {
 
 		grovnicks[y].push_back(newGrovnick);
 	}
+	return true;
 }
 
 void Map::generateFile(fstream &file) {
 	// Copy static map file to state-preserving file
-	loadFile(file);
+	//loadFile(file);
 }

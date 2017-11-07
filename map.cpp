@@ -6,21 +6,18 @@
 using namespace std;
 
 int main(){
-	int i = 0;
-	int z = 0;
-	int random = 0;
+	int x = 0;
+	int y = 0;
+	int terrain = 0;
 	ofstream myfile;
 	myfile.open("map.txt");	
-	
 
 	srand(time(NULL));
-	random = rand();
-	cout << random;
 	
-	for(i = 0; i < 25; i++){
-		for(z = 0; z < 25; z++){
-			random = rand();
-			myfile << i << ", " <<  z << ", " << random % 7 << " none\n";
+	for(y = 0; y < 25; y++){
+		for(x = 0; x < 25; x++){
+			terrain = rand();
+			myfile << x << "," << y << "," << terrain % 7 << ",None\n";
 		}
 	}
 	myfile.close();

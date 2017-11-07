@@ -9,9 +9,10 @@ using namespace std;
 class Map {
 	public:
 		Map();
-		void loadFile(fstream &file);
+		bool loadFile(string identifier, int dimensions, fstream &file);
 		void generateFile(fstream &file);
 	private:
+		string identifier;
 		int dimensions;
 		vector<vector<Grovnick>> grovnicks;
 };

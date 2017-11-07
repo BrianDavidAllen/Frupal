@@ -18,7 +18,7 @@ class Game
         Game();
         ~Game();
         void endGame();
-        void loadExistingGame(fstream &file);
+        bool loadExistingGame(fstream &file);
         void parseCommand(json input);
         bool playerIsDead();
         void saveGame();

@@ -9,7 +9,7 @@ class Grovnick {
 		Grovnick(int x, int y, int terrain, string content);
 	private:
 		int x, y;
-		bool visible;
+		bool visited;
 		int terrain;
 		string content;
 };

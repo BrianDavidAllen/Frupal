@@ -9,7 +9,7 @@ Game::Game()
     Player player;
     json toSend;
 
-	fstream file("stateFile");
+	fstream file("../../map.txt");
 	if(!file) startNewGame(file);
 	else loadExistingGame(file);
 	file.close();
@@ -24,10 +24,16 @@ void Game::endGame()
     //Punam, alert box here maybe?
 }
 
-void Game::loadExistingGame(fstream &file)
+bool Game::loadExistingGame(fstream &file)
 {
     /* Get map, object, item and player info from file and load into objects. */
-	map.loadFile(file);
+	/*string identifier = getline(file, line);
+	if(identifier.empty())
+	string dimensionsString = getline(file, line);
+	int dimensions = stoi(dimensionString);*/
+
+	map.loadFile("Test Map File", 25, file);
+	return true;
 }
 
 void Game::parseCommand(json input)
