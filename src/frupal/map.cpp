@@ -6,12 +6,12 @@ void Map::loadFile(fstream &file) {
 	string line;
 	// Get line from file
 	while(getline(file, line)) {
-		// Get delimiter locations (, )
+		// Get delimiter positions
 		size_t delPos[3];
 		char delimiter = ',';
-		delPos[0] =	line.find(delimiter);
-		delPos[1] =	line.find(delimiter, delPos[0] + 1);
-		delPos[2] =	line.find(delimiter, delPos[1] + 1);
+		delPos[0] = line.find(delimiter);
+		delPos[1] = line.find(delimiter, delPos[0] + 1);
+		delPos[2] = line.find(delimiter, delPos[1] + 1);
 
 		// Gets coordinates
 		string xString = line.substr(0, delPos[0]);
@@ -38,6 +38,6 @@ void Map::loadFile(fstream &file) {
 }
 
 void Map::generateFile(fstream &file) {
-	// copy map file to state file
+	// Copy static map file to state-preserving file
 	loadFile(file);
 }

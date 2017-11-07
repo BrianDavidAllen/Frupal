@@ -7,6 +7,7 @@
 #include "json.hpp"
 #include "cgiReader.hpp"
 #include "player.hpp"
+#include "map.hpp"
 
 using namespace std;
 using json = nlohmann::json;
@@ -28,5 +29,6 @@ class Game
         json current;
         json toSend;
         Player player;
+		Map map;
         string log;
 };
