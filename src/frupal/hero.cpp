@@ -37,8 +37,8 @@ void Hero::displayHero()
     cout << "Name: " << name << endl;
     cout << "Energy level: " << energy << endl;
     cout << "Whiffle count: " << whiffles << endl;
-    cout << "Inventory contents : " << inventory << endl;
-    cout << "X,Y coordinates : " << x << "," << y << endl << endl;
+    cout << "Inventory contents: " << inventory << endl;
+    cout << "X,Y coordinates: " << x << "," << y << endl << endl;
 }
 
 //Sets the Hero's name to a string passed in
@@ -94,9 +94,15 @@ void Hero::changeEnergy(int newEnergy)
 {
 
     if(energy + newEnergy > 100)
+    {
         energy = 100;
+        return;
+    }
     if(energy + newEnergy < 0)
+    {
         energy = 0;
+        return;
+    }
 
     energy += newEnergy; 
 
@@ -133,7 +139,7 @@ int Hero::getY()
     return y;
 }
 
-/*
+
 //toJson function
 json Hero::toJson()
 {
@@ -147,5 +153,5 @@ json Hero::toJson()
 
    return output;
 }
-*/
+
 

@@ -12,9 +12,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-//#include "json.hpp"
+#include "json.hpp"
 
 using namespace std;
+using json = nlohmann::json;
 
 class Hero
 {
@@ -45,7 +46,7 @@ class Hero
         int getX();                                                                     //Returns the x coordinate of the hero
         int getY();                                                                     //Returns the y coordinate of the hero
     
- //       json toJson();                                                                  //Json function
+        json toJson();                                                                  //Json function
         
     protected:
         int energy;
