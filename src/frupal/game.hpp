@@ -17,12 +17,12 @@ class Game
         Game();
         ~Game();
         void endGame();
-        void loadExistingGame();
+        void loadExistingGame(fstream &file);
         void parseCommand(json input);
         bool playerIsDead();
         void saveGame();
         void sendData();
-        void startNewGame();
+        void startNewGame(fstream &file);
 
     private:
         json current;

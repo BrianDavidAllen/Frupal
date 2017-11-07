@@ -9,10 +9,10 @@ Game::Game()
     Player player;
     json toSend;
 
-    /* Check for existing game file.
-     * Load existing game if it exists.
-     * Start a new one if it doesn't
-     */
+	fstream file("stateFile");
+	if(!file) startNewGame(file);
+	else loadExistingGame(file);
+	file.close();
 }
 
 Game::~Game()
@@ -24,9 +24,10 @@ void Game::endGame()
     //Punam, alert box here maybe?
 }
 
-void Game::loadExistingGame()
+void Game::loadExistingGame(fstream &file)
 {
     /* Get map, object, item and player info from file and load into objects. */
+	map.loadFile(file);
 }
 
 void Game::parseCommand(json input)
@@ -102,10 +103,11 @@ void Game::sendData()
     cout << toSend.dump();
 }
 
-void Game::startNewGame()
+void Game::startNewGame(fstream &file)
 {
     /* Load from map file and set up new player/inventory.
      */
+	map.generateFile(file);
 }
 
 int main()
