@@ -25,7 +25,7 @@ class Game
         bool playerIsDead();
         void saveGame();
         void sendData();
-        void startNewGame(fstream &file);
+        void startNewGame(fstream &stateFile);
 
     private:
         json current;
