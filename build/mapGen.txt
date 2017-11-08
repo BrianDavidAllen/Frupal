@@ -1,0 +1,629 @@
+Frupal Map
+25
+###############
+###############
+0,0,0,3,Hatchet
+1,0,0,5,Type 1 Treasure Chest
+2,0,0,1,Hatchet
+3,0,0,2,None
+4,0,0,1,Type 2 Treasure Chest
+5,0,0,4,Blackberry Bush
+6,0,0,2,Sledge
+7,0,0,6,Hatchet
+8,0,0,0,Blackberry Bush
+9,0,0,5,Boulder
+10,0,0,4,None
+11,0,0,3,None
+12,0,0,3,Power Bar
+13,0,0,6,Blackberry Bush
+14,0,0,1,Hatchet
+15,0,0,5,None
+16,0,0,1,Clue
+17,0,0,0,Type 1 Treasure Chest
+18,0,0,5,Boulder
+19,0,0,5,None
+20,0,0,1,Chainsaw
+21,0,0,5,None
+22,0,0,2,Jackhammer
+23,0,0,0,Blackberry Bush
+24,0,0,6,Binoculars
+0,1,0,1,Tree
+1,1,0,2,Binoculars
+2,1,0,6,Binoculars
+3,1,0,3,Chainsaw
+4,1,0,2,Type 1 Treasure Chest
+5,1,0,4,None
+6,1,0,0,Hatchet
+7,1,0,6,Type 2 Treasure Chest
+8,1,0,3,Power Bar
+9,1,0,6,None
+10,1,0,2,Power Bar
+11,1,0,2,Tree
+12,1,0,1,Type 1 Treasure Chest
+13,1,0,2,Type 2 Treasure Chest
+14,1,0,4,Type 2 Treasure Chest
+15,1,0,1,Blackberry Bush
+16,1,0,2,None
+17,1,0,4,Power Bar
+18,1,0,6,Power Bar
+19,1,0,3,Type 2 Treasure Chest
+20,1,0,3,Tree
+21,1,0,6,Chainsaw
+22,1,0,1,Axe
+23,1,0,1,Chainsaw
+24,1,0,6,Axe
+0,2,0,4,Type 1 Treasure Chest
+1,2,0,5,Blackberry Bush
+2,2,0,1,Power Bar
+3,2,0,1,Type 1 Treasure Chest
+4,2,0,4,Chisel
+5,2,0,0,Jackhammer
+6,2,0,3,Clue
+7,2,0,6,Power Bar
+8,2,0,6,Boulder
+9,2,0,3,Jackhammer
+10,2,0,4,Type 2 Treasure Chest
+11,2,0,6,Binoculars
+12,2,0,5,Axe
+13,2,0,5,Shears
+14,2,0,4,Type 2 Treasure Chest
+15,2,0,3,None
+16,2,0,4,Clue
+17,2,0,1,Chisel
+18,2,0,5,Type 1 Treasure Chest
+19,2,0,4,Power Bar
+20,2,0,4,Chainsaw
+21,2,0,6,Chainsaw
+22,2,0,4,Boulder
+23,2,0,3,None
+24,2,0,0,Shears
+0,3,0,5,Type 1 Treasure Chest
+1,3,0,2,Type 1 Treasure Chest
+2,3,0,4,Type 1 Treasure Chest
+3,3,0,3,Tree
+4,3,0,4,Type 1 Treasure Chest
+5,3,0,2,Power Bar
+6,3,0,0,None
+7,3,0,0,Sledge
+8,3,0,1,Chisel
+9,3,0,6,Chisel
+10,3,0,6,Shears
+11,3,0,1,Type 2 Treasure Chest
+12,3,0,0,Chainsaw
+13,3,0,6,None
+14,3,0,1,Power Bar
+15,3,0,0,Power Bar
+16,3,0,0,Type 2 Treasure Chest
+17,3,0,1,Type 1 Treasure Chest
+18,3,0,6,Sledge
+19,3,0,0,Boulder
+20,3,0,1,Power Bar
+21,3,0,0,Power Bar
+22,3,0,5,Clue
+23,3,0,0,Type 1 Treasure Chest
+24,3,0,4,Type 2 Treasure Chest
+0,4,0,2,Power Bar
+1,4,0,0,Boulder
+2,4,0,4,None
+3,4,0,0,Chainsaw
+4,4,0,2,Jackhammer
+5,4,0,6,Type 1 Treasure Chest
+6,4,0,0,Machete
+7,4,0,1,Clue
+8,4,0,4,Shears
+9,4,0,3,Type 2 Treasure Chest
+10,4,0,0,Machete
+11,4,0,2,Binoculars
+12,4,0,6,Type 1 Treasure Chest
+13,4,0,5,Chainsaw
+14,4,0,4,Sledge
+15,4,0,2,Jackhammer
+16,4,0,3,Axe
+17,4,0,0,Power Bar
+18,4,0,1,Power Bar
+19,4,0,0,Boulder
+20,4,0,0,Blackberry Bush
+21,4,0,4,Type 1 Treasure Chest
+22,4,0,6,Tree
+23,4,0,6,Jackhammer
+24,4,0,3,Type 1 Treasure Chest
+0,5,0,5,Hatchet
+1,5,0,4,Type 1 Treasure Chest
+2,5,0,3,Type 1 Treasure Chest
+3,5,0,4,None
+4,5,0,6,Chisel
+5,5,0,0,Clue
+6,5,0,5,Boulder
+7,5,0,0,Sledge
+8,5,0,0,Blackberry Bush
+9,5,0,5,Type 1 Treasure Chest
+10,5,0,2,Type 1 Treasure Chest
+11,5,0,2,Type 2 Treasure Chest
+12,5,0,4,Shears
+13,5,0,2,Hatchet
+14,5,0,0,Hatchet
+15,5,0,3,Hatchet
+16,5,0,0,Chisel
+17,5,0,2,Chisel
+18,5,0,0,Type 1 Treasure Chest
+19,5,0,2,Power Bar
+20,5,0,6,Power Bar
+21,5,0,2,Shears
+22,5,0,2,None
+23,5,0,1,Jackhammer
+24,5,0,6,Chisel
+0,6,0,1,Boulder
+1,6,0,1,Type 1 Treasure Chest
+2,6,0,6,Chisel
+3,6,0,1,Type 1 Treasure Chest
+4,6,0,0,Jackhammer
+5,6,0,5,Hatchet
+6,6,0,3,Binoculars
+7,6,0,5,Chisel
+8,6,0,6,Sledge
+9,6,0,3,Axe
+10,6,0,1,Chainsaw
+11,6,0,1,Shears
+12,6,0,4,Clue
+13,6,0,3,Jackhammer
+14,6,0,0,Type 2 Treasure Chest
+15,6,0,6,Machete
+16,6,0,2,Type 2 Treasure Chest
+17,6,0,6,Chisel
+18,6,0,4,Hatchet
+19,6,0,5,Clue
+20,6,0,1,Power Bar
+21,6,0,1,Boulder
+22,6,0,6,Type 2 Treasure Chest
+23,6,0,1,Hatchet
+24,6,0,6,Shears
+0,7,0,4,Tree
+1,7,0,4,Axe
+2,7,0,2,Jackhammer
+3,7,0,0,Sledge
+4,7,0,1,Clue
+5,7,0,4,Sledge
+6,7,0,5,Axe
+7,7,0,4,Blackberry Bush
+8,7,0,3,Type 2 Treasure Chest
+9,7,0,1,Machete
+10,7,0,3,Type 2 Treasure Chest
+11,7,0,6,Chainsaw
+12,7,0,5,Clue
+13,7,0,5,Type 2 Treasure Chest
+14,7,0,6,Binoculars
+15,7,0,6,Shears
+16,7,0,5,Hatchet
+17,7,0,5,Type 1 Treasure Chest
+18,7,0,5,Sledge
+19,7,0,2,Axe
+20,7,0,4,Type 1 Treasure Chest
+21,7,0,4,Power Bar
+22,7,0,3,Power Bar
+23,7,0,2,Chisel
+24,7,0,1,Power Bar
+0,8,0,1,Jackhammer
+1,8,0,4,Boulder
+2,8,0,0,Axe
+3,8,0,2,Power Bar
+4,8,0,4,Axe
+5,8,0,3,None
+6,8,0,1,Clue
+7,8,0,2,Axe
+8,8,0,0,Type 1 Treasure Chest
+9,8,0,3,None
+10,8,0,4,Sledge
+11,8,0,4,Chisel
+12,8,0,5,Type 1 Treasure Chest
+13,8,0,5,Tree
+14,8,0,2,Sledge
+15,8,0,0,Hatchet
+16,8,0,2,Shears
+17,8,0,1,Axe
+18,8,0,3,Type 2 Treasure Chest
+19,8,0,2,Power Bar
+20,8,0,1,None
+21,8,0,5,Type 1 Treasure Chest
+22,8,0,5,None
+23,8,0,5,Jackhammer
+24,8,0,5,Power Bar
+0,9,0,4,Hatchet
+1,9,0,4,Sledge
+2,9,0,6,Chainsaw
+3,9,0,0,Shears
+4,9,0,6,Boulder
+5,9,0,2,Power Bar
+6,9,0,1,Jackhammer
+7,9,0,0,Type 2 Treasure Chest
+8,9,0,2,Tree
+9,9,0,3,Boulder
+10,9,0,1,Axe
+11,9,0,1,None
+12,9,0,2,Type 1 Treasure Chest
+13,9,0,3,Chainsaw
+14,9,0,1,Type 2 Treasure Chest
+15,9,0,0,Blackberry Bush
+16,9,0,6,None
+17,9,0,6,Binoculars
+18,9,0,5,Type 1 Treasure Chest
+19,9,0,1,Tree
+20,9,0,3,None
+21,9,0,6,Clue
+22,9,0,3,Power Bar
+23,9,0,4,Type 2 Treasure Chest
+24,9,0,0,Hatchet
+0,10,0,3,Jackhammer
+1,10,0,2,Shears
+2,10,0,3,None
+3,10,0,1,None
+4,10,0,2,None
+5,10,0,6,Type 1 Treasure Chest
+6,10,0,0,Chainsaw
+7,10,0,3,Power Bar
+8,10,0,2,Clue
+9,10,0,1,None
+10,10,0,1,Shears
+11,10,0,2,Binoculars
+12,10,0,0,Chainsaw
+13,10,0,3,Clue
+14,10,0,4,Type 2 Treasure Chest
+15,10,0,2,Axe
+16,10,0,0,Tree
+17,10,0,2,Power Bar
+18,10,0,6,Chainsaw
+19,10,0,2,Hatchet
+20,10,0,4,Shears
+21,10,0,5,Tree
+22,10,0,0,None
+23,10,0,6,Sledge
+24,10,0,5,Type 2 Treasure Chest
+0,11,0,2,None
+1,11,0,2,Hatchet
+2,11,0,2,Type 2 Treasure Chest
+3,11,0,1,Boulder
+4,11,0,3,Type 2 Treasure Chest
+5,11,0,5,Chainsaw
+6,11,0,1,Type 1 Treasure Chest
+7,11,0,0,Power Bar
+8,11,0,3,Blackberry Bush
+9,11,0,3,Sledge
+10,11,0,4,Power Bar
+11,11,0,4,Jackhammer
+12,11,0,1,Boulder
+13,11,0,1,Type 1 Treasure Chest
+14,11,0,6,Axe
+15,11,0,6,None
+16,11,0,3,Chainsaw
+17,11,0,4,Jackhammer
+18,11,0,0,Binoculars
+19,11,0,2,Power Bar
+20,11,0,2,None
+21,11,0,0,Type 1 Treasure Chest
+22,11,0,5,Shears
+23,11,0,3,Chisel
+24,11,0,5,Jackhammer
+0,12,0,2,Blackberry Bush
+1,12,0,3,Tree
+2,12,0,2,Chainsaw
+3,12,0,2,Power Bar
+4,12,0,2,Blackberry Bush
+5,12,0,2,Hatchet
+6,12,0,6,Type 1 Treasure Chest
+7,12,0,6,Power Bar
+8,12,0,1,Type 2 Treasure Chest
+9,12,0,0,Chisel
+10,12,0,1,Power Bar
+11,12,0,3,Axe
+12,12,0,5,Axe
+13,12,0,6,Power Bar
+14,12,0,5,Binoculars
+15,12,0,4,None
+16,12,0,4,Power Bar
+17,12,0,4,Sledge
+18,12,0,2,Type 1 Treasure Chest
+19,12,0,2,Tree
+20,12,0,4,Clue
+21,12,0,2,Type 1 Treasure Chest
+22,12,0,5,Type 1 Treasure Chest
+23,12,0,0,Sledge
+24,12,0,6,Axe
+0,13,0,2,Boulder
+1,13,0,6,Machete
+2,13,0,6,Sledge
+3,13,0,2,Axe
+4,13,0,2,Binoculars
+5,13,0,3,Chisel
+6,13,0,5,Axe
+7,13,0,4,Blackberry Bush
+8,13,0,5,Blackberry Bush
+9,13,0,0,Clue
+10,13,0,6,Power Bar
+11,13,0,1,Chainsaw
+12,13,0,1,Jackhammer
+13,13,0,2,Tree
+14,13,0,5,Hatchet
+15,13,0,5,Type 1 Treasure Chest
+16,13,0,2,Blackberry Bush
+17,13,0,6,Hatchet
+18,13,0,0,Type 1 Treasure Chest
+19,13,0,5,Sledge
+20,13,0,6,Blackberry Bush
+21,13,0,6,Power Bar
+22,13,0,1,Type 2 Treasure Chest
+23,13,0,4,Hatchet
+24,13,0,5,Sledge
+0,14,0,3,Chisel
+1,14,0,1,Type 1 Treasure Chest
+2,14,0,4,Binoculars
+3,14,0,1,Tree
+4,14,0,5,Power Bar
+5,14,0,6,Machete
+6,14,0,2,Shears
+7,14,0,5,None
+8,14,0,0,None
+9,14,0,0,Power Bar
+10,14,0,1,Type 2 Treasure Chest
+11,14,0,6,Machete
+12,14,0,1,Tree
+13,14,0,6,Shears
+14,14,0,2,Jackhammer
+15,14,0,6,Binoculars
+16,14,0,0,Jackhammer
+17,14,0,2,Type 2 Treasure Chest
+18,14,0,6,Tree
+19,14,0,2,Type 1 Treasure Chest
+20,14,0,5,Sledge
+21,14,0,5,Hatchet
+22,14,0,5,Shears
+23,14,0,6,Chisel
+24,14,0,3,Blackberry Bush
+0,15,0,0,Jackhammer
+1,15,0,1,Sledge
+2,15,0,5,Chainsaw
+3,15,0,4,Type 1 Treasure Chest
+4,15,0,3,Binoculars
+5,15,0,0,Machete
+6,15,0,4,Hatchet
+7,15,0,1,Sledge
+8,15,0,0,None
+9,15,0,0,Blackberry Bush
+10,15,0,2,Power Bar
+11,15,0,6,Shears
+12,15,0,3,Binoculars
+13,15,0,2,Binoculars
+14,15,0,1,Blackberry Bush
+15,15,0,4,Tree
+16,15,0,2,Shears
+17,15,0,6,Clue
+18,15,0,5,Power Bar
+19,15,0,1,Sledge
+20,15,0,6,Type 1 Treasure Chest
+21,15,0,2,Sledge
+22,15,0,4,Type 2 Treasure Chest
+23,15,0,5,Machete
+24,15,0,0,Type 1 Treasure Chest
+0,16,0,5,Boulder
+1,16,0,6,Axe
+2,16,0,1,Power Bar
+3,16,0,0,Sledge
+4,16,0,0,Blackberry Bush
+5,16,0,4,Chainsaw
+6,16,0,5,Clue
+7,16,0,0,Machete
+8,16,0,3,Power Bar
+9,16,0,4,Tree
+10,16,0,3,Boulder
+11,16,0,6,Power Bar
+12,16,0,3,Machete
+13,16,0,3,Power Bar
+14,16,0,6,Tree
+15,16,0,3,Chainsaw
+16,16,0,3,Boulder
+17,16,0,6,Axe
+18,16,0,3,Type 2 Treasure Chest
+19,16,0,4,Tree
+20,16,0,3,Chisel
+21,16,0,4,Power Bar
+22,16,0,4,Type 1 Treasure Chest
+23,16,0,4,Shears
+24,16,0,6,Sledge
+0,17,0,1,None
+1,17,0,1,Machete
+2,17,0,1,Jackhammer
+3,17,0,2,None
+4,17,0,1,None
+5,17,0,0,Hatchet
+6,17,0,3,Chisel
+7,17,0,5,Clue
+8,17,0,3,Axe
+9,17,0,5,Blackberry Bush
+10,17,0,0,Type 2 Treasure Chest
+11,17,0,5,Clue
+12,17,0,0,Clue
+13,17,0,0,Boulder
+14,17,0,1,Axe
+15,17,0,2,Tree
+16,17,0,2,Jackhammer
+17,17,0,0,None
+18,17,0,3,Clue
+19,17,0,6,Power Bar
+20,17,0,0,Axe
+21,17,0,0,Tree
+22,17,0,5,Jackhammer
+23,17,0,4,Jackhammer
+24,17,0,2,Type 2 Treasure Chest
+0,18,0,0,Type 2 Treasure Chest
+1,18,0,1,Binoculars
+2,18,0,0,Power Bar
+3,18,0,6,Power Bar
+4,18,0,3,Clue
+5,18,0,2,Boulder
+6,18,0,6,Hatchet
+7,18,0,4,Chainsaw
+8,18,0,5,None
+9,18,0,5,Power Bar
+10,18,0,3,Power Bar
+11,18,0,2,Chisel
+12,18,0,6,Sledge
+13,18,0,2,Hatchet
+14,18,0,1,None
+15,18,0,3,Type 2 Treasure Chest
+16,18,0,6,Axe
+17,18,0,3,Type 1 Treasure Chest
+18,18,0,3,Hatchet
+19,18,0,2,Type 1 Treasure Chest
+20,18,0,5,Sledge
+21,18,0,1,None
+22,18,0,4,Tree
+23,18,0,0,Clue
+24,18,0,2,Type 2 Treasure Chest
+0,19,0,4,Chainsaw
+1,19,0,1,Chainsaw
+2,19,0,2,Type 2 Treasure Chest
+3,19,0,3,None
+4,19,0,3,Power Bar
+5,19,0,1,Power Bar
+6,19,0,2,Power Bar
+7,19,0,1,Power Bar
+8,19,0,1,Power Bar
+9,19,0,3,Jackhammer
+10,19,0,4,None
+11,19,0,4,Binoculars
+12,19,0,4,Clue
+13,19,0,0,Shears
+14,19,0,5,Type 1 Treasure Chest
+15,19,0,1,Machete
+16,19,0,3,Power Bar
+17,19,0,0,Tree
+18,19,0,2,Type 1 Treasure Chest
+19,19,0,2,Tree
+20,19,0,6,None
+21,19,0,2,Power Bar
+22,19,0,6,Blackberry Bush
+23,19,0,2,Boulder
+24,19,0,1,Shears
+0,20,0,0,Type 1 Treasure Chest
+1,20,0,4,Machete
+2,20,0,2,Axe
+3,20,0,1,Binoculars
+4,20,0,5,Clue
+5,20,0,0,None
+6,20,0,0,None
+7,20,0,5,Hatchet
+8,20,0,6,Binoculars
+9,20,0,2,Tree
+10,20,0,5,Power Bar
+11,20,0,2,Shears
+12,20,0,0,Boulder
+13,20,0,6,None
+14,20,0,5,Axe
+15,20,0,5,None
+16,20,0,4,Binoculars
+17,20,0,0,Shears
+18,20,0,0,Binoculars
+19,20,0,2,Chisel
+20,20,0,4,None
+21,20,0,1,None
+22,20,0,3,Hatchet
+23,20,0,3,Hatchet
+24,20,0,0,Binoculars
+0,21,0,1,Type 2 Treasure Chest
+1,21,0,2,Machete
+2,21,0,0,Power Bar
+3,21,0,0,Tree
+4,21,0,0,None
+5,21,0,5,Machete
+6,21,0,1,Power Bar
+7,21,0,4,Chainsaw
+8,21,0,4,None
+9,21,0,1,Chainsaw
+10,21,0,6,Chisel
+11,21,0,6,None
+12,21,0,6,Type 2 Treasure Chest
+13,21,0,2,Type 2 Treasure Chest
+14,21,0,2,Power Bar
+15,21,0,4,Binoculars
+16,21,0,4,Tree
+17,21,0,2,Axe
+18,21,0,3,Type 1 Treasure Chest
+19,21,0,1,Clue
+20,21,0,1,Blackberry Bush
+21,21,0,5,Blackberry Bush
+22,21,0,4,Power Bar
+23,21,0,2,Binoculars
+24,21,0,3,Tree
+0,22,0,5,Hatchet
+1,22,0,4,Binoculars
+2,22,0,5,Machete
+3,22,0,2,Boulder
+4,22,0,3,None
+5,22,0,6,Blackberry Bush
+6,22,0,3,Machete
+7,22,0,3,Blackberry Bush
+8,22,0,3,Shears
+9,22,0,1,None
+10,22,0,2,Tree
+11,22,0,0,Machete
+12,22,0,0,Power Bar
+13,22,0,6,Blackberry Bush
+14,22,0,4,Binoculars
+15,22,0,6,Boulder
+16,22,0,0,Jackhammer
+17,22,0,3,Tree
+18,22,0,4,Shears
+19,22,0,1,Power Bar
+20,22,0,1,Jackhammer
+21,22,0,5,Axe
+22,22,0,6,Binoculars
+23,22,0,1,Sledge
+24,22,0,5,Power Bar
+0,23,0,5,Blackberry Bush
+1,23,0,5,Sledge
+2,23,0,5,Boulder
+3,23,0,0,Clue
+4,23,0,4,Power Bar
+5,23,0,4,Type 1 Treasure Chest
+6,23,0,3,Type 1 Treasure Chest
+7,23,0,5,Type 1 Treasure Chest
+8,23,0,5,Jackhammer
+9,23,0,2,Chainsaw
+10,23,0,0,Chainsaw
+11,23,0,3,Sledge
+12,23,0,6,Sledge
+13,23,0,4,Shears
+14,23,0,3,Sledge
+15,23,0,5,Blackberry Bush
+16,23,0,0,Power Bar
+17,23,0,2,Axe
+18,23,0,6,Jackhammer
+19,23,0,1,None
+20,23,0,1,Chainsaw
+21,23,0,5,Power Bar
+22,23,0,6,Sledge
+23,23,0,1,Tree
+24,23,0,2,Type 2 Treasure Chest
+0,24,0,2,Power Bar
+1,24,0,5,Hatchet
+2,24,0,4,None
+3,24,0,0,Boulder
+4,24,0,2,None
+5,24,0,6,Chainsaw
+6,24,0,3,Binoculars
+7,24,0,6,Power Bar
+8,24,0,1,Power Bar
+9,24,0,2,Power Bar
+10,24,0,5,Power Bar
+11,24,0,3,Hatchet
+12,24,0,6,Jackhammer
+13,24,0,3,Binoculars
+14,24,0,5,None
+15,24,0,3,Power Bar
+16,24,0,3,Chainsaw
+17,24,0,4,Machete
+18,24,0,6,Jackhammer
+19,24,0,3,Power Bar
+20,24,0,6,Binoculars
+21,24,0,3,Blackberry Bush
+22,24,0,0,Binoculars
+23,24,0,3,None
+24,24,0,6,Machete

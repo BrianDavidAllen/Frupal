@@ -9,6 +9,7 @@
 #include "grovnick.hpp"
 #include "player.hpp"
 #include "map.hpp"
+#include "hero.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -24,12 +25,13 @@ class Game
         bool playerIsDead();
         void saveGame();
         void sendData();
-        void startNewGame(fstream &file);
+        void startNewGame(fstream &stateFile);
 
     private:
         json current;
         json toSend;
-        Player player;
+        //Player player;
+        Hero hero;
 		Map map;
         string log;
 };

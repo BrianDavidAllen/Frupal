@@ -2,6 +2,8 @@
 
 Map::Map() {}
 
+// Splits a string based on the delimiter ',' into a static array (w/ size 5) of strings.
+// Takes in the string being split and returns the array of strings.
 string *Map::parseLine(const string line) const {
 	static string result[5];
 	char delimiter = ',';
@@ -20,6 +22,9 @@ string *Map::parseLine(const string line) const {
 	return result;
 }
 
+// Loads the map portion of the state-preserving file.
+// Takes in the identifier for the map, its dimentions, and the state-preserving filestream.
+// Returns true if the file is not corrupted and false otherwise.
 bool Map::loadFile(const string identifier, const int dimensions, fstream &file) {
 	this->identifier = identifier;
 	this->dimensions = dimensions;
@@ -67,6 +72,8 @@ bool Map::loadFile(const string identifier, const int dimensions, fstream &file)
 	return true;
 }
 
+// Adds empty grovnicks up to the specified (nextX, endY),
+// from the current (currentX, currentY)
 void Map::fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, const int endY) {
 	vector<Grovnick> row;
 	// Fill any missing rows first

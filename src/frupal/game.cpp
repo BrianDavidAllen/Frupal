@@ -6,17 +6,16 @@
 
 Game::Game()
 {
-    Player player;
+    //Player player;
+    Hero hero;
     json toSend;
 
-	fstream file("map.txt");
+	fstream stateFile("mapGen.txt");
 
-	if(!file)
-		startNewGame(file);
-	else if(!loadExistingGame(file))
-		startNewGame(file);
+	if(!stateFile || !loadExistingGame(stateFile))
+		startNewGame(stateFile);
 
-	file.close();
+	stateFile.close();
 }
 
 Game::~Game()
@@ -30,7 +29,7 @@ void Game::endGame()
 
 bool Game::loadExistingGame(fstream &file)
 {
-    /* Get map, object, item and player info from file and load into objects. */
+    /* Get map, object, item and hero info from file and load into objects. */
 	string identifier, dimensionsString, blankSpace;
 	getline(file, identifier);
 	if(identifier.empty())
@@ -46,7 +45,7 @@ bool Game::loadExistingGame(fstream &file)
 	if(blankSpace.empty() || blankSpace[0] != '#')
 		return false;
 
-	// TODO: Have the player load info here
+	// TODO: Have the hero load info here
 
 	getline(file, blankSpace);
 	if(blankSpace.empty() || blankSpace[0] != '#')
@@ -59,28 +58,28 @@ void Game::parseCommand(json input)
 {
     string command = input["command"];
     log = "";
-    int playerX = player.getX();
-    int playerY = player.getY();
+    int heroX = hero.getX();
+    int heroY = hero.getY();
 
     if(command == "up")
     {
         log = "You moved north.";
-        player.setPosition(playerX, playerY-1);
+        hero.setCoords(heroX,heroY-1);
     }
     else if(command == "down")
     {
         log = "You moved south.";
-        player.setPosition(playerX, playerY+1);
+        hero.setCoords(heroX, heroY+1);
     }
     else if(command == "left")
     {
         log = "You moved west.";
-        player.setPosition(playerX-1, playerY);
+        hero.setCoords(heroX-1, heroY);
     }
     else if(command == "right")
     {
         log = "You moved east.";
-        player.setPosition(playerX+1, playerY);
+        hero.setCoords(heroX+1, heroY);
     }
     else if(command == "space")
     {
@@ -90,7 +89,7 @@ void Game::parseCommand(json input)
 
 bool Game::playerIsDead()
 {
-    //Punam, add check for player energy here
+    //Punam, add check for hero energy here
 }
 
 void Game::saveGame()
@@ -101,10 +100,10 @@ void Game::saveGame()
 void Game::sendData()
 {
     //toJson() use example
-    toSend["player"] = player.toJson();
+   // toSend["hero"] = hero.toJson();
 
     //Test some getGrovnick functions
-    Grovnick * grovnickUnderPlayer = map.getGrovnick(player.getX(), player.getY());
+    Grovnick * grovnickUnderPlayer = map.getGrovnick(hero.getX(), hero.getY());
     toSend["test"] = grovnickUnderPlayer->isVisible();
 
     //Populate array of tiles.;
@@ -134,11 +133,16 @@ void Game::sendData()
     cout << toSend.dump();
 }
 
-void Game::startNewGame(fstream &file)
+void Game::startNewGame(fstream &stateFile)
 {
-    /* Load from map file and set up new player/inventory.
+    /* Load from map file and set up new hero/inventory.
      */
-	map.generateFile(file);
+	fstream staticFile("mapGen.txt");
+	// TODO: Copy stateFile <- staticFile
+
+	map.generateFile(stateFile);
+
+	staticFile.close();
 }
 
 int main()

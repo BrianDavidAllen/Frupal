@@ -1,16 +1,18 @@
-EXE="../../build/frupal.cgi"
+BUILD=../../build/
+
+EXE=frupal.cgi
 
 .PHONY: all run build clean
 
 all: clean build run
 
-run: $(EXE)
-	./$(EXE)
+run: $(BUILD)$(EXE)
+	cd $(BUILD) && ./$(EXE)
 
-build: $(EXE)
+build: $(BUILD)$(EXE)
 
-$(EXE): game.cpp map.cpp player.cpp cgiReader.cpp grovnick.cpp
-	g++ -std=c++11 -static $? -o $(EXE)
+$(BUILD)$(EXE): game.cpp map.cpp hero.cpp cgiReader.cpp grovnick.cpp
+	g++ -std=c++11 -static $? -o $(BUILD)$(EXE)
 
 clean:
-	$(RM) $(EXE)
+	$(RM) $(BUILD)$(EXE)
