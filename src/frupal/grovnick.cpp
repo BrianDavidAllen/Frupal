@@ -23,3 +23,15 @@ bool Grovnick::isVisible()
 {
     return visible;
 }
+
+json toJson()
+{
+   json toSend; 
+   
+   toSend["x"] = x;
+   toSend["y"] = y;
+   toSend["Visible"] = visible;
+   toSend["terrian"] = terrain;
+   return toSend;
+}
+

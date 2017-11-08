@@ -105,3 +105,18 @@ Grovnick * Map::getGrovnick(int x, int y) {
         loopedY = y % dimensions;
     return &(grovnicks[loopedY][loopedX]);
 }
+
+json toJson()
+{
+   json map;
+   map["grovnicks"] = nullptr;
+   for(int x = 0; x < dimensions; ++x)
+   {
+    for(int y = 0; y < dimensions; ++y)
+     {
+       map["grovnicks"].push_back(grovnicks[y][x].toJson()); 
+       
+     }
+   }
+   return map;
+}

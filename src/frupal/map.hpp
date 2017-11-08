@@ -13,7 +13,8 @@ class Map {
 		bool loadFile(const string identifier, const int dimensions, fstream &file);
 		void fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, const int endY);
 		void generateFile(fstream &file);
-        Grovnick * getGrovnick(int x, int y);
+                Grovnick * getGrovnick(int x, int y);
+	        json Json();
     private:
 		string identifier;
 		int dimensions;

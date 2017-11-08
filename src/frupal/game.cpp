@@ -114,10 +114,12 @@ void Game::sendData()
         for(int y = 0; y < 8; ++y)
         {
             string type = rand()%2 == 0 ? "plain" : "water";
+	    Grovnick * current = map.getGrovnick(x,y);
             toSend["tiles"].push_back({
-                    {"x", x },
-                    {"y", y },
-                    {"terrain", type}
+                    {"x", current->getX() }
+		    {"y", current->getY() }
+                    {"terrain", current->getTerain() }
+		    {"visible", current->isVisible() }
                 });
         }
     }
