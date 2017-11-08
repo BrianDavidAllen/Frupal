@@ -9,7 +9,7 @@ Game::Game()
     Player player;
     json toSend;
 
-	fstream file("map.txt");
+	fstream file("mapGen.txt");
 
 	if(!file)
 		startNewGame(file);

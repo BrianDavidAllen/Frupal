@@ -7,81 +7,85 @@
 using namespace std;
 
 int main(){
-	int y = 0;
-	int x = 0;
+	string identifier = "Frupal Map";
+	string blankSpace = "###############";
+	int dimensions = 25;
+
 	int sizeOf = 0;
-	int random = 0;
+	int terrain = 0;
 	int moreRandom = 0;
 	string contentString = " ";
 	string contentArray[] = {"Tree", "Boulder", "Blackberry bushes", "Power Bar", "Type 1 Treasure Chest", "Type 2 Treasure Chest", "Royal Diamonds", "Clue", "Hatchet", "Axe",
 				"Chainsaw", "Chisel", "Sledge", "Jackhamer", "Matchete", "Shears", "Binoculars", "None"};
 
 	ofstream myfile;
-	myfile.open("mapGen.txt");	
+	myfile.open("../../build/mapGen.txt");	
 	
 	sizeOf = sizeof(contentArray);	
 
+	myfile << identifier << "\n" << dimensions << "\n" << blankSpace << "\n";
+	// TODO: Write player information here
+	myfile << blankSpace << "\n";
+
 	srand(time(NULL));
-	/*random = rand();
-	cout << random;*/
 	
-	for(y = 0; y < 25; y++){
-		for(x = 0; x < 25; x++){
-			random = rand();
+	for(int y = 0; y < dimensions; y++){
+		for(int x = 0; x < dimensions; x++){
+			terrain = rand();
 			moreRandom = rand();
 			moreRandom = moreRandom % 100;
 			if(moreRandom < 10){
-				contentString = "powerBar";
+				contentString = "Power Bar";
 			}
 			else if(moreRandom < 20){
-				contentString = "t1Treasure";
+				contentString = "Type 1 Treasure Chest";
 			}
 			else if(moreRandom < 30){
-				contentString = "none";
+				contentString = "None";
 			}
 			else if(moreRandom < 35){
-				contentString = "binoculars";
+				contentString = "Binoculars";
 			}	
 			else if(moreRandom < 40){
-				contentString = "shears";
+				contentString = "Shears";
 			}
 			else if(moreRandom < 45){
-				contentString = "machete";
+				contentString = "Machete";
 			}
 			else if(moreRandom < 50){
-				contentString = "jackhammer";
+				contentString = "Jackhammer";
 			}
 			else if(moreRandom < 55){
-				contentString = "sledge";
+				contentString = "Sledge";
 			}
 			else if(moreRandom < 60){
-				contentString = "chisel";
+				contentString = "Chisel";
 			}
 			else if(moreRandom < 65){
-				contentString = "chainsaw";
+				contentString = "Chainsaw";
 			}
 			else if(moreRandom < 70){
-				contentString = "axe";
+				contentString = "Axe";
 			}
 			else if(moreRandom < 75){
-				contentString = "hatchet";
+				contentString = "Hatchet";
 			}
 			else if(moreRandom < 80){
-				contentString = "clue";
+				contentString = "Clue";
 			}
 			else if(moreRandom < 85){
-				contentString = "t2Treasure";
+				contentString = "Type 2 Treasure Chest";
 			}
 			else if(moreRandom < 90){
-				contentString = "blackberry";
+				contentString = "Blackberry Bush";
 			}
 			else if(moreRandom < 95){
-				contentString = "boulder";
+				contentString = "Boulder";
 			}
 			else {
-				contentString = "tree";
+				contentString = "Tree";
 			}
-			myfile << y  << ", " <<  x << ", " << random % 7 << ", 0, 0, " << contentString << "\n";
+			myfile << x << "," << y << ",0," << terrain % 7 << "," << contentString << "\n";
 		}
 	}
 	myfile.close();
