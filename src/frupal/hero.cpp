@@ -13,14 +13,14 @@
 using namespace std;
 
 //Default constructor: sets energy level to 100, x,y to zero, whiffles to zero, and name/invetory to NULL
-Hero::Hero() : energy(100), whiffles(0), x(0), y(0), name(""), inventory("")
+Hero::Hero() : energy(100), whiffles(0), x(11), y(13), name(""), inventory("")
 {
     
 }
 
 
 //Parameterized constructor: sets the name to a string passed in, everything else is set to default values
-Hero::Hero(int energy, int whiffles, int x, int y, string newName, string inventory) : energy(100), whiffles(0), x(0), y(0), name(newName), inventory("")
+Hero::Hero(int energy, int whiffles, int x, int y, string newName, string inventory) : energy(100), whiffles(0), x(11), y(13), name(newName), inventory("")
 {
 
 }
