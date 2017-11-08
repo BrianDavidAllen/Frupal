@@ -6,10 +6,10 @@ using namespace std;
 
 class Grovnick {
 	public:
-		Grovnick(int x, int y, int terrain, string content);
+		Grovnick(const int x, const int y, const bool visible, const int terrain, const string content);
 	private:
 		int x, y;
-		bool visited;
+		bool visible;
 		int terrain;
 		string content;
 };

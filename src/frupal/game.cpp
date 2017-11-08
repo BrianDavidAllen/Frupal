@@ -10,8 +10,12 @@ Game::Game()
     json toSend;
 
 	fstream file("../../map.txt");
-	if(!file) startNewGame(file);
-	else loadExistingGame(file);
+
+	if(!file)
+		startNewGame(file);
+	else if(!loadExistingGame(file))
+		startNewGame(file);
+
 	file.close();
 }
 
@@ -27,13 +31,28 @@ void Game::endGame()
 bool Game::loadExistingGame(fstream &file)
 {
     /* Get map, object, item and player info from file and load into objects. */
-	/*string identifier = getline(file, line);
+	string identifier, dimensionsString, blankSpace;
+	getline(file, identifier);
 	if(identifier.empty())
-	string dimensionsString = getline(file, line);
-	int dimensions = stoi(dimensionString);*/
+		return false;
 
-	map.loadFile("Test Map File", 25, file);
-	return true;
+	getline(file, dimensionsString);
+	if(dimensionsString.empty())
+		return false;
+
+	int dimensions = stoi(dimensionsString);
+
+	getline(file, blankSpace);
+	if(blankSpace.empty() || blankSpace[0] != '#')
+		return false;
+
+	// TODO: Have the player load info here
+
+	getline(file, blankSpace);
+	if(blankSpace.empty() || blankSpace[0] != '#')
+		return false;
+
+	return map.loadFile(identifier, dimensions, file);
 }
 
 void Game::parseCommand(json input)

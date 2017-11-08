@@ -2,46 +2,92 @@
 
 Map::Map() {}
 
-bool Map::loadFile(string identifier, int dimensions, fstream &file) {
+string *Map::parseLine(const string line) const {
+	static string result[5];
+	char delimiter = ',';
+	size_t previousDel, nextDel;
+	
+	previousDel = line.find(delimiter);
+	result[0] = line.substr(0, previousDel);
+	for(int i = 1; i < 4; i++) {
+		nextDel = line.find(delimiter, previousDel + 1);
+		unsigned stringLength = nextDel - previousDel - 1;
+		result[i] = line.substr(previousDel + 1, stringLength);
+		previousDel = nextDel;
+	}
+	result[4] = line.substr(previousDel + 1);
+
+	return result;
+}
+
+bool Map::loadFile(const string identifier, const int dimensions, fstream &file) {
 	this->identifier = identifier;
 	this->dimensions = dimensions;
 
+	// Push a blank row of grovnicks
+	vector<Grovnick> row;
+	grovnicks.push_back(row);
+	// Each line represents a single grovnick
 	string line;
-	// Get line from file
+	// These are the coordinates of the current grovnick (may it be in the file or not)
+	int currentX, currentY = 0;
 	while(getline(file, line)) {
-		// Get delimiter positions
-		size_t delPos[3];
-		char delimiter = ',';
-		delPos[0] = line.find(delimiter);
-		delPos[1] = line.find(delimiter, delPos[0] + 1);
-		delPos[2] = line.find(delimiter, delPos[1] + 1);
+		string *grovnickInfo = parseLine(line);
 
-		// Gets coordinates
-		string xString = line.substr(0, delPos[0]);
-		int x = stoi(xString);
-		string yString = line.substr(delPos[0] + 1, delPos[1] - delPos[0] - 1);
-		int y = stoi(yString);
+		// Get coordinates
+		int x = stoi(grovnickInfo[0]);
+		if(x >= dimensions) return false;
+		int y = stoi(grovnickInfo[1]);
+		if(y >= dimensions) return false;
 
-		// Gets terrain type
-		string terrainString = line.substr(delPos[1] + 1, delPos[2] - delPos[1] - 1);
-		int terrain = stoi(terrainString);
+		// Get visibility
+		bool visible = false;
+		if(grovnickInfo[2] == "1") visible = true;
 
-		// Gets content string
-		string contentString = line.substr(delPos[2] + 1);
+		// Get terrain type
+		int terrain = stoi(grovnickInfo[3]);
+		if(terrain >= 7) return false;
 
-		Grovnick newGrovnick(x, y, terrain, contentString);
+		fillMissingGrovnicks(currentX, currentY, x, y);
 
-		if(y == grovnicks.size()) {
-			vector<Grovnick> row;
-			grovnicks.push_back(row);
-		}
-
+		Grovnick newGrovnick(x, y, visible, terrain, grovnickInfo[4]);
 		grovnicks[y].push_back(newGrovnick);
+
+		if(currentX == dimensions - 1 && currentY < dimensions - 1) {
+			grovnicks.push_back(row);
+
+			currentX = 0;
+			currentY++;
+		} else
+			currentX++;
 	}
+
+	fillMissingGrovnicks(currentX, currentY, dimensions, dimensions - 1);
+
 	return true;
 }
 
+void Map::fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, const int endY) {
+	vector<Grovnick> row;
+	// Fill any missing rows first
+	for(; currentY < endY; currentY++) {
+		grovnicks.push_back(row);
+
+		for(; currentX < dimensions; currentX++) {
+			Grovnick blankGrovnick(currentX, currentY, false, 0, "None");
+			grovnicks[currentY].push_back(blankGrovnick);
+		}
+
+		currentX = 0;
+	}
+
+	// Then, fill any missing grovnicks on the current row
+	for(; currentX < nextX; currentX++) {
+		Grovnick blankGrovnick(currentX, currentY, false, 0, "None");
+		grovnicks[currentY].push_back(blankGrovnick);
+	}
+}
+
 void Map::generateFile(fstream &file) {
-	// Copy static map file to state-preserving file
-	//loadFile(file);
+	// TODO: Copy static map file to state-preserving file
 }
