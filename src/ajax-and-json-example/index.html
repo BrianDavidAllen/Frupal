@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<title>Frupal 0.1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		function sendJson(playerName, playerAction)
+		{
+			var req = new XMLHttpRequest();
+			req.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("reply").innerHTML = req.responseText;
+				}
+			};
+			req.open("POST", "frupal.cgi");
+            req.setRequestHeader("Content-Type", "application/json");
+            req.send(JSON.stringify({"name": playerName, "action": playerAction}));
+
+			return false;
+		}
+	</script>
+</head>
+<body>
+	<h1>Frupal 0.1</h1>
+	<article>
+		<h2>Send some JSON</h2>
+        <section>
+            <form name=order action="" method="get" onsubmit="return sendJson(playerName.value, playerAction.value)">
+			<table>
+			<tr><th>Player Name</th><th>Player Action</th></tr>
+            <tr><td><input type="text" name="playerName"></input></td><td>
+			<select name="playerAction">
+				<option value="north">Move north</option>
+				<option value="east">Move east</option>
+				<option value="south">Move south</option>
+				<option value="west">Move west</option>
+				<option value="tool">Use tool</option>
+			</select>
+			</td></tr>
+			</table>
+			<input type="submit"/ value="Send JSON">
+		</section>
+        <h2>Reply</h2>
+		<section style='background:white; color:black' id="reply">
+		</section>
+	</article>
+</body>
+</html>
