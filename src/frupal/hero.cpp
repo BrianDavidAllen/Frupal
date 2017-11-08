@@ -203,8 +203,41 @@ bool Hero::energyStatus()
 {
 	return this->alive;
 }
+
+//function that reloads the hero state
+//file, and sets it to the original state
+//and sets the hero's var's to their og state
+
+void Hero::ogHeroState()
+{
+	const char * fileToOpen = "heroState.txt";
+
+	//deletes old file
+	remove(fileToOpen);
+
+	//create new file with orginal state
+	ofstream newStateFile;
+	newStateFile.open(fileToOpen);
+
+	newStateFile << "100" << '\n'
+				 << "0" << '\n'
+				 << "0" << '\n'
+				 << "0" << '\n';
+
+	//close and save the file
+	newStateFile.close();
+
+	//set the player's var's to 
+	//their og state
+	this->name = "";
+	this->energy = 100;
+	this->whiffles = 0;
+	this->x = 0;
+	this->y = 0;
 	
-//Paul Hubbard's funky functions
+}
+
+//Paul Hubbard's funky functions ^^
 
 
 

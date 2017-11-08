@@ -45,7 +45,7 @@ class Hero
         int getX();                                                                     //Returns the x coordinate of the hero
         int getY();                                                                     //Returns the y coordinate of the hero
 
-	//Paul Hubbard's funky functio
+	//Paul Hubbard's funky functions
 
 	//function to update hero's 
 	//state file
@@ -54,8 +54,14 @@ class Hero
 	//function to check if the player is 
 	//alive or dead
 	bool energyStatus();
+
+	//function that reloads the 
+	//hero state file to the 
+	//original state and sets the player's 
+	//var's to their og state
+	void ogHeroState();
 	
-	//Paul Hubbard's funky function
+	//Paul Hubbard's funky functions
 
     protected:
         int energy;
