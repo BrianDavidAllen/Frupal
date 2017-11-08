@@ -8,6 +8,8 @@ class Grovnick {
 	public:
 		Grovnick(const int x, const int y, const bool visible, const int terrain, const string content);
         ~Grovnick();
+        int getX();
+        int getY();
         bool isVisible();
     private:
 		int x, y;

@@ -9,6 +9,16 @@ Grovnick::~Grovnick()
 {
 }
 
+int Grovnick::getX()
+{
+    return x;
+}
+
+int Grovnick::getY()
+{
+    return y;
+}
+
 bool Grovnick::isVisible()
 {
     return visible;
