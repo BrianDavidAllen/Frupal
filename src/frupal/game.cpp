@@ -6,9 +6,10 @@
 
 Game::Game()
 {
-    Player player;
+    //Player player;
+    Hero hero;
     json toSend;
-
+    
 	fstream file("mapGen.txt");
 
 	if(!file)
@@ -48,6 +49,7 @@ bool Game::loadExistingGame(fstream &file)
 
 	// TODO: Have the player load info here
 
+
 	getline(file, blankSpace);
 	if(blankSpace.empty() || blankSpace[0] != '#')
 		return false;
@@ -59,28 +61,28 @@ void Game::parseCommand(json input)
 {
     string command = input["command"];
     log = "";
-    int playerX = player.getX();
-    int playerY = player.getY();
+    int heroX = hero.getX();
+    int heroY = hero.getY();
 
     if(command == "up")
     {
         log = "You moved north.";
-        player.setPosition(playerX, playerY-1);
+        hero.setCoords(heroX,heroY-1);
     }
     else if(command == "down")
     {
         log = "You moved south.";
-        player.setPosition(playerX, playerY+1);
+        hero.setCoords(heroX, heroY+1);
     }
     else if(command == "left")
     {
         log = "You moved west.";
-        player.setPosition(playerX-1, playerY);
+        hero.setCoords(heroX-1, heroY);
     }
     else if(command == "right")
     {
         log = "You moved east.";
-        player.setPosition(playerX+1, playerY);
+        hero.setCoords(heroX+1, heroY);
     }
     else if(command == "space")
     {
@@ -101,7 +103,8 @@ void Game::saveGame()
 void Game::sendData()
 {
     //toJson() use example
-    toSend["player"] = player.toJson();
+   // toSend["player"] = player.toJson();
+    to
 
     //Test some getGrovnick functions
     Grovnick * grovnickUnderPlayer = map.getGrovnick(player.getX(), player.getY());
