@@ -9,7 +9,7 @@ Game::Game()
     Player player;
     json toSend;
 
-	fstream file("../../map.txt");
+	fstream file("map.txt");
 
 	if(!file)
 		startNewGame(file);
@@ -102,6 +102,10 @@ void Game::sendData()
 {
     //toJson() use example
     toSend["player"] = player.toJson();
+
+    //Test some getGrovnick functions
+    Grovnick * grovnickUnderPlayer = map.getGrovnick(player.getX(), player.getY());
+    toSend["test"] = grovnickUnderPlayer->isVisible();
 
     //Populate array of tiles.;
     toSend["tiles"] = nullptr;

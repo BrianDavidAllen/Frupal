@@ -6,6 +6,7 @@
 #include <fstream>
 #include "json.hpp"
 #include "cgiReader.hpp"
+#include "grovnick.hpp"
 #include "player.hpp"
 #include "map.hpp"
 

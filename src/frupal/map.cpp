@@ -91,3 +91,17 @@ void Map::fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, co
 void Map::generateFile(fstream &file) {
 	// TODO: Copy static map file to state-preserving file
 }
+
+Grovnick * Map::getGrovnick(int x, int y) {
+    int loopedX = 0;
+    int loopedY = 0;
+    if(x < 0)
+        loopedX = dimensions + x;
+    else
+        loopedX = x % dimensions;
+    if(y < 0)
+        loopedY = dimensions + y;
+    else
+        loopedY = y % dimensions;
+    return &(grovnicks[loopedY][loopedX]);
+}
