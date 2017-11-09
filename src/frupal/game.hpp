@@ -20,17 +20,17 @@ class Game
         Game();
         ~Game();
         void endGame();
-        bool loadExistingGame(fstream &file);
+        bool gameStateExists();
+        bool loadGameState(fstream &file);
+        void log(string newLogLine);
         void parseCommand(json input);
         bool playerIsDead();
-        void saveGame();
+        void saveGameState(fstream &file);
         void sendData();
-        void startNewGame(fstream &stateFile);
 
     private:
         json current;
         json toSend;
-        //Player player;
         Hero hero;
 		Map map;
         string log;

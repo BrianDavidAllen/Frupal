@@ -95,8 +95,8 @@ void Map::fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, co
 	}
 }
 
-void Map::generateFile(fstream &file) {
-	// TODO: Copy static map file to state-preserving file
+void Map::saveState(fstream &file) {
+	// TODO: Save state of map to file passed in
 }
 
 Grovnick * Map::getGrovnick(int x, int y) {

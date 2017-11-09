@@ -6,16 +6,7 @@
 
 Game::Game()
 {
-    //Player player;
-    Hero hero;
     json toSend;
-
-	fstream stateFile("mapGen.txt");
-
-	if(!stateFile || !loadExistingGame(stateFile))
-		startNewGame(stateFile);
-
-	stateFile.close();
 }
 
 Game::~Game()
@@ -27,9 +18,24 @@ void Game::endGame()
     //Punam, alert box here maybe?
 }
 
-bool Game::loadExistingGame(fstream &file)
+bool Game::gameStateExists()
 {
-    /* Get map, object, item and hero info from file and load into objects. */
+    //function stub
+	fstream stateFile("mapGen.txt");
+
+	if(stateFile)
+    {
+        stateFile.close();
+        return true;
+    }
+
+    stateFile.close();
+    return false;
+}
+
+bool Game::loadGameState(fstream &file)
+{
+    /* Get map, objects, and hero info from file and load into objects. */
 	string identifier, dimensionsString, blankSpace;
 	getline(file, identifier);
 	if(identifier.empty())
@@ -45,13 +51,21 @@ bool Game::loadExistingGame(fstream &file)
 	if(blankSpace.empty() || blankSpace[0] != '#')
 		return false;
 
-	// TODO: Have the hero load info here
+	// TODO: Have the hero load info here. Something like
+    // hero.loadFile(file);
+    // for now, do:
+    Hero hero;
 
 	getline(file, blankSpace);
 	if(blankSpace.empty() || blankSpace[0] != '#')
 		return false;
 
 	return map.loadFile(identifier, dimensions, file);
+}
+
+void Game::log(string newLogLine)
+{
+    toSend["log"] += newLogLine + "\n";
 }
 
 void Game::parseCommand(json input)
@@ -92,75 +106,46 @@ bool Game::playerIsDead()
     //Punam, add check for hero energy here
 }
 
-void Game::saveGame()
+bool Game::saveGameState(fstream &file)
 {
-    /* Save the new game state to file */
+    //Write out hero and map data here.
+    return true;
 }
 
 void Game::sendData()
 {
-    //toJson() use example
-   // toSend["hero"] = hero.toJson();
-
-    //Test some getGrovnick functions
-    Grovnick * grovnickUnderPlayer = map.getGrovnick(hero.getX(), hero.getY());
-    toSend["test"] = grovnickUnderPlayer->isVisible();
-
-    //Populate array of tiles.;
-    toSend["tiles"] = nullptr;
-    for(int x = 0; x < 8; ++x)
-    {
-        for(int y = 0; y < 8; ++y)
-        {
-            string type = rand()%2 == 0 ? "plain" : "water";
-	    Grovnick * current = map.getGrovnick(x,y);
-            toSend["tiles"].push_back({
-                    {"x", current->getX() }
-		    {"y", current->getY() }
-                    {"terrain", current->getTerain() }
-		    {"visible", current->isVisible() }
-                });
-        }
-    }
-
-    //Add the log
+    toSend["hero"] = hero.toJson();
+    toSend["map"] = map.toJson();
     toSend["log"] = log;
 
-    //Send the header first 
+    //Send the header and json 
     cout << "Content-Type:application/json; charset=utf-8" << endl << endl;
-
-    //Send the stringified json
     cout << toSend.dump();
-}
-
-void Game::startNewGame(fstream &stateFile)
-{
-    /* Load from map file and set up new hero/inventory.
-     */
-	fstream staticFile("mapGen.txt");
-	// TODO: Copy stateFile <- staticFile
-
-	map.generateFile(stateFile);
-
-	staticFile.close();
 }
 
 int main()
 {
     Game game;
     CgiReader cgi;
-    game.parseCommand(cgi.getCommand());
-    if(game.playerIsDead())
+    if(game.gameStateExists())
     {
-        game.endGame();
+        fstream existingState("mapGen.txt");
+        if(!game.loadGameState(existingState))
+            game.log("Could not load existing game state.");
+        existingState.close();
+        game.parseCommand(cgi.getCommand());
     }
     else
     {
-        game.saveGame();
+        fstream defaultState("default.txt");
+        if(!game.loadGameState(defaultState))
+            game.log("Could not load default game state.");
+        defaultState.close();
     }
+    fstream newState("mapGen.txt");
+    if(!game.saveGameState(newState))
+        game.log("Could not save new game state.");
+    newState.close();
     game.sendData();
     return 0;
-}
-
-
-    
+}    

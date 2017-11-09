@@ -10,9 +10,9 @@ class Map {
 	public:
 		Map();
 		bool loadFile(const string identifier, const int dimensions, fstream &file);
-		void generateFile(fstream &file);
-                Grovnick * getGrovnick(int x, int y);
-	        json Json();
+		void saveState(fstream &file);
+        Grovnick * getGrovnick(int x, int y);
+        json toJson();
 
     private:
 		string *parseLine(const string line) const;
