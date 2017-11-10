@@ -13,14 +13,14 @@
 using namespace std;
 
 //Default constructor: sets energy level to 100, x,y to zero, whiffles to zero, and name/invetory to NULL
-Hero::Hero() : energy(100), whiffles(0), x(11), y(13), name(""), inventory("")
+Hero::Hero() : energy(100), whiffles(0), x(11), y(13), name(""), inventory(""), alive(true)
 {
     
 }
 
 
 //Parameterized constructor: sets the name to a string passed in, everything else is set to default values
-Hero::Hero(int energy, int whiffles, int x, int y, string newName, string inventory) : energy(100), whiffles(0), x(11), y(13), name(newName), inventory("")
+Hero::Hero(int energy, int whiffles, int x, int y, string newName, string inventory) : energy(100), whiffles(0), x(11), y(13), name(newName), inventory(""), alive(true)
 {
 
 }
@@ -58,7 +58,7 @@ string Hero::getName()
 //Pass in a negative value to subtract from the hero's whiffles
 void Hero::changeWhiffles(int newWhiffles)
 {
-    if(whiffles + newWhiffles < 0)
+    if(whiffles + newWhiffles <= 0)
     {
         whiffles = 0; 
         return;
@@ -107,9 +107,10 @@ void Hero::changeEnergy(int newEnergy)
         energy = 100;
         return;
     }
-    if(energy + newEnergy < 0)
+    if(energy + newEnergy <= 0)
     {
         energy = 0;
+		alive = false;
         return;
     }
 
@@ -161,5 +162,88 @@ json Hero::toJson()
 
    return output;
 }
+
+
+
+//Paul Hubbard's funky functions
+
+void Hero::loadState()
+{
+	string fileToOpen = "heroState.txt";
+	string xcord, ycord, whiffles, energy;
+	ifstream stateFile(fileToOpen.c_str());
+
+	//read in from the file
+	getline(stateFile, energy);
+	getline(stateFile, whiffles);
+	getline(stateFile, xcord);
+	getline(stateFile, ycord);
+
+	
+	//set the player's 
+	//values from last turn
+	this->energy = atoi(energy.c_str());
+	this->whiffles = atoi(whiffles.c_str());
+	this->x = atoi(xcord.c_str());
+	this->y = atoi(ycord.c_str());
+}
+
+//Function that takes the value
+//of the player's x and y coordinates
+//and updates the hero's state file
+void Hero::saveState()
+{
+	string fileToOpen = "heroState.txt";
+	ifstream stateFile(fileToOpen.c_str());
+
+	//delete file
+	remove(fileToOpen.c_str());
+	
+	//create the new state file
+	ofstream newStateFile;
+	newStateFile.open(fileToOpen.c_str());
+
+	//add the new player info to 
+	//the file	
+	newStateFile << this->energy << '\n'
+		     << this->whiffles << '\n'
+		     << this->x << '\n'
+		     << this->y << '\n';
+	//close and save the file
+	newStateFile.close();
+	
+}
+
+//returns true if the hero's energy level
+//is above 0, and false if the hero is dead
+bool Hero::isAlive()
+{
+	return this->alive;
+}
+
+//function that reloads the hero state
+//file, and sets it to the original state
+
+void Hero::resetState()
+{
+	const char * fileToOpen = "heroState.txt";
+
+	//deletes old file
+	remove(fileToOpen);
+
+	//create new file with orginal state
+	ofstream newStateFile;
+	newStateFile.open(fileToOpen);
+
+	newStateFile << "100" << '\n'
+				 << "0" << '\n'
+				 << "11" << '\n'
+				 << "13" << '\n';
+
+	//close and save the file
+	newStateFile.close();
+}
+
+//Paul Hubbard's funky functions ^^
 
 

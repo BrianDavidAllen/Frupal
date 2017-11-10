@@ -12,6 +12,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fstream>
 #include "json.hpp"
 
 using namespace std;
@@ -48,6 +51,34 @@ class Hero
     
         json toJson();                                                                  //Json function
         
+		
+		
+		//Paul Hubbard's funky functions
+		
+			//State file functions
+
+				//function to saves hero's 
+				//state file
+				void saveState();
+
+				//Loads the hero's state from the 
+				//previous turn
+				void loadState();
+
+				//function to check if the player is 
+				//alive or dead if alive it returns true
+				//if dead it returns false
+				bool isAlive();
+
+				//function that reloads the 
+				//hero state file to the 
+				//original state  
+				void resetState();
+
+			//State file functions ^^	
+
+		//Paul Hubbard's funky functions ^^
+
     protected:
         int energy;
         int whiffles;
@@ -55,5 +86,6 @@ class Hero
         int y;
         string name;
         string inventory;
+		bool alive; 		
         
 };
