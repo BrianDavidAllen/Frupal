@@ -25,7 +25,7 @@ string *Map::parseLine(const string line) const {
 // Loads the map portion of the state-preserving file.
 // Takes in the identifier for the map, its dimentions, and the state-preserving filestream.
 // Returns true if the file is not corrupted and false otherwise.
-bool Map::loadFile(const string identifier, const int dimensions, fstream &file) {
+bool Map::loadFile(const string identifier, const int dimensions, ifstream &file) {
 	this->identifier = identifier;
 	this->dimensions = dimensions;
 
@@ -95,8 +95,16 @@ void Map::fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, co
 	}
 }
 
-void Map::saveState(fstream &file) {
-	// TODO: Save state of map to file passed in
+void Map::saveIdentifier(ofstream &file) const {
+	file << identifier << '\n' << dimensions << '\n';
+	file << "##########\n";
+}
+
+void Map::saveMap(ofstream &file) const {
+	file << "##########\n";
+	for(int y = 0; y < dimensions; y++)
+		for(int x = 0; x < dimensions; x++)
+			grovnicks[y][x].saveState(file);
 }
 
 Grovnick * Map::getGrovnick(int x, int y) {

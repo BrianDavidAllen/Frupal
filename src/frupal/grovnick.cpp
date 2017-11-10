@@ -29,6 +29,10 @@ void Grovnick::setVisible()
     visible = true;
 }
 
+void Grovnick::saveState(ofstream &file) const {
+	file << x << ',' << y << ',' << visible << ',' << terrain << ',' << content << '\n';
+}
+
 json Grovnick::toJson()
 {
    json toSend; 

@@ -9,8 +9,9 @@ using namespace std;
 class Map {
 	public:
 		Map();
-		bool loadFile(const string identifier, const int dimensions, fstream &file);
-		void saveState(fstream &file);
+		bool loadFile(const string identifier, const int dimensions, ifstream &file);
+		void saveIdentifier(ofstream &file) const;
+		void saveMap(ofstream &file) const;
         Grovnick * getGrovnick(int x, int y);
         json toJson();
 

@@ -26,10 +26,10 @@ void Game::endGame()
     //Punam, alert box here maybe?
 }
 
-bool Game::gameStateExists()
+bool Game::gameStateExists(const string filename) const
 {
     //function stub
-	fstream stateFile("mapGen.txt");
+	ifstream stateFile(filename);
 
 	if(stateFile)
     {
@@ -41,7 +41,7 @@ bool Game::gameStateExists()
     return false;
 }
 
-bool Game::loadGameState(fstream &file)
+bool Game::loadGameState(ifstream &file)
 {
     /* Get map, objects, and hero info from file and load into objects. */
 	string identifier, dimensionsString, blankSpace;
@@ -87,9 +87,13 @@ void Game::parseCommand(json input)
         log.write("Command not recognized.");
 }
 
-bool Game::saveGameState(fstream &file)
+bool Game::saveGameState(ofstream &file) const
 {
     //Write out hero and map data here.
+	map.saveIdentifier(file);
+	// TODO: Save hero state here
+	// maybe hero.saveState(file)?
+	map.saveMap(file);
     return true;
 }
 
@@ -107,8 +111,6 @@ void Game::sendData()
     cout << "Content-Type:application/json; charset=utf-8" << endl << endl;
     cout << toSend.dump();
 }
-
-
 
 void Game::setNextGrovnick(string command)
 {
@@ -170,9 +172,12 @@ int main()
     Game game;
     Logger log("main.log");
     CgiReader cgi;
-    if(game.gameStateExists())
+	string gameStateName = "state.txt";
+	string defaultStateName = "default.txt";
+
+    if(game.gameStateExists(gameStateName))
     {
-        fstream existingState("mapGen.txt");
+        ifstream existingState(gameStateName);
         if(!game.loadGameState(existingState))
             log.write("Could not load existing game state.");
         existingState.close();
@@ -180,15 +185,17 @@ int main()
     }
     else
     {
-        fstream defaultState("default.txt");
+        ifstream defaultState(defaultStateName);
         if(!game.loadGameState(defaultState))
             log.write("Could not load default game state.");
         defaultState.close();
     }
-    fstream newState("mapGen.txt");
+
+    ofstream newState(gameStateName);
     if(!game.saveGameState(newState))
         log.write("Could not save new game state.");
     newState.close();
+
     game.sendData();
     return 0;
-}    
+}

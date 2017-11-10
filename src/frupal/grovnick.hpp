@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "json.hpp"
 using namespace std;
 using json = nlohmann::json;
@@ -14,6 +15,7 @@ class Grovnick {
         bool isVisible();
     	int getTerrain();
         void setVisible();
+		void saveState(ofstream &file) const;
         json toJson();
     private:
 		int x, y;
