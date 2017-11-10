@@ -1,7 +1,7 @@
 // Frupal web client javascript
 
 var data; //Javascript object holding all our game data
-var tileSize = 25;
+var tileSize = 10;
 
 function Game() {
 
@@ -39,22 +39,31 @@ function Game() {
         rawJsonElement.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
         
          var playerPosition = document.getElementById("coordinates");
-         playerPosition.innerHTML = "The player is at " + data.player.x + " Grovnick East and " +  data.player.y + " Grovnick North from the Origin";
+         playerPosition.innerHTML = "The player is at " + data.hero.x + " Grovnick East and " +  data.hero.y + " Grovnick North from the Origin";
  
-
-
         //Redraw the tiles
         var mapElement = document.getElementById("map");
-        mapElement.innerHTML = "";
-        for(var i = 0; i < data.tiles.length; ++i) {
-            var tile = data.tiles[i];
-            mapElement.innerHTML += "<div class='tile " + tile.terrain + "' style='left:" + tile.x*tileSize + "px;top:" + tile.y*tileSize + "px'></div>";
+        var toAdd = "";
+        var numberOfTiles = data.map.grovnicks.length;
+        console.log("Loading " + numberOfTiles + " tiles.");
+        for(var i = 0; i < data.map.grovnicks.length; ++i) {
+            var tile = data.map.grovnicks[i];
+            toAdd += "<div class='tile type"
+                + tile.terrian + " "
+                + tile.Visible
+                + "' style='left:"
+                + (tile.x*tileSize)
+                + "px;top:"
+                + (tile.y*tileSize)
+                + "px'></div>";
         }
+        mapElement.innerHTML = toAdd;
+        console.log("Added map code:" + toAdd);
 
         //Redraw the player
         var playerElement = document.getElementById("player");
-        playerElement.style.left = data.player.x * tileSize + "px";
-        playerElement.style.top = data.player.y * tileSize + "px";
+        playerElement.style.left = data.hero.x * tileSize + "px";
+        playerElement.style.top = data.hero.y * tileSize + "px";
     }
 
     //Send the user's command to the server via ajax call
