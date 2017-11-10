@@ -24,6 +24,8 @@ void Game::checkHeroEnergy()
 void Game::endGame()
 {
     //Punam, alert box here maybe?
+
+	hero.resetState(); //Paul Hubbard
 }
 
 bool Game::gameStateExists(const string filename) const
@@ -59,10 +61,8 @@ bool Game::loadGameState(ifstream &file)
 	if(blankSpace.empty() || blankSpace[0] != '#')
 		return false;
 
-	// TODO: Have the hero load info here. Something like
-    // hero.loadFile(file);
-    // for now, do:
     Hero hero;
+	hero.loadState(); //Paul Hubbard
 
 	getline(file, blankSpace);
 	if(blankSpace.empty() || blankSpace[0] != '#')
@@ -91,8 +91,7 @@ bool Game::saveGameState(ofstream &file) const
 {
     //Write out hero and map data here.
 	map.saveIdentifier(file);
-	// TODO: Save hero state here
-	// maybe hero.saveState(file)?
+	hero.saveState(); //Paul Hubbard
 	map.saveMap(file);
     return true;
 }
