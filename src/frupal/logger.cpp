@@ -7,21 +7,31 @@
 Logger::Logger()
 {
     ofstream file;
-    file.open("default.log");
+    filename = "default.log";
+    addHeader();
 }
 
 Logger::Logger(string name)
 {
     ofstream file;
-    file.open(name);
+    filename = name;
+    addHeader();
 }
 
 Logger::~Logger()
 {
+}
+
+void Logger::addHeader()
+{
+    file.open(filename);
+    file << "Log file '" + filename + "'" << endl;
     file.close();
 }
 
 void Logger::write(string toAdd)
 {
+    file.open(filename, fstream::app);
     file << toAdd << endl;
+    file.close();
 }
