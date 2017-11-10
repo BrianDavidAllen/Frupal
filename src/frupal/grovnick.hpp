@@ -12,8 +12,9 @@ class Grovnick {
         int getX();
         int getY();
         bool isVisible();
-	int getTerrain();
-	json toJson();
+    	int getTerrain();
+        void setVisible();
+        json toJson();
     private:
 		int x, y;
 		bool visible;

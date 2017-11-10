@@ -24,7 +24,12 @@ bool Grovnick::isVisible()
     return visible;
 }
 
-json toJson()
+void Grovnick::setVisible()
+{
+    visible = true;
+}
+
+json Grovnick::toJson()
 {
    json toSend; 
    
@@ -34,4 +39,3 @@ json toJson()
    toSend["terrian"] = terrain;
    return toSend;
 }
-

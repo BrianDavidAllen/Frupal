@@ -113,7 +113,7 @@ Grovnick * Map::getGrovnick(int x, int y) {
     return &(grovnicks[loopedY][loopedX]);
 }
 
-json toJson()
+json Map::toJson()
 {
    json map;
    map["grovnicks"] = nullptr;

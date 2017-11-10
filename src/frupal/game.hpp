@@ -7,6 +7,7 @@
 #include "json.hpp"
 #include "cgiReader.hpp"
 #include "grovnick.hpp"
+#include "logger.hpp"
 #include "player.hpp"
 #include "map.hpp"
 #include "hero.h"
@@ -19,19 +20,25 @@ class Game
     public:
         Game();
         ~Game();
+        void checkHeroEnergy();
         void endGame();
         bool gameStateExists();
         bool loadGameState(fstream &file);
-        void log(string newLogLine);
         void parseCommand(json input);
         bool playerIsDead();
-        void saveGameState(fstream &file);
+        bool saveGameState(fstream &file);
         void sendData();
+        void selectMap();
+        void setNextGrovnick(string command);
+        bool terrainCanBeTraversed();
+        void tryToBuy();
+        void tryToMove(string command);
 
     private:
         json current;
         json toSend;
         Hero hero;
+        Logger log;
 		Map map;
-        string log;
+        Grovnick * nextGrovnick;
 };
