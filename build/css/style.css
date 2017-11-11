@@ -105,27 +105,27 @@ ul {
 }
 
 .type1 {
-    background-image: url('../images/bog.png');
-}
-
-.type2 {
     background-image: url('../images/forest.png');
 }
 
+.type2 {
+    background-image: url('../images/water.png');
+}
+
 .type3 {
-    background-image: url('../images/grass.png');
-}
-
-.type4 {
-    background-image: url('../images/swamp.png');
-}
-
-.type5 {
     background-image: url('../images/wall.png');
 }
 
+.type4 {
+    background-image: url('../images/bog.png');
+}
+
+.type5 {
+    background-image: url('../images/swamp.png');
+}
+
 .type6 {
-    background-image: url('../images/water.png');
+    background-image: url('../images/grass.png');
 }
 
 .water {
