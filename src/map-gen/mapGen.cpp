@@ -105,7 +105,7 @@ int main(){
 				contentString = "tree";
 				terrianType = 5;
 			}
-			myfile << y  << ", " <<  x << ", " << terrianType << ", 0, 0, " << contentString << "\n";
+			myfile << y  << "," <<  x << "," << terrianType << ",0,0," << contentString << "\n";
 		}
 	}
 	myfile.close();
