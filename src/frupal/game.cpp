@@ -7,6 +7,7 @@
 Game::Game()
 {
     Logger log("game.log");
+    Hero hero;
     json toSend;
     toSend["log"] = "";
     Grovnick * nextGrovnick = NULL;
@@ -28,7 +29,7 @@ void Game::endGame()
 	hero.resetState(); //Paul Hubbard
 }
 
-bool Game::gameStateExists(const string filename) const
+bool Game::gameStateExists(const string filename)
 {
     //function stub
 	ifstream stateFile(filename);
@@ -46,7 +47,7 @@ bool Game::gameStateExists(const string filename) const
 bool Game::loadGameState(ifstream &file)
 {
     /* Get map, objects, and hero info from file and load into objects. */
-	string identifier, dimensionsString, blankSpace;
+    string identifier, dimensionsString, blankSpace;
 	getline(file, identifier);
 	if(identifier.empty())
 		return false;
@@ -61,8 +62,8 @@ bool Game::loadGameState(ifstream &file)
 	if(blankSpace.empty() || blankSpace[0] != '#')
 		return false;
 
-    Hero hero;
 	hero.loadState(); //Paul Hubbard
+    log.write("Hero x after hero.loadState(): " + to_string(hero.getX()));
 
 	getline(file, blankSpace);
 	if(blankSpace.empty() || blankSpace[0] != '#')
@@ -87,12 +88,13 @@ void Game::parseCommand(json input)
         log.write("Command not recognized.");
 }
 
-bool Game::saveGameState(ofstream &file) const
+bool Game::saveGameState(ofstream &file)
 {
     //Write out hero and map data here.
 	map.saveIdentifier(file);
-	hero.saveState(); //Paul Hubbard
-	map.saveMap(file);
+    hero.saveState(); //Paul Hubbard
+    log.write("Hero X after hero.saveState(): " + to_string(hero.getX()));
+    map.saveMap(file);
     return true;
 }
 
@@ -113,11 +115,10 @@ void Game::sendData()
 
 void Game::setNextGrovnick(string command)
 {
-    int currentX = hero.getX();
-    int currentY = hero.getY();
-    int tempX = currentX;
-    int tempY = currentY;
-
+    int tempX = hero.getX();
+    int tempY = hero.getY();
+    log.write("hero.getX/Y inside setNextGrovnick function: " + to_string(tempX) + ", " + to_string(tempY));
+    
     if(command == "up")
         tempY -= 1;
     else if(command == "down")
@@ -127,6 +128,7 @@ void Game::setNextGrovnick(string command)
     else if(command == "right")
         tempX += 1;
     
+    log.write("X/Y to send to map.getGrovnick(x,y): " + to_string(tempX) + ", " + to_string(tempY));
     nextGrovnick = map.getGrovnick(tempX, tempY);
     if(!nextGrovnick)
         log.write("nextGrovnick is null!");
@@ -154,6 +156,7 @@ void Game::tryToMove(string command)
         //nextGrovnick->setVisited();
         int nextX = nextGrovnick->getX();
         int nextY = nextGrovnick->getY();
+        log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
 
         //Deduct terrain movement cost from hero energy
@@ -176,23 +179,26 @@ int main()
 
     if(game.gameStateExists(gameStateName))
     {
+        log.write("Game state '" + gameStateName + "' exists. Attempting to load.");
         ifstream existingState(gameStateName);
         if(!game.loadGameState(existingState))
-            log.write("Could not load existing game state.");
+            log.write("Could not load from '" + gameStateName + "'.");
         existingState.close();
         game.parseCommand(cgi.getCommand());
     }
     else
     {
+        log.write("Game state '" + gameStateName +"' does not exist. Attempting to load '" + defaultStateName + "'");
         ifstream defaultState(defaultStateName);
         if(!game.loadGameState(defaultState))
-            log.write("Could not load default game state.");
+            log.write("Could not load from '" + defaultStateName + "'.");
         defaultState.close();
     }
 
+    log.write("Attempting to save new state to '" + gameStateName + "'.");
     ofstream newState(gameStateName);
     if(!game.saveGameState(newState))
-        log.write("Could not save new game state.");
+        log.write("Could not save new state to '" + gameStateName + "'.");
     newState.close();
 
     game.sendData();

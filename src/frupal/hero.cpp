@@ -182,16 +182,16 @@ void Hero::loadState()
 	
 	//set the player's 
 	//values from last turn
-	this->energy = atoi(energy.c_str());
-	this->whiffles = atoi(whiffles.c_str());
-	this->x = atoi(xcord.c_str());
-	this->y = atoi(ycord.c_str());
+	energy = atoi(energy.c_str());
+	whiffles = atoi(whiffles.c_str());
+	x = atoi(xcord.c_str());
+	y = atoi(ycord.c_str());
 }
 
 //Function that takes the value
 //of the player's x and y coordinates
 //and updates the hero's state file
-void Hero::saveState()
+void Hero::saveState() 
 {
 	string fileToOpen = "heroState.txt";
 	ifstream stateFile(fileToOpen.c_str());
@@ -205,10 +205,10 @@ void Hero::saveState()
 
 	//add the new player info to 
 	//the file	
-	newStateFile << this->energy << '\n'
-		     << this->whiffles << '\n'
-		     << this->x << '\n'
-		     << this->y << '\n';
+	newStateFile << energy << '\n'
+		     << whiffles << '\n'
+		     << x << '\n'
+		     << y << '\n';
 	//close and save the file
 	newStateFile.close();
 	
@@ -218,7 +218,7 @@ void Hero::saveState()
 //is above 0, and false if the hero is dead
 bool Hero::isAlive()
 {
-	return this->alive;
+	return alive;
 }
 
 //function that reloads the hero state

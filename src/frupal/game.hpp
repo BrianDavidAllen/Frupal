@@ -22,11 +22,11 @@ class Game
         ~Game();
         void checkHeroEnergy();
         void endGame();
-        bool gameStateExists(const string filename) const;
+        bool gameStateExists(const string filename);
         bool loadGameState(ifstream &file);
         void parseCommand(json input);
         bool playerIsDead();
-        bool saveGameState(ofstream &file) const;
+        bool saveGameState(ofstream &file);
         void sendData();
         void selectMap();
         void setNextGrovnick(string command);
