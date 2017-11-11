@@ -62,11 +62,12 @@ html {
 }
 
 #map {
-    height: 250px;
+    height: 500px;
 }
 
 #mapContainer {
     position: relative;
+    transorm: scale(.666);
 }
 
 p {
@@ -78,18 +79,20 @@ p {
 }
 
 #player {
-    background: black;
-    border-radius: 5px;
-    height: 10px;
+    background-color: transparent;
+    background-image: url('../images/hero.png');
+    background-size: 100% 100%;
+    height: 20px;
     position: absolute;
-    width: 10px;
+    width: 20px;
     z-index: 1000
 }
 
 .tile {
-    height: 10px;
+    background-size: 100% 100%;
+    height: 20px;
     position: absolute;
-    width: 10px;
+    width: 20px;
 }
 
 ul {
@@ -97,24 +100,32 @@ ul {
     margin-bottom: 1.4rem;
 }
 
+.type0 {
+    background-image: url('../images/grass.png');
+}
+
 .type1 {
-    background: hsl(1, 100%, 50%);
+    background-image: url('../images/bog.png');
 }
 
 .type2 {
-    background: hsl(40, 100%, 50%);
+    background-image: url('../images/forest.png');
 }
+
 .type3 {
-    background: hsl(80, 100%, 50%);
+    background-image: url('../images/grass.png');
 }
+
 .type4 {
-    background: hsl(120, 100%, 50%);
+    background-image: url('../images/swamp.png');
 }
+
 .type5 {
-    background: hsl(160, 100%, 50%);
+    background-image: url('../images/wall.png');
 }
+
 .type6 {
-    background: hsl(200, 100%, 50%);
+    background-image: url('../images/water.png');
 }
 
 .water {

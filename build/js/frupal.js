@@ -1,7 +1,7 @@
 // Frupal web client javascript
 
 var data; //Javascript object holding all our game data
-var tileSize = 10;
+var tileSize = 20;
 var jsonVisible = false;
 
 //Button to display the raw json. Hide by default to speed up page reload.
