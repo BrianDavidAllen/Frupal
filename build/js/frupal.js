@@ -2,8 +2,16 @@
 
 var data; //Javascript object holding all our game data
 var tileSize = 10;
+var jsonVisible = false;
+
+//Button to display the raw json. Hide by default to speed up page reload.
+var showJson = function() {
+    var rawJsonElement = document.getElementById("rawJson");
+    rawJsonElement.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+}
 
 function Game() {
+
 
     //This function gets called on every key press, and if a valid key is found, sendCommand() is called with the corresponding command.
     this.handleKeys = function(event) {
@@ -34,12 +42,9 @@ function Game() {
         var logElement = document.getElementById("log");
         logElement.innerHTML = data.log;
 
-        //Print the raw JSON text
-        var rawJsonElement = document.getElementById("rawJson");
-        rawJsonElement.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
-        
-         var playerPosition = document.getElementById("coordinates");
-         playerPosition.innerHTML = "The player is at " + data.hero.x + " Grovnick East and " +  data.hero.y + " Grovnick North from the Origin";
+        //Print hero position
+        var heroPosition = document.getElementById("coordinates");
+        heroPosition.innerHTML = "The hero is at " + data.hero.x + " Grovnick East and " +  data.hero.y + " Grovnick North from the Origin";
  
         //Redraw the tiles
         var mapElement = document.getElementById("map");
@@ -58,12 +63,14 @@ function Game() {
                 + "px'></div>";
         }
         mapElement.innerHTML = toAdd;
-        console.log("Added map code:" + toAdd);
 
         //Redraw the player
         var playerElement = document.getElementById("player");
         playerElement.style.left = data.hero.x * tileSize + "px";
         playerElement.style.top = data.hero.y * tileSize + "px";
+        if(jsonVisible) {
+            showJson();
+        }
     }
 
     //Send the user's command to the server via ajax call
