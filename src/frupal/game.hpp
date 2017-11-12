@@ -8,7 +8,6 @@
 #include "cgiReader.hpp"
 #include "grovnick.hpp"
 #include "logger.hpp"
-#include "player.hpp"
 #include "map.hpp"
 #include "hero.h"
 

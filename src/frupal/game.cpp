@@ -21,10 +21,10 @@ void Game::checkHeroEnergy()
 {
     //Punam, check hero energy in here please
 	int hero_energy = hero.getEnergy();
-        if ( hero_energy <= 0 )
-                return true;
-        else
-               return false;
+//commented out to allow compile        if ( hero_energy <= 0 )
+//               return true;
+//        else
+//              return false;
 
 	
 }
