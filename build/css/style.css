@@ -9,7 +9,7 @@ a:hover {
 
 article {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 516px;
     padding: 1rem 7.5% 1rem;
 }
 
@@ -31,15 +31,15 @@ h1, h2, h3, h4, h5, h6, p {
 h1 {
     background: #2facff;
     color: #ffffff;
-    font-family: monospace;
     font-weight: normal;
     font-size: 1.8rem;
     font-style: normal;
-    padding: 1rem 1rem .6rem 1rem;
+    padding: 1rem;
+    text-align: center;
 }
 
 h2 {
-    color: #2facff;
+    color: #000000;
     font-size: 1.2rem;
     font-style: normal;
     font-weight: bold;
@@ -47,6 +47,7 @@ h2 {
 }
 
 h3 {
+    color: #333333;
     font-size: 1rem;
     font-style: normal;
     font-weight: bold;
@@ -63,15 +64,18 @@ html {
 
 #map {
     height: 500px;
+    overflow: hidden;
 }
 
 #mapContainer {
+    overflow: hidden;
+    padding: 0;
     position: relative;
-    transorm: scale(.666);
 }
 
 p {
-    margin-bottom: 1.4rem;
+    color: #666666;
+    margin: .4rem 0;
 }
 
 .plain {
@@ -86,6 +90,18 @@ p {
     position: absolute;
     width: 20px;
     z-index: 1000
+}
+
+section {
+    background: #ffffff;
+    border-radius: .25em;
+    box-shadow: 0 .1em .2em rgba(0,0,0,0.4);
+    color: #666666;
+    margin: .5em .5em 0 .5em;
+    padding: .25em .5em
+}
+section + section {
+    margin-top: 1em;
 }
 
 .tile {

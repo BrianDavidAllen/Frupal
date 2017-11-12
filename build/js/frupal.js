@@ -38,7 +38,7 @@ function Game() {
     this.redraw = function() {
         console.log("Redrawing.");
 
-        //Print the log text
+        //Print the messages
         var logElement = document.getElementById("log");
         logElement.innerHTML = data.log;
 
