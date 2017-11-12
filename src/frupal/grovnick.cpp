@@ -29,8 +29,18 @@ void Grovnick::setVisible()
     visible = true;
 }
 
+bool Grovnick::isVisited()
+{
+   return visited; 
+}
+
+void Grovnick::setVisited()
+{
+   visited = true;
+}
+
 void Grovnick::saveState(ofstream &file) const {
-	file << x << ',' << y << ',' << visible << ',' << terrain << ',' << content << '\n';
+	file << x << ',' << y << ',' << visited << ',' << terrain << ',' << content << '\n';
 }
 
 json Grovnick::toJson()
@@ -40,6 +50,7 @@ json Grovnick::toJson()
    toSend["x"] = x;
    toSend["y"] = y;
    toSend["Visible"] = visible;
+   toSend["Visited"] = visited;
    toSend["terrian"] = terrain;
    return toSend;
 }

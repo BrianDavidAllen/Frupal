@@ -1,4 +1,4 @@
-#pragma once
+#ragma once
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -13,13 +13,16 @@ class Grovnick {
         int getX();
         int getY();
         bool isVisible();
+	bool isVisited();
     	int getTerrain();
         void setVisible();
+	void setVisited(); 
 		void saveState(ofstream &file) const;
         json toJson();
     private:
 		int x, y;
 		bool visible;
+		bool visited;
 		int terrain;
 		string content;
 };
