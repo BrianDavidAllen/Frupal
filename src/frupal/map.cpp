@@ -4,7 +4,7 @@ Map::Map() {}
 
 // Splits a string based on the delimiter ',' into a static array (w/ size 5) of strings.
 // Takes in the string being split and returns the array of strings.
-string *Map::parseLine( string line)  {
+string *Map::parseLine(string line) {
 	static string result[5];
 	char delimiter = ',';
 	size_t previousDel, nextDel;
@@ -22,10 +22,45 @@ string *Map::parseLine( string line)  {
 	return result;
 }
 
+// Parses the provided string to a new Grovnick object that is added
+// If the data is corrupted, false will be returned
+bool Map::addGrovnick(string line, int &currentX, int &currentY) {
+	string *grovnickInfo = parseLine(line);
+
+	// Get coordinates
+	int x = stoi(grovnickInfo[0]);
+	if(x >= dimensions) return false;
+	int y = stoi(grovnickInfo[1]);
+	if(y >= dimensions) return false;
+
+	// get visibility
+	bool visited = false;
+	if(grovnickInfo[2] == "1") visited = true;
+
+	// Get terrain type
+	int terrain = stoi(grovnickInfo[3]);
+		if(terrain > 5) return false;
+
+	Grovnick newGrovnick(x, y, visited, terrain, grovnickInfo[4]);
+
+	fillMissingGrovnicks(currentX, currentY, x, y);
+	grovnicks[y].push_back(newGrovnick);
+
+	if(currentX == dimensions - 1 && currentY < dimensions - 1) {
+		vector<Grovnick> row;
+		grovnicks.push_back(row);
+
+		currentX = 0;
+		currentY++;
+	} else
+		currentX++;
+	return true;
+}
+
 // Loads the map portion of the state-preserving file.
 // Takes in the identifier for the map, its dimentions, and the state-preserving filestream.
 // Returns true if the file is not corrupted and false otherwise.
-bool Map::loadFile( string identifier,  int dimensions, ifstream &file) {
+bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
 	this->identifier = identifier;
 	this->dimensions = dimensions;
 
@@ -36,36 +71,7 @@ bool Map::loadFile( string identifier,  int dimensions, ifstream &file) {
 	string line;
 	// These are the coordinates of the current grovnick (may it be in the file or not)
 	int currentX, currentY = 0;
-	while(getline(file, line)) {
-		string *grovnickInfo = parseLine(line);
-
-		// Get coordinates
-		int x = stoi(grovnickInfo[0]);
-		if(x >= dimensions) return false;
-		int y = stoi(grovnickInfo[1]);
-		if(y >= dimensions) return false;
-
-		// Get visibility
-		bool visible = false;
-		if(grovnickInfo[2] == "1") visible = true;
-
-		// Get terrain type
-		int terrain = stoi(grovnickInfo[3]);
-		if(terrain >= 7) return false;
-
-		fillMissingGrovnicks(currentX, currentY, x, y);
-
-		Grovnick newGrovnick(x, y, visible, terrain, grovnickInfo[4]);
-		grovnicks[y].push_back(newGrovnick);
-
-		if(currentX == dimensions - 1 && currentY < dimensions - 1) {
-			grovnicks.push_back(row);
-
-			currentX = 0;
-			currentY++;
-		} else
-			currentX++;
-	}
+	while(getline(file, line) && addGrovnick(line, currentX, currentY));
 
 	fillMissingGrovnicks(currentX, currentY, dimensions, dimensions - 1);
 
@@ -74,7 +80,7 @@ bool Map::loadFile( string identifier,  int dimensions, ifstream &file) {
 
 // Adds empty grovnicks up to the specified (nextX, endY),
 // from the current (currentX, currentY)
-void Map::fillMissingGrovnicks(int &currentX, int &currentY,  int nextX,  int endY) {
+void Map::fillMissingGrovnicks(int &currentX, int &currentY, int nextX, int endY) {
 	vector<Grovnick> row;
 	// Fill any missing rows first
 	for(; currentY < endY; currentY++) {
@@ -95,12 +101,12 @@ void Map::fillMissingGrovnicks(int &currentX, int &currentY,  int nextX,  int en
 	}
 }
 
-void Map::saveIdentifier(ofstream &file)  {
+void Map::saveIdentifier(ofstream &file) {
 	file << identifier << '\n' << dimensions << '\n';
 	file << "##########\n";
 }
 
-void Map::saveMap(ofstream &file)  {
+void Map::saveMap(ofstream &file) {
 	file << "##########\n";
 	for(int y = 0; y < dimensions; y++)
 		for(int x = 0; x < dimensions; x++)

@@ -3,6 +3,7 @@
 *.out
 *.app
 build/state.txt
+build/heroState.txt
 *.log
 *.cgi
 src/map-gen/mapGen.txt
