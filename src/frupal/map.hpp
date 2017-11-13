@@ -13,12 +13,9 @@ class Map {
 		void saveIdentifier(ofstream &file);
 		void saveMap(ofstream &file);
 		void setHeroVision(int x, int y); 
-<<<<<<< HEAD
+
 		void setHeroVisited(int x, int y);
         Grovnick * getGrovnick(int x, int y);
-=======
-        Grovnick *getGrovnick(int x, int y);
->>>>>>> a554635d6bb51b7454bd6598753b196725e73593
         json toJson();
 
     private:
