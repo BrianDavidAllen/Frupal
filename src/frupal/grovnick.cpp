@@ -48,11 +48,10 @@ json Grovnick::toJson()
    json toSend; 
    toSend["x"] = x;
    toSend["y"] = y;
-   
+   toSend["visible"] = false;
+
    if(isVisible() || isVisited()) {
    	toSend["visible"] = true;
-   } else {
-   	toSend["visible"] = false;
    }
    toSend["terrian"] = terrain;
    return toSend;
