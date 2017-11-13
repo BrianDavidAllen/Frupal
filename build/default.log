@@ -1,6 +1,0 @@
-Log file 'default.log'
-Hero x after hero.loadState(): 10
-hero.getX/Y inside setNextGrovnick function: 10, 14
-X/Y to send to map.getGrovnick(x,y): 10, 13
-X/Y from nextGrovnick->getX/Y(): 10, 13
-Hero X after hero.saveState(): 10

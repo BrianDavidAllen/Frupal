@@ -19,6 +19,10 @@ int main(){
 
 	ofstream myfile;
 	myfile.open("mapGen.txt");	
+
+	myfile << "Frupal Map\n25\n#############\n";
+	// TODO: add player coords
+	myfile << "###########\n";
 	
 	sizeOf = sizeof(contentArray);	
 
@@ -30,82 +34,82 @@ int main(){
 			moreRandom = rand();
 			moreRandom = moreRandom % 100;
 			if(y == 24 && x == 11){
-				contentString = "royalDiamond";
+				contentString = "Royal Diamonds";
 				terrianType = 0;	
 			}
 			else if(moreRandom < 5){
-				contentString = "powerBar";
+				contentString = "Power Bar";
 				terrianType = 0;				
 			}
 			else if(moreRandom < 10){
-				contentString = "t1Treasure";
+				contentString = "Type 1 Treasure Chest";
 				terrianType = 0;
 			}
 			else if(moreRandom < 20){
-				contentString = "none";
+				contentString = "None";
 				terrianType = 0;
 			}
 			else if(moreRandom < 30){
-				contentString = "none";
+				contentString = "None";
 				terrianType = 0;
 			}
 			else if(moreRandom < 35){
-				contentString = "binoculars";
+				contentString = "Binoculars";
 				terrianType = 1;
 			}	
 			else if(moreRandom < 40){
-				contentString = "shears";
+				contentString = "Shears";
 				terrianType = 1;
 			}
 			else if(moreRandom < 45){
-				contentString = "machete";
+				contentString = "Machete";
 				terrianType = 1;
 			}
 			else if(moreRandom < 50){
-				contentString = "jackhammer";
+				contentString = "Jackhammer";
 				terrianType = 1;
 			}
 			else if(moreRandom < 55){
-				contentString = "sledge";
+				contentString = "Sledge";
 				terrianType = 2;
 			}
 			else if(moreRandom < 60){
-				contentString = "chisel";
+				contentString = "Chisel";
 				terrianType = 2;
 			}
 			else if(moreRandom < 65){
-				contentString = "chainsaw";
+				contentString = "Chainsaw";
 				terrianType = 3;
 			}
 			else if(moreRandom < 70){
-				contentString = "axe";
+				contentString = "Axe";
 				terrianType = 4;
 				}
 			else if(moreRandom < 75){
-				contentString = "hatchet";
+				contentString = "Hatchet";
 				terrianType = 4;
 			}
 			else if(moreRandom < 80){
-				contentString = "clue";
+				contentString = "Clue";
 				terrianType = 4;
 			}
 			else if(moreRandom < 85){
-				contentString = "t2Treasure";
+				contentString = "Type 2 Treasure Chest";
 				terrianType = 4;
 			}
 			else if(moreRandom < 90){
-				contentString = "blackberry";
+				contentString = "Blackberry";
 				terrianType = 5;
 			}
 			else if(moreRandom < 95){
-				contentString = "boulder";
+				contentString = "Boulder";
 				terrianType = 5;
 			}
 			else {
-				contentString = "tree";
+				contentString = "Tree";
 				terrianType = 5;
 			}
-			myfile << y  << "," <<  x << "," << terrianType << ",0,0," << contentString << "\n";
+			myfile << x << "," << y << ",0," << terrianType << "," << contentString << "\n";
 		}
 	}
 	myfile.close();
