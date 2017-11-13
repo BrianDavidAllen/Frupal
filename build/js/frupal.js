@@ -55,7 +55,7 @@ function Game() {
             var tile = data.map.grovnicks[i];
             toAdd += "<div class='tile type"
                 + tile.terrian + " "
-                + tile.Visible
+                + tile.visible
                 + "' style='left:"
                 + (tile.x*tileSize)
                 + "px;top:"

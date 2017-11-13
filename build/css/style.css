@@ -24,6 +24,10 @@ body {
     width: 100%;
 }
 
+.false {
+    background: black !important;
+}
+
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
@@ -110,6 +114,7 @@ section + section {
     position: absolute;
     width: 20px;
 }
+
 
 ul {
     margin-top: 0;

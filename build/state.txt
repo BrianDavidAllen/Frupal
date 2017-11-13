@@ -416,214 +416,214 @@ Frupal Map
 11,16,0,6,Power Bar
 12,16,0,3,Machete
 13,16,0,3,Power Bar
-14,16,0,6,Tree
-15,16,0,3,Chainsaw
-16,16,0,3,Boulder
-17,16,0,6,Axe
-18,16,0,3,Type 2 Treasure Chest
-19,16,0,4,Tree
-20,16,0,3,Chisel
-21,16,0,4,Power Bar
-22,16,0,4,Type 1 Treasure Chest
-23,16,0,4,Shears
-24,16,0,6,Sledge
-0,17,0,1,None
-1,17,0,1,Machete
-2,17,0,1,Jackhammer
-3,17,0,2,None
-4,17,0,1,None
-5,17,0,0,Hatchet
-6,17,0,3,Chisel
-7,17,0,5,Clue
-8,17,0,3,Axe
-9,17,0,5,Blackberry Bush
-10,17,0,0,Type 2 Treasure Chest
-11,17,0,5,Clue
-12,17,0,0,Clue
-13,17,0,0,Boulder
-14,17,0,1,Axe
-15,17,0,2,Tree
-16,17,0,2,Jackhammer
+14,16,0,6,
+15,16,0,0,None
+16,16,0,0,None
+17,16,0,0,None
+18,16,0,0,None
+19,16,0,0,None
+20,16,0,0,None
+21,16,0,0,None
+22,16,0,0,None
+23,16,0,0,None
+24,16,0,0,None
+0,17,0,0,None
+1,17,0,0,None
+2,17,0,0,None
+3,17,0,0,None
+4,17,0,0,None
+5,17,0,0,None
+6,17,0,0,None
+7,17,0,0,None
+8,17,0,0,None
+9,17,0,0,None
+10,17,0,0,None
+11,17,0,0,None
+12,17,0,0,None
+13,17,0,0,None
+14,17,0,0,None
+15,17,0,0,None
+16,17,0,0,None
 17,17,0,0,None
-18,17,0,3,Clue
-19,17,0,6,Power Bar
-20,17,0,0,Axe
-21,17,0,0,Tree
-22,17,0,5,Jackhammer
-23,17,0,4,Jackhammer
-24,17,0,2,Type 2 Treasure Chest
-0,18,0,0,Type 2 Treasure Chest
-1,18,0,1,Binoculars
-2,18,0,0,Power Bar
-3,18,0,6,Power Bar
-4,18,0,3,Clue
-5,18,0,2,Boulder
-6,18,0,6,Hatchet
-7,18,0,4,Chainsaw
-8,18,0,5,None
-9,18,0,5,Power Bar
-10,18,0,3,Power Bar
-11,18,0,2,Chisel
-12,18,0,6,Sledge
-13,18,0,2,Hatchet
-14,18,0,1,None
-15,18,0,3,Type 2 Treasure Chest
-16,18,0,6,Axe
-17,18,0,3,Type 1 Treasure Chest
-18,18,0,3,Hatchet
-19,18,0,2,Type 1 Treasure Chest
-20,18,0,5,Sledge
-21,18,0,1,None
-22,18,0,4,Tree
-23,18,0,0,Clue
-24,18,0,2,Type 2 Treasure Chest
-0,19,0,4,Chainsaw
-1,19,0,1,Chainsaw
-2,19,0,2,Type 2 Treasure Chest
-3,19,0,3,None
-4,19,0,3,Power Bar
-5,19,0,1,Power Bar
-6,19,0,2,Power Bar
-7,19,0,1,Power Bar
-8,19,0,1,Power Bar
-9,19,0,3,Jackhammer
-10,19,0,4,None
-11,19,0,4,Binoculars
-12,19,0,4,Clue
-13,19,0,0,Shears
-14,19,0,5,Type 1 Treasure Chest
-15,19,0,1,Machete
-16,19,0,3,Power Bar
-17,19,0,0,Tree
-18,19,0,2,Type 1 Treasure Chest
-19,19,0,2,Tree
-20,19,0,6,None
-21,19,0,2,Power Bar
-22,19,0,6,Blackberry Bush
-23,19,0,2,Boulder
-24,19,0,1,Shears
-0,20,0,0,Type 1 Treasure Chest
-1,20,0,4,Machete
-2,20,0,2,Axe
-3,20,0,1,Binoculars
-4,20,0,5,Clue
+18,17,0,0,None
+19,17,0,0,None
+20,17,0,0,None
+21,17,0,0,None
+22,17,0,0,None
+23,17,0,0,None
+24,17,0,0,None
+0,18,0,0,None
+1,18,0,0,None
+2,18,0,0,None
+3,18,0,0,None
+4,18,0,0,None
+5,18,0,0,None
+6,18,0,0,None
+7,18,0,0,None
+8,18,0,0,None
+9,18,0,0,None
+10,18,0,0,None
+11,18,0,0,None
+12,18,0,0,None
+13,18,0,0,None
+14,18,0,0,None
+15,18,0,0,None
+16,18,0,0,None
+17,18,0,0,None
+18,18,0,0,None
+19,18,0,0,None
+20,18,0,0,None
+21,18,0,0,None
+22,18,0,0,None
+23,18,0,0,None
+24,18,0,0,None
+0,19,0,0,None
+1,19,0,0,None
+2,19,0,0,None
+3,19,0,0,None
+4,19,0,0,None
+5,19,0,0,None
+6,19,0,0,None
+7,19,0,0,None
+8,19,0,0,None
+9,19,0,0,None
+10,19,0,0,None
+11,19,0,0,None
+12,19,0,0,None
+13,19,0,0,None
+14,19,0,0,None
+15,19,0,0,None
+16,19,0,0,None
+17,19,0,0,None
+18,19,0,0,None
+19,19,0,0,None
+20,19,0,0,None
+21,19,0,0,None
+22,19,0,0,None
+23,19,0,0,None
+24,19,0,0,None
+0,20,0,0,None
+1,20,0,0,None
+2,20,0,0,None
+3,20,0,0,None
+4,20,0,0,None
 5,20,0,0,None
 6,20,0,0,None
-7,20,0,5,Hatchet
-8,20,0,6,Binoculars
-9,20,0,2,Tree
-10,20,0,5,Power Bar
-11,20,0,2,Shears
-12,20,0,0,Boulder
-13,20,0,6,None
-14,20,0,5,Axe
-15,20,0,5,None
-16,20,0,4,Binoculars
-17,20,0,0,Shears
-18,20,0,0,Binoculars
-19,20,0,2,Chisel
-20,20,0,4,None
-21,20,0,1,None
-22,20,0,3,Hatchet
-23,20,0,3,Hatchet
-24,20,0,0,Binoculars
-0,21,0,1,Type 2 Treasure Chest
-1,21,0,2,Machete
-2,21,0,0,Power Bar
-3,21,0,0,Tree
+7,20,0,0,None
+8,20,0,0,None
+9,20,0,0,None
+10,20,0,0,None
+11,20,0,0,None
+12,20,0,0,None
+13,20,0,0,None
+14,20,0,0,None
+15,20,0,0,None
+16,20,0,0,None
+17,20,0,0,None
+18,20,0,0,None
+19,20,0,0,None
+20,20,0,0,None
+21,20,0,0,None
+22,20,0,0,None
+23,20,0,0,None
+24,20,0,0,None
+0,21,0,0,None
+1,21,0,0,None
+2,21,0,0,None
+3,21,0,0,None
 4,21,0,0,None
-5,21,0,5,Machete
-6,21,0,1,Power Bar
-7,21,0,4,Chainsaw
-8,21,0,4,None
-9,21,0,1,Chainsaw
-10,21,0,6,Chisel
-11,21,0,6,None
-12,21,0,6,Type 2 Treasure Chest
-13,21,0,2,Type 2 Treasure Chest
-14,21,0,2,Power Bar
-15,21,0,4,Binoculars
-16,21,0,4,Tree
-17,21,0,2,Axe
-18,21,0,3,Type 1 Treasure Chest
-19,21,0,1,Clue
-20,21,0,1,Blackberry Bush
-21,21,0,5,Blackberry Bush
-22,21,0,4,Power Bar
-23,21,0,2,Binoculars
-24,21,0,3,Tree
-0,22,0,5,Hatchet
-1,22,0,4,Binoculars
-2,22,0,5,Machete
-3,22,0,2,Boulder
-4,22,0,3,None
-5,22,0,6,Blackberry Bush
-6,22,0,3,Machete
-7,22,0,3,Blackberry Bush
-8,22,0,3,Shears
-9,22,0,1,None
-10,22,0,2,Tree
-11,22,0,0,Machete
-12,22,0,0,Power Bar
-13,22,0,6,Blackberry Bush
-14,22,0,4,Binoculars
-15,22,0,6,Boulder
-16,22,0,0,Jackhammer
-17,22,0,3,Tree
-18,22,0,4,Shears
-19,22,0,1,Power Bar
-20,22,0,1,Jackhammer
-21,22,0,5,Axe
-22,22,0,6,Binoculars
-23,22,0,1,Sledge
-24,22,0,5,Power Bar
-0,23,0,5,Blackberry Bush
-1,23,0,5,Sledge
-2,23,0,5,Boulder
-3,23,0,0,Clue
-4,23,0,4,Power Bar
-5,23,0,4,Type 1 Treasure Chest
-6,23,0,3,Type 1 Treasure Chest
-7,23,0,5,Type 1 Treasure Chest
-8,23,0,5,Jackhammer
-9,23,0,2,Chainsaw
-10,23,0,0,Chainsaw
-11,23,0,3,Sledge
-12,23,0,6,Sledge
-13,23,0,4,Shears
-14,23,0,3,Sledge
-15,23,0,5,Blackberry Bush
-16,23,0,0,Power Bar
-17,23,0,2,Axe
-18,23,0,6,Jackhammer
-19,23,0,1,None
-20,23,0,1,Chainsaw
-21,23,0,5,Power Bar
-22,23,0,6,Sledge
-23,23,0,1,Tree
-24,23,0,2,Type 2 Treasure Chest
-0,24,0,2,Power Bar
-1,24,0,5,Hatchet
-2,24,0,4,None
-3,24,0,0,Boulder
-4,24,0,2,None
-5,24,0,6,Chainsaw
-6,24,0,3,Binoculars
-7,24,0,6,Power Bar
-8,24,0,1,Power Bar
-9,24,0,2,Power Bar
-10,24,0,5,Power Bar
-11,24,0,3,Hatchet
-12,24,0,6,Jackhammer
-13,24,0,3,Binoculars
-14,24,0,5,None
-15,24,0,3,Power Bar
-16,24,0,3,Chainsaw
-17,24,0,4,Machete
-18,24,0,6,Jackhammer
-19,24,0,3,Power Bar
-20,24,0,6,Binoculars
-21,24,0,3,Blackberry Bush
-22,24,0,0,Binoculars
-23,24,0,3,None
-24,24,0,6,Machete
+5,21,0,0,None
+6,21,0,0,None
+7,21,0,0,None
+8,21,0,0,None
+9,21,0,0,None
+10,21,0,0,None
+11,21,0,0,None
+12,21,0,0,None
+13,21,0,0,None
+14,21,0,0,None
+15,21,0,0,None
+16,21,0,0,None
+17,21,0,0,None
+18,21,0,0,None
+19,21,0,0,None
+20,21,0,0,None
+21,21,0,0,None
+22,21,0,0,None
+23,21,0,0,None
+24,21,0,0,None
+0,22,0,0,None
+1,22,0,0,None
+2,22,0,0,None
+3,22,0,0,None
+4,22,0,0,None
+5,22,0,0,None
+6,22,0,0,None
+7,22,0,0,None
+8,22,0,0,None
+9,22,0,0,None
+10,22,0,0,None
+11,22,0,0,None
+12,22,0,0,None
+13,22,0,0,None
+14,22,0,0,None
+15,22,0,0,None
+16,22,0,0,None
+17,22,0,0,None
+18,22,0,0,None
+19,22,0,0,None
+20,22,0,0,None
+21,22,0,0,None
+22,22,0,0,None
+23,22,0,0,None
+24,22,0,0,None
+0,23,0,0,None
+1,23,0,0,None
+2,23,0,0,None
+3,23,0,0,None
+4,23,0,0,None
+5,23,0,0,None
+6,23,0,0,None
+7,23,0,0,None
+8,23,0,0,None
+9,23,0,0,None
+10,23,0,0,None
+11,23,0,0,None
+12,23,0,0,None
+13,23,0,0,None
+14,23,0,0,None
+15,23,0,0,None
+16,23,0,0,None
+17,23,0,0,None
+18,23,0,0,None
+19,23,0,0,None
+20,23,0,0,None
+21,23,0,0,None
+22,23,0,0,None
+23,23,0,0,None
+24,23,0,0,None
+0,24,0,0,None
+1,24,0,0,None
+2,24,0,0,None
+3,24,0,0,None
+4,24,0,0,None
+5,24,0,0,None
+6,24,0,0,None
+7,24,0,0,None
+8,24,0,0,None
+9,24,0,0,None
+10,24,0,0,None
+11,24,0,0,None
+12,24,0,0,None
+13,24,0,0,None
+14,24,0,0,None
+15,24,0,0,None
+16,24,0,0,None
+17,24,0,0,None
+18,24,0,0,None
+19,24,0,0,None
+20,24,0,0,None
+21,24,0,0,None
+22,24,0,0,None
+23,24,0,0,None
+24,24,0,0,None
