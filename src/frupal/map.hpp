@@ -13,6 +13,7 @@ class Map {
 		void saveIdentifier(ofstream &file);
 		void saveMap(ofstream &file);
 		void setHeroVision(int x, int y); 
+		void setHeroVisited(int x, int y);
         Grovnick * getGrovnick(int x, int y);
         json toJson();
 

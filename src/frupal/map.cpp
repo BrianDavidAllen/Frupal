@@ -142,6 +142,13 @@ void Map::setHeroVision(int x, int y) {
   temp->setVisible();//southeast
 }
 
+void Map::setHeroVisited(int x, int y)
+{
+   Grovnick * temp = nullptr;
+   temp = getGrovnick(x,y);
+   temp->setVisited();
+}
+
 json Map::toJson()
 {
    json map;
