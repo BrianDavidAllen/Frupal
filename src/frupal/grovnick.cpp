@@ -46,11 +46,14 @@ void Grovnick::saveState(ofstream &file) const {
 json Grovnick::toJson()
 {
    json toSend; 
-   
    toSend["x"] = x;
    toSend["y"] = y;
-   toSend["Visible"] = visible;
-   toSend["Visited"] = visited;
+   
+   if(isVisible() || isVisited()) {
+   	toSend["visible"] = true;
+   } else {
+   	toSend["visible"] = false;
+   }
    toSend["terrian"] = terrain;
    return toSend;
 }
