@@ -13,12 +13,13 @@ class Map {
 		void saveIdentifier(ofstream &file);
 		void saveMap(ofstream &file);
 		void setHeroVision(int x, int y); 
-        Grovnick * getGrovnick(int x, int y);
+        Grovnick *getGrovnick(int x, int y);
         json toJson();
 
     private:
-		string *parseLine(const string line);
-		void fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, const int endY);
+		string *parseLine(string line);
+		bool addGrovnick(string line, int &currentX, int &currentY);
+		void fillMissingGrovnicks(int &currentX, int &currentY, int nextX, int endY);
 
 		string identifier;
 		int dimensions;
