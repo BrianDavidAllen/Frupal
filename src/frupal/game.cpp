@@ -165,6 +165,7 @@ void Game::tryToMove(string command)
         int nextY = nextGrovnick->getY();
         log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
+	map.setHeroVision(nextX,nextY); 
 
         //Deduct terrain movement cost from hero energy
         //...

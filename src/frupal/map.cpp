@@ -123,14 +123,23 @@ Grovnick * Map::getGrovnick(int x, int y) {
 
 void Map::setHeroVision(int x, int y) {
 
-  grovnicks[y+1][x].setVisible();//North
-  grovnicks[y-1][x].setVisible();//South
-  grovnicks[y][x-1].setVisible();//West
-  grovnicks[y][x+1].setVisible();//East
-  grovnicks[y+1][x-1].setVisible();//NorthWest
-  grovnicks[y+1][x+1].setVisible();//NorthEast
-  grovnicks[y-1][x-1].setVisible();//SouthWest
-  grovnicks[y-1][x+1].setVisible();//SouthEast
+  Grovnick * temp; 
+  temp = getGrovnick(x, y+1);
+  temp->setVisible();//north
+  temp = getGrovnick(x, y-1);
+  temp->setVisible();//south
+  temp = getGrovnick(x-1,y);
+  temp->setVisible();//west
+  temp = getGrovnick(x+1,y);
+  temp->setVisible();//east
+  temp = getGrovnick(x-1,y+1);
+  temp->setVisible();//northwest
+  temp = getGrovnick(x+1,y+1);
+  temp->setVisible();//northeast
+  temp = getGrovnick(x-1,y-1);
+  temp->setVisible();//southwest
+  temp = getGrovnick(x+1,y-1);
+  temp->setVisible();//southeast
 }
 
 json Map::toJson()
