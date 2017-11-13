@@ -4,7 +4,7 @@ Map::Map() {}
 
 // Splits a string based on the delimiter ',' into a static array (w/ size 5) of strings.
 // Takes in the string being split and returns the array of strings.
-string *Map::parseLine(const string line) const {
+string *Map::parseLine( string line)  {
 	static string result[5];
 	char delimiter = ',';
 	size_t previousDel, nextDel;
@@ -25,7 +25,7 @@ string *Map::parseLine(const string line) const {
 // Loads the map portion of the state-preserving file.
 // Takes in the identifier for the map, its dimentions, and the state-preserving filestream.
 // Returns true if the file is not corrupted and false otherwise.
-bool Map::loadFile(const string identifier, const int dimensions, ifstream &file) {
+bool Map::loadFile( string identifier,  int dimensions, ifstream &file) {
 	this->identifier = identifier;
 	this->dimensions = dimensions;
 
@@ -74,7 +74,7 @@ bool Map::loadFile(const string identifier, const int dimensions, ifstream &file
 
 // Adds empty grovnicks up to the specified (nextX, endY),
 // from the current (currentX, currentY)
-void Map::fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, const int endY) {
+void Map::fillMissingGrovnicks(int &currentX, int &currentY,  int nextX,  int endY) {
 	vector<Grovnick> row;
 	// Fill any missing rows first
 	for(; currentY < endY; currentY++) {
@@ -95,12 +95,12 @@ void Map::fillMissingGrovnicks(int &currentX, int &currentY, const int nextX, co
 	}
 }
 
-void Map::saveIdentifier(ofstream &file) const {
+void Map::saveIdentifier(ofstream &file)  {
 	file << identifier << '\n' << dimensions << '\n';
 	file << "##########\n";
 }
 
-void Map::saveMap(ofstream &file) const {
+void Map::saveMap(ofstream &file)  {
 	file << "##########\n";
 	for(int y = 0; y < dimensions; y++)
 		for(int x = 0; x < dimensions; x++)

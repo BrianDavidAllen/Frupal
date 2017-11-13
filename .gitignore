@@ -2,4 +2,7 @@
 *.exe
 *.out
 *.app
-
+build/state.txt
+*.log
+*.cgi
+src/map-gen/mapGen.txt
