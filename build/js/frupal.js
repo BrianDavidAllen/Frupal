@@ -3,6 +3,7 @@
 var data; //Javascript object holding all our game data
 var tileSize = 20;
 var jsonVisible = false;
+var commandInProgress = false;
 
 //Button to display the raw json. Hide by default to speed up page reload.
 var showJson = function() {
@@ -15,6 +16,10 @@ function Game() {
 
     //This function gets called on every key press, and if a valid key is found, sendCommand() is called with the corresponding command.
     this.handleKeys = function(event) {
+        if(commandInProgress)
+            return;
+        commandInProgress = true;
+        setTimeout(function(){ commandInProgress = false; }, 200);
         var code = event.keyCode;
         var command;
         console.log("Key pressed");
