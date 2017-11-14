@@ -170,20 +170,20 @@ json Hero::toJson()
 void Hero::loadState()
 {
 	string fileToOpen = "heroState.txt";
-	string xcord, ycord, whiffles, energy;
+	string xcord, ycord, whifflesString, energyString;
 	ifstream stateFile(fileToOpen.c_str());
 
 	//read in from the file
-	getline(stateFile, energy);
-	getline(stateFile, whiffles);
+	getline(stateFile, energyString);
+	getline(stateFile, whifflesString);
 	getline(stateFile, xcord);
 	getline(stateFile, ycord);
 
 	
 	//set the player's 
 	//values from last turn
-	energy = atoi(energy.c_str());
-	whiffles = atoi(whiffles.c_str());
+	energy = atoi(energyString.c_str());
+	whiffles = atoi(whifflesString.c_str());
 	x = atoi(xcord.c_str());
 	y = atoi(ycord.c_str());
 }
@@ -242,6 +242,13 @@ void Hero::resetState()
 
 	//close and save the file
 	newStateFile.close();
+
+    //Change hero stats to match
+    energy = 100;
+    whiffles = 0;
+    x = 11;
+    y = 13;
+
 }
 
 //Paul Hubbard's funky functions ^^

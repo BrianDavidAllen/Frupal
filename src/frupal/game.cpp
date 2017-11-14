@@ -68,7 +68,7 @@ bool Game::loadGameState(ifstream &file)
 		return false;
 
 	hero.loadState(); //Paul Hubbard
-    log.write("Hero x after hero.loadState(): " + to_string(hero.getX()));
+    log.write("Hero state loaded from file:\n Energy" + to_string(hero.getEnergy()));
 
 	getline(file, blankSpace);
 	if(blankSpace.empty() || blankSpace[0] != '#')
@@ -163,8 +163,8 @@ void Game::tryToMove(string command)
         int nextY = nextGrovnick->getY();
         log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
-	map.setHeroVisited(nextX,nextY);
-	map.setHeroVision(nextX,nextY); 
+    	map.setHeroVisited(nextX,nextY);
+    	map.setHeroVision(nextX,nextY); 
 
         //Deduct terrain movement cost from hero energy
         hero.changeEnergy(-1);
