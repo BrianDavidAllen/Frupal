@@ -17,6 +17,7 @@ class Grovnick {
     	int getTerrain();
         void setVisible();
 	void setVisited(); 
+	string getContent();
 		void saveState(ofstream &file) const;
         json toJson();
     private:

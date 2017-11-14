@@ -144,6 +144,12 @@ Grovnick * Map::getGrovnick(int x, int y) {
     return &(grovnicks[loopedY][loopedX]);
 }
 
+string Map::getGrovnickContent(Grovnick *& grovnick){
+	string content = grovnick->getContent();
+	return content;
+}
+
+
 void Map::setHeroVision(int x, int y) {
 
   Grovnick * temp; 

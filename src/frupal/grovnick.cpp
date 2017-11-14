@@ -43,6 +43,10 @@ void Grovnick::saveState(ofstream &file) const {
 	file << x << ',' << y << ',' << visited << ',' << terrain << ',' << content << '\n';
 }
 
+string Grovnick::getContent(){
+	return content;
+}
+
 json Grovnick::toJson()
 {
    json toSend; 

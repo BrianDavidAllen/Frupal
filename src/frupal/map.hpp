@@ -20,7 +20,7 @@ class Map {
 		void setHeroVisited(int x, int y);
         Grovnick * getGrovnick(int x, int y);
         json toJson();
-
+		string getGrovnickContent(Grovnick *& grovnick);
     private:
 		string *parseLine(string line);
 		bool addGrovnick(string line, int &currentX, int &currentY);

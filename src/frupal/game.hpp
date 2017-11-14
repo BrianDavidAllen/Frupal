@@ -21,6 +21,7 @@ class Game
         ~Game();
         void checkHeroEnergy();
         void endGame();
+	void endGameHappy();
         bool gameStateExists(const string filename);
         bool loadGameState(ifstream &file, bool reloading = false);
         void parseCommand(json input);
@@ -32,6 +33,7 @@ class Game
         bool terrainCanBeTraversed();
         void tryToBuy();
         void tryToMove(string command);
+	bool onRoyalDiamond(string content);
 
     private:
         json current;

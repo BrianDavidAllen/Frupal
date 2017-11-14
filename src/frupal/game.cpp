@@ -40,6 +40,18 @@ void Game::endGame()
 	defaultState.close();
 }
 
+void Game::endGameHappy(){
+	toSend["alerty"] = "You've found the Royal Diamonds! You win!";
+
+	hero.resetState();	
+
+	string defaultStateName = "default.txt";
+	ifstream defaultState(defaultStateName);
+	if(!loadGameState(defaultState, true))
+		log.write("Could not load from '" + defaultStateName + "'.");
+	defaultState.close();
+}
+
 bool Game::gameStateExists(const string filename)
 {
     //function stub
@@ -177,7 +189,12 @@ void Game::tryToMove(string command)
         //nextGrovnick->setVisited();
         int nextX = nextGrovnick->getX();
         int nextY = nextGrovnick->getY();
-        log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
+	string contentString = nextGrovnick->getContent();
+        bool onDiamonds = false;
+	if(onRoyalDiamond(contentString)){
+		endGameHappy();
+	}
+	log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
 
         //Deduct terrain movement cost from hero energy
@@ -188,6 +205,15 @@ void Game::tryToMove(string command)
         hero.changeEnergy(-1);
     }
     checkHeroEnergy();
+}
+
+bool Game::onRoyalDiamond(string content){
+	if(content == "Royal Diamonds"){
+		return true;
+	}
+	else
+		return false;
+		
 }
 
 int main()
