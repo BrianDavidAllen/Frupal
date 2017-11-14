@@ -31,6 +31,8 @@ void Game::endGame()
     //Punam, alert box here maybe?
 	toSend["alert"] = "You died!";
 
+    //ifstream defaultFile("default.txt");
+    //loadGameState(defaultFile);
 	hero.resetState(); //Paul Hubbard
 }
 
