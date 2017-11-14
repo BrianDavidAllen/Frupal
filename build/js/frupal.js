@@ -49,7 +49,13 @@ function Game() {
 
         //Print hero position
         var heroPosition = document.getElementById("coordinates");
-        heroPosition.innerHTML = "The hero is at " + data.hero.x + " Grovnick East and " +  data.hero.y + " Grovnick North from the Origin";
+        heroPosition.innerHTML = "Hero's position is at ( " + data.hero.x + " , " +  data.hero.y + " ) "; 
+
+	var heroenergy = document.getElementById("hero_energy");
+        heroenergy.innerHTML = "Hero's energy is  " + data.hero.energy;
+
+	if( data.alert )
+                  alert( data.alert );
  
         //Redraw the tiles
         var mapElement = document.getElementById("map");
