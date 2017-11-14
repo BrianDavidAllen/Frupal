@@ -1,6 +1,6 @@
 #include "map.hpp"
 
-Map::Map() {
+Map::Map(): dimensions(0) {
     Logger log("map.log");
 }
 
@@ -63,7 +63,7 @@ bool Map::addGrovnick(string line, int &currentX, int &currentY) {
 // Returns true if the file is not corrupted and false otherwise.
 bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
     log.write("Inside Map::loadFile()");
-    this->identifier = identifier;
+	this->identifier = identifier;
 	this->dimensions = dimensions;
 
 	// Push a blank row of grovnicks
@@ -82,6 +82,15 @@ bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
 	fillMissingGrovnicks(currentX, currentY, dimensions, dimensions - 1);
 
 	return true;
+}
+
+// Erases the grovnicks from the previous game, and begins loading the default file
+bool Map::reloadDefaultFile(string identifier, int dimensions, ifstream &file) {
+	for(int i = 0; i < this->dimensions; i++)
+		grovnicks[i].erase(grovnicks[i].begin(), grovnicks[i].begin() + this->dimensions);
+	grovnicks.erase(grovnicks.begin(), grovnicks.begin() + this->dimensions);
+
+	return loadFile(identifier, dimensions, file);
 }
 
 // Adds empty grovnicks up to the specified (nextX, endY),

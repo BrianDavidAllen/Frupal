@@ -12,6 +12,7 @@ class Map {
 	public:
 		Map();
 		bool loadFile(string identifier, int dimensions, ifstream &file);
+		bool reloadDefaultFile(string identifier, int dimensions, ifstream &file);
 		void saveIdentifier(ofstream &file);
 		void saveMap(ofstream &file);
 		void setHeroVision(int x, int y); 

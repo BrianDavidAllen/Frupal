@@ -22,7 +22,7 @@ class Game
         void checkHeroEnergy();
         void endGame();
         bool gameStateExists(const string filename);
-        bool loadGameState(ifstream &file);
+        bool loadGameState(ifstream &file, bool reloading = false);
         void parseCommand(json input);
         bool playerIsDead();
         bool saveGameState(ofstream &file);

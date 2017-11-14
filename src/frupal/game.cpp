@@ -31,9 +31,13 @@ void Game::endGame()
     //Punam, alert box here maybe?
 	toSend["alert"] = "You died!";
 
-    //ifstream defaultFile("default.txt");
-    //loadGameState(defaultFile);
 	hero.resetState(); //Paul Hubbard
+
+	string defaultStateName = "default.txt";
+	ifstream defaultState(defaultStateName);
+	if(!loadGameState(defaultState, true))
+		log.write("Could not load from '" + defaultStateName + "'.");
+	defaultState.close();
 }
 
 bool Game::gameStateExists(const string filename)
@@ -51,7 +55,7 @@ bool Game::gameStateExists(const string filename)
     return false;
 }
 
-bool Game::loadGameState(ifstream &file)
+bool Game::loadGameState(ifstream &file, bool reloading)
 {
     log.write("Inside loadGameState()");
     /* Get map, objects, and hero info from file and load into objects. */
@@ -79,7 +83,11 @@ bool Game::loadGameState(ifstream &file)
 	if(blankSpace.empty() || blankSpace[0] != '#')
 		return false;
 
-	return map.loadFile(identifier, dimensions, file);
+	// Either the game is reloading the default map file after the hero's death or not
+	if(reloading)
+		return map.reloadDefaultFile(identifier, dimensions, file);
+	else
+		return map.loadFile(identifier, dimensions, file);
 }
 
 void Game::parseCommand(json input)
