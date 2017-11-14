@@ -21,18 +21,16 @@ void Game::checkHeroEnergy()
 {
     //Punam, check hero energy in here please
 	int hero_energy = hero.getEnergy();
-//commented out to allow compile        if ( hero_energy <= 0 )
-//               return true;
-//        else
-//              return false;
-
+    if(hero_energy < 1)
+        endGame();
 	
 }
 
 void Game::endGame()
 {
     //Punam, alert box here maybe?
-	toSend["gameOver"] = true;
+	toSend["alert"] = "You died!";
+
 	hero.resetState(); //Paul Hubbard
 }
 
@@ -169,7 +167,7 @@ void Game::tryToMove(string command)
 	map.setHeroVision(nextX,nextY); 
 
         //Deduct terrain movement cost from hero energy
-        //...
+        hero.changeEnergy(-1);
     }
     else
     {
