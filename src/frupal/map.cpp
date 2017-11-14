@@ -1,6 +1,8 @@
 #include "map.hpp"
 
-Map::Map() {}
+Map::Map() {
+    Logger log("map.log");
+}
 
 // Splits a string based on the delimiter ',' into a static array (w/ size 5) of strings.
 // Takes in the string being split and returns the array of strings.
@@ -45,7 +47,6 @@ bool Map::addGrovnick(string line, int &currentX, int &currentY) {
 
 	fillMissingGrovnicks(currentX, currentY, x, y);
 	grovnicks[y].push_back(newGrovnick);
-
 	if(currentX == dimensions - 1 && currentY < dimensions - 1) {
 		vector<Grovnick> row;
 		grovnicks.push_back(row);
@@ -61,7 +62,8 @@ bool Map::addGrovnick(string line, int &currentX, int &currentY) {
 // Takes in the identifier for the map, its dimentions, and the state-preserving filestream.
 // Returns true if the file is not corrupted and false otherwise.
 bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
-	this->identifier = identifier;
+    log.write("Inside Map::loadFile()");
+    this->identifier = identifier;
 	this->dimensions = dimensions;
 
 	// Push a blank row of grovnicks
@@ -71,8 +73,21 @@ bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
 	string line;
 	// These are the coordinates of the current grovnick (may it be in the file or not)
 	int currentX, currentY = 0;
-	while(getline(file, line) && addGrovnick(line, currentX, currentY));
-
+    bool loop = true; //evaluating loop separately somehow(?) fixed the 500 bug.
+    while(getline(file, line) && loop)
+    {
+        //debug log.write("Processing line: '" + line + "'");
+        bool result = addGrovnick(line, currentX, currentY);
+        if(result)
+        {
+         //debug   log.write("Grovnick added at: " + to_string(currentX) + ", " + to_string(currentY));
+        }
+        else
+        {
+            log.write("addGrovnick() failed");
+            loop = false;
+        }
+    }
 	fillMissingGrovnicks(currentX, currentY, dimensions, dimensions - 1);
 
 	return true;
@@ -102,12 +117,14 @@ void Map::fillMissingGrovnicks(int &currentX, int &currentY, int nextX, int endY
 }
 
 void Map::saveIdentifier(ofstream &file) {
-	file << identifier << '\n' << dimensions << '\n';
+    log.write("Inside Map::saveIdentifier()");
+    file << identifier << '\n' << dimensions << '\n';
 	file << "##########\n";
 }
 
 void Map::saveMap(ofstream &file) {
-	file << "##########\n";
+    log.write("Inside Map::saveMap()");
+    file << "##########\n";
 	for(int y = 0; y < dimensions; y++)
 		for(int x = 0; x < dimensions; x++)
 			grovnicks[y][x].saveState(file);

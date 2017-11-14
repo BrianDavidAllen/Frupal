@@ -4,6 +4,7 @@ var data; //Javascript object holding all our game data
 var tileSize = 20;
 var jsonVisible = false;
 var commandInProgress = false;
+var inputDelay = 200; //in ms
 
 //Button to display the raw json. Hide by default to speed up page reload.
 var showJson = function() {
@@ -19,7 +20,7 @@ function Game() {
         if(commandInProgress)
             return;
         commandInProgress = true;
-        setTimeout(function(){ commandInProgress = false; }, 200);
+        setTimeout(function(){ commandInProgress = false; }, inputDelay);
         var code = event.keyCode;
         var command;
         console.log("Key pressed");

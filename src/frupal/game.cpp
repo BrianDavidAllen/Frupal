@@ -6,7 +6,7 @@
 
 Game::Game()
 {
-    Logger log("game.log");
+    Logger log;
     Hero hero;
     json toSend;
     toSend["log"] = "";
@@ -51,15 +51,19 @@ bool Game::gameStateExists(const string filename)
 
 bool Game::loadGameState(ifstream &file)
 {
+    log.write("Inside loadGameState()");
     /* Get map, objects, and hero info from file and load into objects. */
     string identifier, dimensionsString, blankSpace;
 	getline(file, identifier);
 	if(identifier.empty())
 		return false;
+    log.write("Identifier is: " + identifier);
 
 	getline(file, dimensionsString);
 	if(dimensionsString.empty())
 		return false;
+
+    log.write("Dimensions is: " + dimensionsString);
 
 	int dimensions = stoi(dimensionsString);
 
@@ -68,7 +72,6 @@ bool Game::loadGameState(ifstream &file)
 		return false;
 
 	hero.loadState(); //Paul Hubbard
-    log.write("Hero state loaded from file:\n Energy" + to_string(hero.getEnergy()));
 
 	getline(file, blankSpace);
 	if(blankSpace.empty() || blankSpace[0] != '#')
@@ -91,6 +94,9 @@ void Game::parseCommand(json input)
         selectMap();
     else
         log.write("Command not recognized.");
+
+    map.setHeroVisited(hero.getX(), hero.getY());
+    map.setHeroVision(hero.getX(), hero.getY()); 
 }
 
 bool Game::saveGameState(ofstream &file)
@@ -163,8 +169,6 @@ void Game::tryToMove(string command)
         int nextY = nextGrovnick->getY();
         log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
-    	map.setHeroVisited(nextX,nextY);
-    	map.setHeroVision(nextX,nextY); 
 
         //Deduct terrain movement cost from hero energy
         hero.changeEnergy(-1);
@@ -179,7 +183,8 @@ void Game::tryToMove(string command)
 int main()
 {
     Game game;
-    Logger log("main.log");
+    Logger log;
+    log.wipe();
     CgiReader cgi;
 	string gameStateName = "state.txt";
 	string defaultStateName = "default.txt";

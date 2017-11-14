@@ -15,6 +15,7 @@ class Logger
         Logger(string name);
         ~Logger();
         void addHeader();
+        void wipe();
         void write(string toAdd);
     private:
         ofstream file;

@@ -8,14 +8,14 @@ Logger::Logger()
 {
     ofstream file;
     filename = "default.log";
-    addHeader();
+    //addHeader();
 }
 
 Logger::Logger(string name)
 {
     ofstream file;
-    filename = name;
-    addHeader();
+    filename = "default.log";
+    //addHeader();
 }
 
 Logger::~Logger()
@@ -24,14 +24,21 @@ Logger::~Logger()
 
 void Logger::addHeader()
 {
+   // file.open(filename);
+   // file << "Log file '" + filename + "'" << endl;
+   // file.close();
+}
+
+void Logger::wipe()
+{
     file.open(filename);
-    file << "Log file '" + filename + "'" << endl;
+    file << "== Log file ==" << endl;
     file.close();
 }
 
 void Logger::write(string toAdd)
 {
-    file.open(filename, fstream::app);
-    file << toAdd << endl;
-    file.close();
+   file.open(filename, fstream::app);
+   file << toAdd << endl;
+   file.close();
 }

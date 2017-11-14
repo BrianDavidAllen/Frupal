@@ -4,6 +4,8 @@
 #include <fstream>
 #include "grovnick.hpp"
 #include "hero.h"
+#include "logger.hpp"
+
 using namespace std;
 
 class Map {
@@ -22,7 +24,7 @@ class Map {
 		string *parseLine(string line);
 		bool addGrovnick(string line, int &currentX, int &currentY);
 		void fillMissingGrovnicks(int &currentX, int &currentY, int nextX, int endY);
-
+        Logger log;
 		string identifier;
 		int dimensions;
 		vector<vector<Grovnick>> grovnicks;
