@@ -2,6 +2,7 @@
 
 var data; //Javascript object holding all our game data
 var tileSize = 20;
+var mapDimensions = 25;
 var jsonVisible = false;
 var commandInProgress = false;
 var inputDelay = 200; //in ms
@@ -46,11 +47,12 @@ function Game() {
 
         //Print the messages
         var logElement = document.getElementById("log");
-        logElement.innerHTML = data.log;
+        if(data.log)
+            logElement.innerHTML = data.log;
 
         //Print hero position
         var heroPosition = document.getElementById("coordinates");
-        heroPosition.innerHTML = "Hero's position is at ( " + data.hero.x + " , " +  data.hero.y + " ) "; 
+        heroPosition.innerHTML = "Hero's position is at ( " + data.hero.x + " , " + (mapDimensions - data.hero.y - 1) + " ) "; 
 
 	var heroenergy = document.getElementById("hero_energy");
         heroenergy.innerHTML = "Hero's energy is  " + data.hero.energy;
