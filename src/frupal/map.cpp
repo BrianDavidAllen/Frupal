@@ -31,9 +31,9 @@ bool Map::addGrovnick(string line, int &currentX, int &currentY) {
 
 	// Get coordinates
 	int x = stoi(grovnickInfo[0]);
-	if(x >= dimensions) return false;
+	if(x < 0 || x >= dimensions) return false;
 	int y = stoi(grovnickInfo[1]);
-	if(y >= dimensions) return false;
+	if(y < 0 || y >= dimensions) return false;
 
 	// get visibility
 	bool visited = false;
@@ -73,19 +73,10 @@ bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
 	string line;
 	// These are the coordinates of the current grovnick (may it be in the file or not)
 	int currentX, currentY = 0;
-    bool loop = true; //evaluating loop separately somehow(?) fixed the 500 bug.
-    while(getline(file, line) && loop)
-    {
-        //debug log.write("Processing line: '" + line + "'");
-        bool result = addGrovnick(line, currentX, currentY);
-        if(result)
-        {
-         //debug   log.write("Grovnick added at: " + to_string(currentX) + ", " + to_string(currentY));
-        }
-        else
-        {
+    while(getline(file, line)) {
+        if(!addGrovnick(line, currentX, currentY)) {
             log.write("addGrovnick() failed");
-            loop = false;
+			return false;
         }
     }
 	fillMissingGrovnicks(currentX, currentY, dimensions, dimensions - 1);
