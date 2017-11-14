@@ -41,7 +41,7 @@ void Game::endGame()
 }
 
 void Game::endGameHappy(){
-	toSend["alerty"] = "You've found the Royal Diamonds! You win!";
+	toSend["alert"] = "You've found the Royal Diamonds! You win!";
 
 	hero.resetState();	
 
