@@ -1,5 +1,6 @@
 /* Group D, 2017
  * Map class and functions.
+ * Austin Baugh
  */
 #include "map.hpp"
 

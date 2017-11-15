@@ -1,4 +1,8 @@
 #pragma once
+/* Group D, 2017
+ * Map class and functions.
+ * Austin Baugh
+ */
 #include <string>
 #include <vector>
 #include <fstream>
