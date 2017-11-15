@@ -1,3 +1,7 @@
+/* Daniel Dupriest, 2017
+ * Styles for web client
+ */
+
 a, a:link, a:visited, a:hover {
     color: #2facff;
     text-decoration: none;

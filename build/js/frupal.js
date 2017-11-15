@@ -1,4 +1,6 @@
-// Frupal web client javascript
+/* Daniel Dupriest, 2017
+ * Frupal web client javascript
+ */
 
 var data; //Javascript object holding all our game data
 var tileSize = 20;
