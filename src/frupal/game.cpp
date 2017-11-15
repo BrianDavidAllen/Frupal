@@ -189,11 +189,6 @@ void Game::tryToMove(string command)
         //nextGrovnick->setVisited();
         int nextX = nextGrovnick->getX();
         int nextY = nextGrovnick->getY();
-	string contentString = nextGrovnick->getContent();
-        bool onDiamonds = false;
-	if(onRoyalDiamond(contentString)){
-		endGameHappy();
-	}
 	log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
 
@@ -205,10 +200,15 @@ void Game::tryToMove(string command)
         hero.changeEnergy(-1);
     }
     checkHeroEnergy();
+	string contentString = nextGrovnick->getContent();
+    bool onDiamonds = false;
+	if(onRoyalDiamond(contentString)){
+	    endGameHappy();
+	}
 }
 
 bool Game::onRoyalDiamond(string content){
-	if(content == "Royal Diamonds"){
+	if(content == "royal-diamonds"){
 		return true;
 	}
 	else

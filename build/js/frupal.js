@@ -67,14 +67,19 @@ function Game() {
         console.log("Loading " + numberOfTiles + " tiles.");
         for(var i = 0; i < data.map.grovnicks.length; ++i) {
             var tile = data.map.grovnicks[i];
+            //Open tile div
             toAdd += "<div class='tile type"
-                + tile.terrian + " "
+                + tile.terrain + " "
                 + tile.visible
                 + "' style='left:"
                 + (tile.x*tileSize)
                 + "px;top:"
                 + (tile.y*tileSize)
-                + "px'></div>";
+                + "px'>";
+            //Add content div
+            toAdd += "<div class='content " + tile.content + "'></div>";
+            //Close tile div
+            toAdd += "</div>";
         }
         mapElement.innerHTML = toAdd;
 

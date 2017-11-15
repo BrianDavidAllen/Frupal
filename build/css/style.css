@@ -13,6 +13,22 @@ article {
     padding: 1rem 7.5% 1rem;
 }
 
+.axe {
+    /*background-image: url('../images/tool.png');*/
+}
+
+.binoculars {
+    background-image: url('../images/binoculars.png');
+}
+
+.blackberry-bush {
+    background-image: url('../images/blackberrybush.png');
+}
+
+.boulder {
+    background-image: url('../images/boulder.png');
+}
+
 body {
     background: #f1f1f1;
     color: #414344;
@@ -24,9 +40,29 @@ body {
     width: 100%;
 }
 
+.chainsaw {
+    /*background-image: url('../images/tool.png');*/
+}
+
+.chisel {
+    /*background-image: url('../images/tool.png');*/
+}
+
+.content {
+    background-size: 100% 100%;
+    height: 20px;
+    width: 20px;
+}
+
+
 .false {
     background: black !important;
 }
+
+.false .content {
+    background: black;
+}
+
 
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
@@ -58,12 +94,24 @@ h3 {
     line-height: 1rem;
 }
 
+.hatchet {
+    /*background-image: url('../images/tool.png');*/
+}
+
 html {
     font-size: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
+}
+
+.jackhammer {
+    /*background-image: url('../images/tool.png');*/
+}
+
+.machete {
+    /*background-image: url('../images/tool.png');*/
 }
 
 #map {
@@ -96,6 +144,14 @@ p {
     z-index: 1000
 }
 
+.power-bar {
+    background-image: url('../images/power.png');
+}
+
+.royal-diamonds {
+    background-image: url('../images/diamonds.png');
+}
+
 section {
     background: #ffffff;
     border-radius: .25em;
@@ -104,8 +160,17 @@ section {
     margin: .5em .5em 0 .5em;
     padding: .25em .5em
 }
+
 section + section {
     margin-top: 1em;
+}
+
+.shears {
+    /*background-image: url('../images/tool.png');*/
+}
+
+.sledge {
+    /*background-image: url('../images/tool.png');*/
 }
 
 .tile {
@@ -115,6 +180,14 @@ section + section {
     width: 20px;
 }
 
+.tree {
+    background-image: url('../images/tree.png');
+}
+
+.type-1-treasure-chest,
+.type-2-treasure-chest {
+    background-image: url('../images/chest.png');
+}
 
 ul {
     margin-top: 0;
