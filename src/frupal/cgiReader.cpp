@@ -1,5 +1,5 @@
 /* Daniel Dupriest, 2017
- * Testing communication between server and client with json library
+ * Communication from client with json library
  */
 
 #include "cgiReader.hpp"

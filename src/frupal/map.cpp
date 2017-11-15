@@ -1,3 +1,6 @@
+/* Group D, 2017
+ * Map class and functions.
+ */
 #include "map.hpp"
 
 Map::Map(): dimensions(0) {

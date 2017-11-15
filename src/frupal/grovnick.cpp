@@ -1,3 +1,7 @@
+/* Group D, 2017
+ * Grovnick class with terrain and contents.
+ */
+
 #include "grovnick.hpp"
 
 Grovnick::Grovnick(const int x, const int y, const bool visited, const int terrain, const string content):

@@ -1,5 +1,5 @@
 /* Daniel Dupriest, 2017
- * Player class placeholder
+ * Utility logger class for debugging.
  */
 
 #include "logger.hpp"

@@ -1,5 +1,5 @@
 /* Daniel Dupriest, 2017
- * Player placeholder class. Public data, eww!!
+ * Utility logger class for debugging.
  */
 #pragma once
 #include <iostream>

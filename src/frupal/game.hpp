@@ -1,5 +1,5 @@
 /* Daniel Dupriest, 2017
- * Sample game class
+ * Main function and game logic.
  */
 #pragma once
 #include <iostream>

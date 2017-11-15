@@ -1,5 +1,5 @@
 /* Daniel Dupriest, 2017
- * Testing communication between server and client with json library
+ * Main function and game logic.
  */
 
 #include "game.hpp"

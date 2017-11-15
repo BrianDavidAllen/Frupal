@@ -1,3 +1,6 @@
+/* Group D, 2017
+ * Grovnick class with terrain type and contents.
+ */
 #pragma once
 #include <string>
 #include <iostream>
