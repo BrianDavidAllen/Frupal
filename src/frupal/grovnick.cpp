@@ -33,11 +33,13 @@ void Grovnick::setVisible()
     visible = true;
 }
 
+//David Gilmore: returns bool to determine if tile has been visited.
 bool Grovnick::isVisited()
 {
    return visited; 
 }
 
+//David Gilmore: sets bool to true when a tile is visited. 
 void Grovnick::setVisited()
 {
    visited = true;
@@ -51,6 +53,7 @@ string Grovnick::getContent(){
 	return content;
 }
 
+//David Gilmore: Function to pass grovnicks as a json object to map class
 json Grovnick::toJson()
 {
    json toSend; 

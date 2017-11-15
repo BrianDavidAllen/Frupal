@@ -152,7 +152,7 @@ string Map::getGrovnickContent(Grovnick *& grovnick){
 	return content;
 }
 
-
+//David Gilmore: Sets grovnicks around the hero to visible.
 void Map::setHeroVision(int x, int y) {
 
   Grovnick * temp; 
@@ -173,7 +173,7 @@ void Map::setHeroVision(int x, int y) {
   temp = getGrovnick(x+1,y-1);
   temp->setVisible();//southeast
 }
-
+//David Gilmore: sets a grovnick to visited when the hero steps on a tile.
 void Map::setHeroVisited(int x, int y)
 {
    Grovnick * temp = nullptr;
@@ -181,6 +181,7 @@ void Map::setHeroVisited(int x, int y)
    temp->setVisited();
 }
 
+//David Gilmore: sends all of the grovnicks as a json object. 
 json Map::toJson()
 {
    json map;
