@@ -4,6 +4,7 @@
  * Austin Baugh
  */
 #include <string>
+#include <sstream>
 #include <vector>
 #include <fstream>
 #include "grovnick.hpp"
@@ -26,7 +27,6 @@ class Map {
         json toJson();
 		string getGrovnickContent(Grovnick *& grovnick);
     private:
-		string *parseLine(string line);
 		bool addGrovnick(string line, int &currentX, int &currentY);
 		void fillMissingGrovnicks(int &currentX, int &currentY, int nextX, int endY);
         Logger log;

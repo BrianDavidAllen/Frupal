@@ -8,30 +8,19 @@ Map::Map(): dimensions(0) {
     Logger log("map.log");
 }
 
-// Splits a string based on the delimiter ',' into a static array (w/ size 5) of strings.
-// Takes in the string being split and returns the array of strings.
-string *Map::parseLine(string line) {
-	static string result[5];
-	char delimiter = ',';
-	size_t previousDel, nextDel;
-	
-	previousDel = line.find(delimiter);
-	result[0] = line.substr(0, previousDel);
-	for(int i = 1; i < 4; i++) {
-		nextDel = line.find(delimiter, previousDel + 1);
-		unsigned stringLength = nextDel - previousDel - 1;
-		result[i] = line.substr(previousDel + 1, stringLength);
-		previousDel = nextDel;
-	}
-	result[4] = line.substr(previousDel + 1);
-
-	return result;
-}
 
 // Parses the provided string to a new Grovnick object that is added
 // If the data is corrupted, false will be returned
 bool Map::addGrovnick(string line, int &currentX, int &currentY) {
-	string *grovnickInfo = parseLine(line);
+	//Break line into strings
+	istringstream stream(line);
+	vector<string> grovnickInfo;
+	while(stream)
+	{
+    	string s;
+        if (!getline(stream, s, ',')) break;
+        	grovnickInfo.push_back(s);
+    }
 
 	// Get coordinates
 	int x = stoi(grovnickInfo[0]);
