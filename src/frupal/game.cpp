@@ -199,8 +199,9 @@ void Game::tryToMove(string command)
     {
         hero.changeEnergy(-1);
     }
-    checkHeroEnergy();
 	string contentString = nextGrovnick->getContent();
+    checkHeroEnergy();
+
     bool onDiamonds = false;
 	if(onRoyalDiamond(contentString)){
 	    endGameHappy();

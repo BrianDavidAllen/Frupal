@@ -76,7 +76,7 @@ bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
 	// Each line represents a single grovnick
 	string line;
 	// These are the coordinates of the current grovnick (may it be in the file or not)
-	int currentX, currentY = 0;
+	int currentX = 0, currentY = 0;
     while(getline(file, line)) {
         if(!addGrovnick(line, currentX, currentY)) {
             log.write("addGrovnick() failed");
@@ -91,8 +91,8 @@ bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
 // Erases the grovnicks from the previous game, and begins loading the default file
 bool Map::reloadDefaultFile(string identifier, int dimensions, ifstream &file) {
 	for(int i = 0; i < this->dimensions; i++)
-		grovnicks[i].erase(grovnicks[i].begin(), grovnicks[i].begin() + this->dimensions);
-	grovnicks.erase(grovnicks.begin(), grovnicks.begin() + this->dimensions);
+		grovnicks[i].clear();
+	grovnicks.clear();
 
 	return loadFile(identifier, dimensions, file);
 }
