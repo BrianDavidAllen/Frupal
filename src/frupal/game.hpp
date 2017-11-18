@@ -4,6 +4,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "json.hpp"
 #include "cgiReader.hpp"
 #include "grovnick.hpp"
@@ -23,7 +24,7 @@ class Game
         void endGame();
 	void endGameHappy();
         bool gameStateExists(const string filename);
-        bool loadGameState(ifstream &file, bool reloading = false);
+        bool loadGameState(stringstream &file, bool reloading = false);
         void parseCommand(json input);
         bool playerIsDead();
         bool saveGameState(ofstream &file);

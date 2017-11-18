@@ -35,9 +35,11 @@ void Game::endGame()
 
 	string defaultStateName = "default.txt";
 	ifstream defaultState(defaultStateName);
-	if(!loadGameState(defaultState, true))
-		log.write("Could not load from '" + defaultStateName + "'.");
+	stringstream buffer;
+	buffer << defaultState.rdbuf();
 	defaultState.close();
+	if(!loadGameState(buffer, true))
+		log.write("Could not load from '" + defaultStateName + "'.");
 }
 
 void Game::endGameHappy(){
@@ -47,9 +49,11 @@ void Game::endGameHappy(){
 
 	string defaultStateName = "default.txt";
 	ifstream defaultState(defaultStateName);
-	if(!loadGameState(defaultState, true))
-		log.write("Could not load from '" + defaultStateName + "'.");
+	stringstream buffer;
+	buffer << defaultState.rdbuf();
 	defaultState.close();
+	if(!loadGameState(buffer, true))
+		log.write("Could not load from '" + defaultStateName + "'.");
 }
 
 bool Game::gameStateExists(const string filename)
@@ -67,7 +71,7 @@ bool Game::gameStateExists(const string filename)
     return false;
 }
 
-bool Game::loadGameState(ifstream &file, bool reloading)
+bool Game::loadGameState(stringstream &file, bool reloading)
 {
     log.write("Inside loadGameState()");
     /* Get map, objects, and hero info from file and load into objects. */
@@ -230,19 +234,24 @@ int main()
     {
         log.write("Game state '" + gameStateName + "' exists. Attempting to load.");
         ifstream existingState(gameStateName);
-        if(!game.loadGameState(existingState))
+		stringstream buffer;
+		buffer << existingState.rdbuf();
+		existingState.close();
+        if(!game.loadGameState(buffer))
             log.write("Could not load from '" + gameStateName + "'.");
-        existingState.close();
-        game.parseCommand(cgi.getCommand());
     }
     else
     {
         log.write("Game state '" + gameStateName +"' does not exist. Attempting to load '" + defaultStateName + "'");
         ifstream defaultState(defaultStateName);
-        if(!game.loadGameState(defaultState))
+		stringstream buffer;
+		buffer << defaultState.rdbuf();
+		defaultState.close();
+        if(!game.loadGameState(buffer))
             log.write("Could not load from '" + defaultStateName + "'.");
-        defaultState.close();
     }
+
+	game.parseCommand(cgi.getCommand());
 
     log.write("Attempting to save new state to '" + gameStateName + "'.");
     ofstream newState(gameStateName);

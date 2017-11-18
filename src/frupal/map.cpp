@@ -54,7 +54,7 @@ bool Map::addGrovnick(string line, int &currentX, int &currentY) {
 // Loads the map portion of the state-preserving file.
 // Takes in the identifier for the map, its dimentions, and the state-preserving filestream.
 // Returns true if the file is not corrupted and false otherwise.
-bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
+bool Map::loadFile(string identifier, int dimensions, stringstream &file) {
     log.write("Inside Map::loadFile()");
 	this->identifier = identifier;
 	this->dimensions = dimensions;
@@ -78,7 +78,7 @@ bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
 }
 
 // Erases the grovnicks from the previous game, and begins loading the default file
-bool Map::reloadDefaultFile(string identifier, int dimensions, ifstream &file) {
+bool Map::reloadDefaultFile(string identifier, int dimensions, stringstream &file) {
 	for(int i = 0; i < this->dimensions; i++)
 		grovnicks[i].clear();
 	grovnicks.clear();
