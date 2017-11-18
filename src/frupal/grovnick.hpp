@@ -3,6 +3,7 @@
  */
 #pragma once
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include "json.hpp"
@@ -21,7 +22,7 @@ class Grovnick {
         void setVisible();
 	void setVisited(); 
 	string getContent();
-		void saveState(ofstream &file) const;
+		string saveState() const;
         json toJson();
     private:
 		int x, y;

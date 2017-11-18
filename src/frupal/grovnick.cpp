@@ -45,8 +45,10 @@ void Grovnick::setVisited()
    visited = true;
 }
 
-void Grovnick::saveState(ofstream &file) const {
-	file << x << ',' << y << ',' << visited << ',' << terrain << ',' << content << '\n';
+string Grovnick::saveState() const {
+	stringstream ss;
+	ss << x << "," << y << "," << visited << "," << terrain << "," << content << endl;
+	return ss.str();
 }
 
 string Grovnick::getContent(){

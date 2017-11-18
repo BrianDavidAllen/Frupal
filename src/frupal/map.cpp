@@ -72,7 +72,7 @@ bool Map::loadFile(string identifier, int dimensions, ifstream &file) {
 			return false;
         }
     }
-	fillMissingGrovnicks(currentX, currentY, dimensions, dimensions - 1);
+	//fillMissingGrovnicks(currentX, currentY, dimensions, dimensions - 1);
 
 	return true;
 }
@@ -118,9 +118,14 @@ void Map::saveIdentifier(ofstream &file) {
 void Map::saveMap(ofstream &file) {
     log.write("Inside Map::saveMap()");
     file << "##########\n";
+
+	stringstream ss;
+
 	for(int y = 0; y < dimensions; y++)
 		for(int x = 0; x < dimensions; x++)
-			grovnicks[y][x].saveState(file);
+			ss << grovnicks[y][x].saveState();
+
+	file << ss.str();
 }
 
 Grovnick * Map::getGrovnick(int x, int y) {
