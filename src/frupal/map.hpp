@@ -10,6 +10,7 @@
 #include "grovnick.hpp"
 #include "hero.h"
 #include "logger.hpp"
+#include "error.hpp"
 
 using namespace std;
 

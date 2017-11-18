@@ -230,10 +230,16 @@ int main()
 	string gameStateName = "state.txt";
 	string defaultStateName = "default.txt";
 
+	bool loadFail = false;
+	bool saveFail = false;
+
     if(game.gameStateExists(gameStateName))
     {
         log.write("Game state '" + gameStateName + "' exists. Attempting to load.");
+
         ifstream existingState(gameStateName);
+		if(!existingState)
+			Error::sendError("Couldn't open state.txt");
 		stringstream buffer;
 		buffer << existingState.rdbuf();
 		existingState.close();
@@ -244,6 +250,8 @@ int main()
     {
         log.write("Game state '" + gameStateName +"' does not exist. Attempting to load '" + defaultStateName + "'");
         ifstream defaultState(defaultStateName);
+		if(!defaultState)
+			Error::sendError("Couldn't open default.txt");
 		stringstream buffer;
 		buffer << defaultState.rdbuf();
 		defaultState.close();
@@ -255,6 +263,8 @@ int main()
 
     log.write("Attempting to save new state to '" + gameStateName + "'.");
     ofstream newState(gameStateName);
+	if(!newState)
+		Error::sendError("Couldn't open state.txt for writing.");
     if(!game.saveGameState(newState))
         log.write("Could not save new state to '" + gameStateName + "'.");
     newState.close();

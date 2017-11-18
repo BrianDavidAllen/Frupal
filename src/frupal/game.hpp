@@ -11,6 +11,7 @@
 #include "logger.hpp"
 #include "map.hpp"
 #include "hero.h"
+#include "error.hpp"
 
 using namespace std;
 using json = nlohmann::json;
@@ -30,6 +31,7 @@ class Game
         bool saveGameState(ofstream &file);
         void sendData();
         void selectMap();
+		void sendError(string message);
         void setNextGrovnick(string command);
         bool terrainCanBeTraversed();
         void tryToBuy();
@@ -37,7 +39,7 @@ class Game
 	bool onRoyalDiamond(string content);
 
     private:
-        json current;
+		json current;
         json toSend;
         Hero hero;
         Logger log;

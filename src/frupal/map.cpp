@@ -4,7 +4,7 @@
  */
 #include "map.hpp"
 
-Map::Map(): dimensions(0) {
+Map::Map(): dimensions(25) {
     Logger log("map.log");
 }
 
@@ -57,7 +57,7 @@ bool Map::addGrovnick(string line, int &currentX, int &currentY) {
 bool Map::loadFile(string identifier, int dimensions, stringstream &file) {
     log.write("Inside Map::loadFile()");
 	this->identifier = identifier;
-	this->dimensions = dimensions;
+	//this->dimensions = dimensions;
 
 	// Push a blank row of grovnicks
 	vector<Grovnick> row;
@@ -139,7 +139,16 @@ Grovnick * Map::getGrovnick(int x, int y) {
         loopedY = dimensions + y;
     else
         loopedY = y % dimensions;
-    return &(grovnicks[loopedY][loopedX]);
+	Grovnick * toReturn = NULL;
+	try
+	{
+		toReturn = &(grovnicks.at(loopedY).at(loopedX));
+	}
+	catch (out_of_range& error)
+	{
+		Error::sendError(error.what());
+	}
+	return toReturn;
 }
 
 string Map::getGrovnickContent(Grovnick *& grovnick){
