@@ -38,9 +38,6 @@ class Hero
         void setWhiffles(int newWhiffles);                                              //Sets the amount of whiffles the hero has to a value passed in
         int getWhiffles();                                                              //Returns the hero's whiffle count
         
-        void addItem(string item);                                                      //Add an item to the player's inventory 
-        string getInventory();                                                          //Returns the hero's inventory
-
         void changeEnergy(int newEnergy);                                               //Changes the energy level of the hero by the amount passed in
         void setEnergy(int newEnergy);                                                  //Sets the energy level of the hero to a value passed in
         int getEnergy();                                                                //Returns the energy level of the hero
@@ -49,9 +46,26 @@ class Hero
         int getX();                                                                     //Returns the x coordinate of the hero
         int getY();                                                                     //Returns the y coordinate of the hero
     
+        bool useItem(string itemName);                                                  //Decrements the item from the users inventory if the user has this item. returns true if they have it, false if they dont.
+        void addItem(string itemName);                                                  //Adds an item to the users inventory, based on the string that is passed in.
+
         json toJson();                                                                  //Json function
-        
-		
+   
+        //The hero's inventory.
+        //Access individual items by typing inventory.itemname
+        struct Inventory
+        {
+            int axe = 0;
+            int chainsaw = 0;
+            int hammer = 0;
+            int jackhammer = 0;
+            int machete = 0;
+            int powerbar = 0;
+            bool binoculars = false;
+            bool boat = false;	    
+
+        }inventory;
+
 		
 		//Paul Hubbard's funky functions
 		
@@ -85,7 +99,6 @@ class Hero
         int x;
         int y;
         string name;
-        string inventory;
 		bool alive; 		
-        
+	       
 };

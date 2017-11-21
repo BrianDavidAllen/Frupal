@@ -13,14 +13,14 @@
 using namespace std;
 
 //Default constructor: sets energy level to 100, x,y to zero, whiffles to zero, and name/invetory to NULL
-Hero::Hero() : energy(100), whiffles(0), x(11), y(13), name(""), inventory(""), alive(true)
+Hero::Hero() : energy(100), whiffles(0), x(11), y(13), name(""), alive(true)
 {
     
 }
 
 
 //Parameterized constructor: sets the name to a string passed in, everything else is set to default values
-Hero::Hero(int energy, int whiffles, int x, int y, string newName, string inventory) : energy(100), whiffles(0), x(11), y(13), name(newName), inventory(""), alive(true)
+Hero::Hero(int energy, int whiffles, int x, int y, string newName, string inventory) : energy(100), whiffles(0), x(11), y(13), name(newName), alive(true)
 {
 
 }
@@ -37,7 +37,6 @@ void Hero::displayHero()
     cout << "Name: " << name << endl;
     cout << "Energy level: " << energy << endl;
     cout << "Whiffle count: " << whiffles << endl;
-    cout << "Inventory contents: " << inventory << endl;
     cout << "X,Y coordinates: " << x << "," << y << endl << endl;
 }
 
@@ -82,21 +81,150 @@ int Hero::getWhiffles()
     return whiffles;
 }
 
-//Add an item to the inventory
-void Hero::addItem(string item)
+//use an item in the inventory, if it is there, returning true if the item was used
+bool Hero::useItem(string itemName)
 {
-    //If inventory is not empty we'll add a comma and then add the item. 
-    if(inventory.empty())
-        inventory = item;
-    else
-        inventory = inventory + "," + " " + item;
+    //If player has item, itemname --;
+    //return true
+    
+    if(itemName.compare("axe") == 0)
+    {
+        if(inventory.axe >= 1)
+        {
+            --inventory.axe; 
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    if(itemName.compare("chainsaw") == 0)
+    {
+        if(inventory.chainsaw >= 1)
+        {
+            --inventory.chainsaw; 
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    if(itemName.compare("hammer") == 0)
+    {
+        if(inventory.hammer >= 1)
+        {
+            --inventory.hammer; 
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    if(itemName.compare("jackhammer") == 0)
+    {
+        if(inventory.jackhammer >= 1)
+        {
+            --inventory.jackhammer; 
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    if(itemName.compare("machete") == 0)
+    {
+        if(inventory.machete >= 1)
+        {
+            --inventory.machete; 
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    if(itemName.compare("powerbar") == 0)
+    {
+        if(inventory.machete >= 1)
+        {
+            --inventory.powerbar; 
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //else return false
+    return false;
 }
 
-//Returns the hero's inventory
-string Hero::getInventory()
+//Add an item to the inventory, pass in the item name to add it to the inventory
+//Make sure you pass in the correct itemName!
+void Hero::addItem(string itemName)
 {
-    return inventory;
+    if(itemName.compare("binoculars") == 0)
+    {
+        inventory.binoculars == true; 
+        return;
+    }
+
+    if(itemName.compare("boat") == 0)
+    {
+        inventory.boat == true; 
+        return;
+    }
+
+    if(itemName.compare("axe") == 0)
+    {
+        ++inventory.axe; 
+        return;
+    }
+
+    if(itemName.compare("chainsaw") == 0)
+    {
+        ++inventory.chainsaw; 
+        return;
+    }
+
+    if(itemName.compare("hammer") == 0)
+    {
+        ++inventory.hammer; 
+        return;
+    }
+
+    if(itemName.compare("jackhammer") == 0)
+    {
+        ++inventory.jackhammer; 
+        return;
+    }
+
+    if(itemName.compare("machete") == 0)
+    {
+        ++inventory.machete; 
+        return;
+    }
+
+    if(itemName.compare("powerbar") == 0)
+    {
+        ++inventory.powerbar;
+        return;
+    }
+
+    cout << "Unknown Item passed in " << endl;
+    
 }
+
 
 //Change the hero's energy, pass in a negative value to subtract, positive to add
 void Hero::changeEnergy(int newEnergy)
@@ -158,7 +286,14 @@ json Hero::toJson()
    output["y"] = y;
    output["energy"] = energy;
    output["name"] = name;
-   output["inventory"] = inventory;
+   output["axe"] = inventory.axe;
+   output["chainsaw"] = inventory.chainsaw;
+   output["hammer"] = inventory.hammer;
+   output["jackhammer"] = inventory.jackhammer;
+   output["machete"] = inventory.machete;
+   output["powerbar"] = inventory.powerbar;
+   output["binoculars"] = inventory.binoculars;
+   output["boat"] = inventory.boat;
 
    return output;
 }
@@ -170,20 +305,20 @@ json Hero::toJson()
 void Hero::loadState()
 {
 	string fileToOpen = "heroState.txt";
-	string xcord, ycord, whifflesString, energyString;
+	string xcord, ycord, whiffles, energy;
 	ifstream stateFile(fileToOpen.c_str());
 
 	//read in from the file
-	getline(stateFile, energyString);
-	getline(stateFile, whifflesString);
+	getline(stateFile, energy);
+	getline(stateFile, whiffles);
 	getline(stateFile, xcord);
 	getline(stateFile, ycord);
 
 	
 	//set the player's 
 	//values from last turn
-	energy = atoi(energyString.c_str());
-	whiffles = atoi(whifflesString.c_str());
+	energy = atoi(energy.c_str());
+	whiffles = atoi(whiffles.c_str());
 	x = atoi(xcord.c_str());
 	y = atoi(ycord.c_str());
 }
@@ -242,13 +377,6 @@ void Hero::resetState()
 
 	//close and save the file
 	newStateFile.close();
-
-    //Change hero stats to match
-    energy = 100;
-    whiffles = 0;
-    x = 11;
-    y = 13;
-
 }
 
 //Paul Hubbard's funky functions ^^
