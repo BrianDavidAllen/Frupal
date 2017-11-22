@@ -161,28 +161,30 @@ void Map::setHeroVision(int x, int y) {
 
   Grovnick * temp; 
   temp = getGrovnick(x, y+1);
-  temp->setVisited();//north
+  temp->setVisible();//north
   temp = getGrovnick(x, y-1);
-  temp->setVisited();//south
+  temp->setVisible();//south
   temp = getGrovnick(x-1,y);
-  temp->setVisited();//west
+  temp->setVisible();//west
   temp = getGrovnick(x+1,y);
-  temp->setVisited();//east
+  temp->setVisible();//east
   temp = getGrovnick(x-1,y+1);
-  temp->setVisited();//northwest
+  temp->setVisible();//northwest
   temp = getGrovnick(x+1,y+1);
-  temp->setVisited();//northeast
+  temp->setVisible();//northeast
   temp = getGrovnick(x-1,y-1);
-  temp->setVisited();//southwest
+  temp->setVisible();//southwest
   temp = getGrovnick(x+1,y-1);
-  temp->setVisited();//southeast
+  temp->setVisible();//southeast
+
+  
 }
 //David Gilmore: sets a grovnick to visited when the hero steps on a tile.
 void Map::setHeroVisited(int x, int y)
 {
    Grovnick * temp = nullptr;
    temp = getGrovnick(x,y);
-   temp->setVisited();
+   temp->setVisible();
 }
 
 //David Gilmore: sends all of the grovnicks as a json object. 

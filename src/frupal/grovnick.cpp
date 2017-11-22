@@ -4,8 +4,8 @@
 
 #include "grovnick.hpp"
 
-Grovnick::Grovnick(const int x, const int y, const bool visited, const int terrain, const string content):
-	x(x), y(y), visible(false), visited(visited), terrain(terrain), content(content)
+Grovnick::Grovnick(const int x, const int y, const bool visible, const int terrain, const string content):
+	x(x), y(y), visible(visible), terrain(terrain), content(content)
 {
 }
 
@@ -33,21 +33,11 @@ void Grovnick::setVisible()
     visible = true;
 }
 
-//David Gilmore: returns bool to determine if tile has been visited.
-bool Grovnick::isVisited()
-{
-   return visited; 
-}
 
-//David Gilmore: sets bool to true when a tile is visited. 
-void Grovnick::setVisited()
-{
-   visited = true;
-}
 
 string Grovnick::saveState() const {
 	stringstream ss;
-	ss << x << "," << y << "," << visited << "," << terrain << "," << content << endl;
+	ss << x << "," << y << "," << visible << "," << terrain << "," << content << endl;
 	return ss.str();
 }
 
@@ -63,7 +53,7 @@ json Grovnick::toJson()
    toSend["y"] = y;
    toSend["visible"] = false;
 
-   if(isVisible() || isVisited()) {
+   if(isVisible()) {
    	toSend["visible"] = true;
    }
    toSend["terrain"] = terrain;
