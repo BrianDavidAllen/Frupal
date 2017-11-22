@@ -484,12 +484,6 @@ void Hero::saveState()
 	//close and save the file
 	newStateFile.close();
 
-	//Change hero energy stats to match
-	//reset
-	energy = 100;
-	whiffles = 0;
-	x = 11;
-	y = 13;
 	
 }
 
@@ -521,6 +515,13 @@ void Hero::resetState()
 
 	//close and save the file
 	newStateFile.close();
+	
+    //Change hero energy stats to match
+	//reset
+	energy = 100;
+	whiffles = 0;
+	x = 11;
+	y = 13;
 }
 
 //Paul Hubbard's funky functions ^^
