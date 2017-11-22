@@ -43,17 +43,21 @@ void Game::endGame()
 }
 
 void Game::endGameHappy(){
-	toSend["alert"] = "You've found the Royal Diamonds! You win!";
+        int heroEnery = hero.getEnergy();
+        if(heroEnery >= 1)
+                toSend["alert"] = "You've found the Royal Diamonds! You win!";
+        else
+                toSend["alert"] = "With their last dying breath the hero touches the royal diamonds and saves all of frutopia";
+        hero.resetState();
 
-	hero.resetState();	
+        string defaultStateName = "default.txt";
+        ifstream defaultState(defaultStateName);
+        stringstream buffer;
+        buffer << defaultState.rdbuf();
+        defaultState.close();
+        if(!loadGameState(buffer, true))
+                log.write("Could not load from '" + defaultStateName + "'.");
 
-	string defaultStateName = "default.txt";
-	ifstream defaultState(defaultStateName);
-	stringstream buffer;
-	buffer << defaultState.rdbuf();
-	defaultState.close();
-	if(!loadGameState(buffer, true))
-		log.write("Could not load from '" + defaultStateName + "'.");
 }
 
 bool Game::gameStateExists(const string filename)
@@ -193,7 +197,7 @@ void Game::tryToMove(string command)
         //nextGrovnick->setVisited();
         int nextX = nextGrovnick->getX();
         int nextY = nextGrovnick->getY();
-	log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
+        log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
 
         //Deduct terrain movement cost from hero energy
@@ -203,13 +207,13 @@ void Game::tryToMove(string command)
     {
         hero.changeEnergy(-1);
     }
-	string contentString = nextGrovnick->getContent();
+        string contentString = nextGrovnick->getContent();
+
+        if(onRoyalDiamond(contentString)){
+            endGameHappy();
+        }
     checkHeroEnergy();
 
-    bool onDiamonds = false;
-	if(onRoyalDiamond(contentString)){
-	    endGameHappy();
-	}
 }
 
 bool Game::onRoyalDiamond(string content){
