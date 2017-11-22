@@ -113,19 +113,6 @@ bool Hero::useItem(string itemName)
         }
     }
 
-    if(itemName.compare("hammer") == 0)
-    {
-        if(inventory.hammer >= 1)
-        {
-            --inventory.hammer; 
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
     if(itemName.compare("jackhammer") == 0)
     {
         if(inventory.jackhammer >= 1)
@@ -175,13 +162,13 @@ void Hero::addItem(string itemName)
 {
     if(itemName.compare("binoculars") == 0)
     {
-        inventory.binoculars == true; 
+        inventory.binoculars = true; 
         return;
     }
 
     if(itemName.compare("boat") == 0)
     {
-        inventory.boat == true; 
+        inventory.boat = true; 
         return;
     }
 
@@ -191,15 +178,33 @@ void Hero::addItem(string itemName)
         return;
     }
 
+    if(itemName.compare("hatchet") == 0)
+    {
+        ++inventory.hatchet;
+        return;
+    }
+
     if(itemName.compare("chainsaw") == 0)
     {
         ++inventory.chainsaw; 
         return;
     }
 
-    if(itemName.compare("hammer") == 0)
+    if(itemName.compare("chisel") == 0)
     {
-        ++inventory.hammer; 
+        ++inventory.chisel;
+        return;
+    }
+
+    if(itemName.compare("sledge") == 0)
+    {
+        ++inventory.sledge;
+        return;
+    }
+
+    if(itemName.compare("shears") == 0)
+    {
+        ++inventory.shears;
         return;
     }
 
@@ -219,6 +224,99 @@ void Hero::addItem(string itemName)
     {
         ++inventory.powerbar;
         return;
+    }
+
+    cout << "Unknown Item passed in " << endl;
+    
+}
+
+
+//Buy an item and add the item to the inventory, pass in the item name to add it to the inventory
+//Make sure you pass in the correct itemName!
+bool Hero::buyItem(string itemName)
+{
+    if(itemName.compare("binoculars") == 0)
+    {
+        if(whiffles >= 50)
+        {
+            inventory.binoculars = true; 
+            whiffles = whiffles - 50;
+            return true;
+        }
+        else 
+            return false;
+    }
+
+    if(itemName.compare("boat") == 0)
+    {
+        if(whiffles >= 250)
+        {
+            inventory.boat = true; 
+            whiffles = whiffles - 250;
+            return true;
+        }
+        else
+            false;
+    }
+
+    if(itemName.compare("axe") == 0)
+    {
+        if(whiffles >= 30)
+        {
+            ++inventory.axe; 
+            whiffles = whiffles - 30;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    if(itemName.compare("chainsaw") == 0)
+    {
+        if(whiffles >= 60)
+        { 
+            ++inventory.chainsaw; 
+            whiffles = whiffles - 60;
+            return true;
+        }
+        else 
+            return false;
+    }
+
+    if(itemName.compare("jackhammer") == 0)
+    {
+        if(whiffles >= 100)
+        {
+            ++inventory.jackhammer; 
+            whiffles = whiffles - 100;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    if(itemName.compare("machete") == 0)
+    {
+        if(whiffles >= 25)
+        {
+            ++inventory.machete; 
+            whiffles = whiffles - 25;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    if(itemName.compare("powerbar") == 0)
+    {
+        if(whiffles >= 1)
+        {
+            ++inventory.powerbar;
+            whiffles = whiffles - 1;
+            return true;
+        }
+        else
+            return false;
     }
 
     cout << "Unknown Item passed in " << endl;
@@ -287,8 +385,11 @@ json Hero::toJson()
    output["energy"] = energy;
    output["name"] = name;
    output["axe"] = inventory.axe;
+   output["hatchet"] = inventory.hatchet;
    output["chainsaw"] = inventory.chainsaw;
-   output["hammer"] = inventory.hammer;
+   output["chisel"] = inventory.chisel;
+   output["sledge"] = inventory.sledge;
+   output["shears"] = inventory.shears;
    output["jackhammer"] = inventory.jackhammer;
    output["machete"] = inventory.machete;
    output["powerbar"] = inventory.powerbar;
@@ -296,6 +397,15 @@ json Hero::toJson()
    output["boat"] = inventory.boat;
 
    return output;
+}
+
+//Returns a boolean based on whether or not the hero has binoculars
+bool Hero::hasBinoculars()
+{
+    if(inventory.binoculars == true)
+        return true;
+    else
+        return false;
 }
 
 
