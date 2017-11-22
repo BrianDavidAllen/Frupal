@@ -81,16 +81,15 @@ int Hero::getWhiffles()
     return whiffles;
 }
 
-//use an item in the inventory, if it is there 
-//and you have enough energy to use it, returning true if the item was used.
+//use an item in the inventory if it is there,
+//returning true if the item was used.
 bool Hero::useItem(string itemName)
 {
     //If player has item and enough energy to use the item,    
-    //return true, else return false 
-    
+    //return true, else return false   
     if(itemName.compare("axe") == 0)
     {
-        if(inventory.axe >= 1 && energy > 6)
+        if(inventory.axe >= 1)
         {
             --inventory.axe;  
             energy = energy - 6;
@@ -104,7 +103,7 @@ bool Hero::useItem(string itemName)
     
     if(itemName.compare("hatchet") == 0)
     {
-        if(inventory.hatchet >= 1 && energy > 8)
+        if(inventory.hatchet >= 1)
         {
             --inventory.axe; 
             energy = energy - 8;
@@ -118,7 +117,7 @@ bool Hero::useItem(string itemName)
 
     if(itemName.compare("chainsaw") == 0)
     {
-        if(inventory.chainsaw >= 1 && energy > 2)
+        if(inventory.chainsaw >= 1)
         {
             --inventory.chainsaw; 
             energy = energy - 2;
@@ -132,7 +131,7 @@ bool Hero::useItem(string itemName)
 
     if(itemName.compare("jackhammer") == 0)
     {
-        if(inventory.jackhammer >= 1 && energy > 4)
+        if(inventory.jackhammer >= 1)
         {
             --inventory.jackhammer; 
             energy = energy - 4;
@@ -146,7 +145,7 @@ bool Hero::useItem(string itemName)
 
     if(itemName.compare("machete") == 0)
     {
-        if(inventory.machete >= 1 && energy > 2)
+        if(inventory.machete >= 1)
         {
             --inventory.machete; 
             energy = energy - 2;
