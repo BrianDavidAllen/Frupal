@@ -442,20 +442,20 @@ bool Hero::hasBoat()
 void Hero::loadState()
 {
 	string fileToOpen = "heroState.txt";
-	string xcord, ycord, whiffles, energy;
+	string xcord, ycord, whifflesString, energyString;
 	ifstream stateFile(fileToOpen.c_str());
 
 	//read in from the file
-	getline(stateFile, energy);
-	getline(stateFile, whiffles);
+	getline(stateFile, energyString);
+	getline(stateFile, whifflesString);
 	getline(stateFile, xcord);
 	getline(stateFile, ycord);
 
 	
 	//set the player's 
 	//values from last turn
-	energy = atoi(energy.c_str());
-	whiffles = atoi(whiffles.c_str());
+	energy = atoi(energyString.c_str());
+	whiffles = atoi(whifflesString.c_str());
 	x = atoi(xcord.c_str());
 	y = atoi(ycord.c_str());
 }
@@ -483,6 +483,13 @@ void Hero::saveState()
 		     << y << '\n';
 	//close and save the file
 	newStateFile.close();
+
+	//Change hero energy stats to match
+	//reset
+	energy = 100;
+	whiffles = 0;
+	x = 11;
+	y = 13;
 	
 }
 
@@ -508,9 +515,9 @@ void Hero::resetState()
 	newStateFile.open(fileToOpen);
 
 	newStateFile << "100" << '\n'
-				 << "0" << '\n'
-				 << "11" << '\n'
-				 << "13" << '\n';
+		     << "0" << '\n'
+		     << "11" << '\n'
+		     << "13" << '\n';
 
 	//close and save the file
 	newStateFile.close();
