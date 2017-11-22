@@ -81,17 +81,33 @@ int Hero::getWhiffles()
     return whiffles;
 }
 
-//use an item in the inventory, if it is there, returning true if the item was used
+//use an item in the inventory, if it is there 
+//and you have enough energy to use it, returning true if the item was used.
 bool Hero::useItem(string itemName)
 {
-    //If player has item, itemname --;
-    //return true
+    //If player has item and enough energy to use the item,    
+    //return true, else return false 
     
     if(itemName.compare("axe") == 0)
     {
-        if(inventory.axe >= 1)
+        if(inventory.axe >= 1 && energy > 6)
+        {
+            --inventory.axe;  
+            energy = energy - 6;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    if(itemName.compare("hatchet") == 0)
+    {
+        if(inventory.hatchet >= 1 && energy > 8)
         {
             --inventory.axe; 
+            energy = energy - 8;
             return true;
         }
         else
@@ -102,9 +118,10 @@ bool Hero::useItem(string itemName)
 
     if(itemName.compare("chainsaw") == 0)
     {
-        if(inventory.chainsaw >= 1)
+        if(inventory.chainsaw >= 1 && energy > 2)
         {
             --inventory.chainsaw; 
+            energy = energy - 2;
             return true;
         }
         else
@@ -115,9 +132,10 @@ bool Hero::useItem(string itemName)
 
     if(itemName.compare("jackhammer") == 0)
     {
-        if(inventory.jackhammer >= 1)
+        if(inventory.jackhammer >= 1 && energy > 4)
         {
             --inventory.jackhammer; 
+            energy = energy - 4;
             return true;
         }
         else
@@ -128,9 +146,10 @@ bool Hero::useItem(string itemName)
 
     if(itemName.compare("machete") == 0)
     {
-        if(inventory.machete >= 1)
+        if(inventory.machete >= 1 && energy > 2)
         {
             --inventory.machete; 
+            energy = energy - 2;
             return true;
         }
         else
@@ -141,9 +160,10 @@ bool Hero::useItem(string itemName)
 
     if(itemName.compare("powerbar") == 0)
     {
-        if(inventory.machete >= 1)
+        if(inventory.powerbar >= 1)
         {
             --inventory.powerbar; 
+            energy = energy + 20;
             return true;
         }
         else
@@ -374,7 +394,6 @@ int Hero::getY()
     return y;
 }
 
-
 //toJson function
 json Hero::toJson()
 {
@@ -403,6 +422,15 @@ json Hero::toJson()
 bool Hero::hasBinoculars()
 {
     if(inventory.binoculars == true)
+        return true;
+    else
+        return false;
+}
+
+//Returns a boolean based on whether or not the hero has a boat
+bool Hero::hasBoat()
+{
+    if(inventory.boat == true)
         return true;
     else
         return false;

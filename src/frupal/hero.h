@@ -49,6 +49,7 @@ class Hero
         bool useItem(string itemName);                                                  //Decrements the item from the users inventory if the user has this item. returns true if they have it, false if they dont.
         bool buyItem(string itemName);                                                  //Adds the item to the inventory if the user has enough whiffles. Subtracts the whiffle cost of the item, and returns a bool if succcessfull.
         bool hasBinoculars();                                                           //Returns whether or not the hero has binoculars
+        bool hasBoat();                                                                 //Returns whether or not the hero has a boat
         void addItem(string itemName);                                                  //Adds an item to the users inventory, based on the string that is passed in.
 
         json toJson();                                                                  //Json function
