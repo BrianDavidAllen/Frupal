@@ -21,7 +21,7 @@ class Map {
 		bool reloadDefaultFile(string identifier, int dimensions, stringstream &file);
 		void saveIdentifier(ofstream &file);
 		void saveMap(ofstream &file);
-		void setHeroVision(int x, int y); 
+		void setHeroVision(int x, int y, bool hasBio); 
 
 		void setHeroVisited(int x, int y);
         Grovnick * getGrovnick(int x, int y);

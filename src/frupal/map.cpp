@@ -157,7 +157,7 @@ string Map::getGrovnickContent(Grovnick *& grovnick){
 }
 
 //David Gilmore: Sets grovnicks around the hero to visible.
-void Map::setHeroVision(int x, int y) {
+void Map::setHeroVision(int x, int y, bool hasBio) {
 
   Grovnick * temp; 
   temp = getGrovnick(x, y+1);
@@ -176,6 +176,42 @@ void Map::setHeroVision(int x, int y) {
   temp->setVisible();//southwest
   temp = getGrovnick(x+1,y-1);
   temp->setVisible();//southeast
+
+  if(hasBio) {
+
+  temp = getGrovnick(x,y+2);
+  temp->setVisible();//north
+  temp = getGrovnick(x,y-2);
+  temp->setVisible();//south
+  temp = getGrovnick(x-1,y+2);
+  temp->setVisible();
+  temp = getGrovnick(x+1,y+2);
+  temp->setVisible();
+  temp = getGrovnick(x-2,y+2);
+  temp->setVisible();
+  temp = getGrovnick(x+2,y+2);
+  temp->setVisible();
+  temp = getGrovnick(x-2,y);
+  temp->setVisible();//west
+  temp = getGrovnick(x+2,y);
+  temp->setVisible();//east
+  temp = getGrovnick(x-2,y+1);
+  temp->setVisible();//northwest
+  temp = getGrovnick(x+2,y+1);
+  temp->setVisible();//northeast
+  temp = getGrovnick(x-1,y-2);
+  temp->setVisible();//southwest
+  temp = getGrovnick(x+1,y-2);
+  temp->setVisible();//southeast
+  temp = getGrovnick(x-2,y-1);
+  temp->setVisible();
+  temp = getGrovnick(x-2,y-2);
+  temp->setVisible();
+  temp = getGrovnick(x+2,y-1);
+  temp->setVisible();
+  temp = getGrovnick(x+2,y-2);
+  temp->setVisible();
+  }
 
   
 }

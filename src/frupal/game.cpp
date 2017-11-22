@@ -122,7 +122,7 @@ void Game::parseCommand(json input)
         log.write("Command not recognized.");
 
     map.setHeroVisited(hero.getX(), hero.getY());
-    map.setHeroVision(hero.getX(), hero.getY()); 
+    map.setHeroVision(hero.getX(), hero.getY(), hero.hasBinoculars()); 
 }
 
 bool Game::saveGameState(ofstream &file)
