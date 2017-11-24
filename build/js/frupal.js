@@ -54,6 +54,18 @@ function Game() {
     this.redraw = function() {
         console.log("Redrawing.");
 
+		// Display inventory -Austin
+		document.getElementById("axe").innerHTML = data.hero.axe;
+		document.getElementById("binoculars").innerHTML = data.hero.binoculars ? 1 : 0;
+		document.getElementById("boat").innerHTML = data.hero.boat ? 1 : 0;
+		document.getElementById("chainsaw").innerHTML = data.hero.chainsaw;
+		document.getElementById("chisel").innerHTML = data.hero.chisel;
+		document.getElementById("hatchet").innerHTML = data.hero.hatchet;
+		document.getElementById("jackhammer").innerHTML = data.hero.jackhammer;
+		document.getElementById("machete").innerHTML = data.hero.machete;
+		document.getElementById("shears").innerHTML = data.hero.shears;
+		document.getElementById("sledge").innerHTML = data.hero.sledge;
+
         //Print the messages
         var logElement = document.getElementById("log");
         if(data.log)
