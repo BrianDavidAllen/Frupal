@@ -4,10 +4,17 @@
 
 var data; //Javascript object holding all our game data
 var tileSize = 20;
+var debugMode = false;
 var mapDimensions = 25;
 var jsonVisible = false;
 var commandInProgress = false;
 var inputDelay = 200; //in ms
+
+var enableDebugMode = function() {
+    var elements = document.getElementsByClassName("false");
+    for(element in elements)
+        element.classList.remove("false");
+}
 
 //Button to display the raw json. Hide by default to speed up page reload.
 var showJson = function() {
@@ -72,7 +79,7 @@ function Game() {
             //Open tile div
             toAdd += "<div class='tile type"
                 + tile.terrain + " "
-                + tile.visible
+                + (debugMode == false ? tile.visible : "")
                 + "' style='left:"
                 + (tile.x*tileSize)
                 + "px;top:"
