@@ -25,6 +25,7 @@ class Game
         void endGame();
 	void endGameHappy();
         bool gameStateExists(const string filename);
+	bool isObstructed();
         bool loadGameState(stringstream &file, bool reloading = false);
         void parseCommand(json input);
         bool playerIsDead();

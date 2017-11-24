@@ -12,7 +12,9 @@ Grovnick::Grovnick(const int x, const int y, const bool visible, const int terra
 Grovnick::~Grovnick()
 {
 }
-
+int Grovnick::getTerrain(){
+    return terrain;
+}
 int Grovnick::getX()
 {
     return x;

@@ -75,6 +75,17 @@ bool Game::gameStateExists(const string filename)
     return false;
 }
 
+bool Game::isObstructed(){
+	string nextContent = nextGrovnick->getContent();
+	if( nextContent == "boulder" || nextContent == "blackberry-bush" || nextContent == "tree"){
+		return true;
+	}
+	else{ 
+		return false;
+	}
+
+}
+
 bool Game::loadGameState(stringstream &file, bool reloading)
 {
     log.write("Inside loadGameState()");
@@ -174,11 +185,21 @@ void Game::setNextGrovnick(string command)
     if(!nextGrovnick)
         log.write("nextGrovnick is null!");
 }
-
+//Checks to see if hero is walking into water or a wall
 bool Game::terrainCanBeTraversed()
 {
-    //always true for now. Eventually we'll check for walls, boat, etc.
-    return true;
+	//string nextContent = nextGrovnick->getContent();
+	int nextTerrain = nextGrovnick->getTerrain();
+        if(nextTerrain == 3){
+		toSend["log"] = "You walked into a wall!";
+		return false;
+	}
+	if(nextTerrain == 2 && !hero.hasBoat()){
+		toSend["log"] = "You can't get into the water without a boat!";
+		return false;
+	} 
+	else
+	return true;
 }
 
 void Game::tryToBuy()
