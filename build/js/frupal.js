@@ -23,6 +23,11 @@ var showJson = function() {
     rawJsonElement.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
 }
 
+function sendTool(element){
+	console.log(element.innerText);
+	
+}
+
 function Game() {
 
 
