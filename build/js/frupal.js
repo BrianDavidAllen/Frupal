@@ -56,6 +56,8 @@ function Game() {
 
 		// Display inventory -Austin
 		document.getElementById("axe").innerHTML = data.hero.axe;
+		document.getElementById("binoculars").innerHTML = data.hero.binoculars ? 1 : 0;
+		document.getElementById("boat").innerHTML = data.hero.boat ? 1 : 0;
 		document.getElementById("chainsaw").innerHTML = data.hero.chainsaw;
 		document.getElementById("chisel").innerHTML = data.hero.chisel;
 		document.getElementById("hatchet").innerHTML = data.hero.hatchet;
