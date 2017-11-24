@@ -148,6 +148,9 @@ p {
     z-index: 1000
 }
 
+#inventory {
+}
+
 .power-bar {
     background-image: url('../images/power.png');
 }
