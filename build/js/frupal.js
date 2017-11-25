@@ -91,6 +91,7 @@ function Game() {
 		document.getElementById("hatchet").innerHTML = data.hero.hatchet;
 		document.getElementById("jackhammer").innerHTML = data.hero.jackhammer;
 		document.getElementById("machete").innerHTML = data.hero.machete;
+		document.getElementById("powerbar").innerHTML = data.hero.powerbar;
 		document.getElementById("shears").innerHTML = data.hero.shears;
 		document.getElementById("sledge").innerHTML = data.hero.sledge;
 
@@ -103,10 +104,10 @@ function Game() {
 
         //Print hero position
         var heroPosition = document.getElementById("coordinates");
-        heroPosition.innerHTML = "Hero's position is at ( " + data.hero.x + " , " + (mapDimensions - data.hero.y - 1) + " ) "; 
+        heroPosition.innerHTML = "(" + data.hero.x + ", " + (mapDimensions - data.hero.y - 1) + ")"; 
 
 	var heroenergy = document.getElementById("hero_energy");
-        heroenergy.innerHTML = "Hero's energy is  " + data.hero.energy;
+        heroenergy.innerHTML = data.hero.energy;
 
 	if( data.alert )
                   alert( data.alert );
