@@ -11,6 +11,7 @@ var commandInProgress = false;
 var inputDelay = 200; //in ms
 var onObstacle = false; 
 
+
 var enableDebugMode = function() {
     var elements = document.getElementsByClassName("false");
     for(element in elements)
@@ -157,5 +158,17 @@ function Game() {
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify({"command":command}));
         return false;
+    };
+    
+    this.generateNewMap = function() {
+        var req = new XMLHttpRequest();
+        var self = this;
+        req.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 500) {
+                self.sendCommand("right");
+            }
+        };
+        req.open("GET", "generatePerlinMap.cgi", true);
+        req.send();
     };
 }
