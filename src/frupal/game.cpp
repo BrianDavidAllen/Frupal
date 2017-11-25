@@ -249,7 +249,7 @@ void Game::tryToBuy()
 
 void Game::tryToMove(string command)
 {
-    toSend["log"] = " ";//to reset the message after a move
+    //toSend["log"] = " ";//to reset the message after a move
     setNextGrovnick(command);
     if(terrainCanBeTraversed())
     {
@@ -260,40 +260,40 @@ void Game::tryToMove(string command)
 	string itemToBuy = nextGrovnick->getContent();   
  
     	if(itemToBuy == "machete")
-    		toSend["log"] = "Press space bar to buy a " + itemToBuy + " for 25 whiffles.";
+    		toSend["log"] += "Press space bar to buy a " + itemToBuy + " for 25 whiffles.\n";
 
     	else if(itemToBuy == "shears")
-    		toSend["log"] = "Press space bar to buy a pair of " + itemToBuy + " for 35 whiffles.";
+    		toSend["log"] += "Press space bar to buy a pair of " + itemToBuy + " for 35 whiffles.\n";
 
     	else if(itemToBuy == "jackhammer")
-    		toSend["log"] = "Press space bar to buy a jack hammer for 100 whiffles.";
+    		toSend["log"] += "Press space bar to buy a jack hammer for 100 whiffles.\n";
 
     	else if(itemToBuy == "power-bar")
-    		toSend["log"] = "Press space bar to buy power bar for 1 whiffle.";
+    		toSend["log"] += "Press space bar to buy power bar for 1 whiffle.\n";
 
 	else if(itemToBuy == "sledge")
-    		toSend["log"] = "Press space bar to buy a sledge hammer for 25 whiffles.";
+    		toSend["log"] += "Press space bar to buy a sledge hammer for 25 whiffles.\n";
 
 	else if(itemToBuy == "axe")
-    		toSend["log"] = "Press space bar to buy an axe for 30 whiffles.";
+    		toSend["log"] += "Press space bar to buy an axe for 30 whiffles.\n";
 
 	else if(itemToBuy == "chainsaw")
-    		toSend["log"] = "Press space bar to buy a chainsaw for 60 whiffles.";
+    		toSend["log"] += "Press space bar to buy a chainsaw for 60 whiffles.\n";
 
 	else if(itemToBuy == "chisel")
-    		toSend["log"] = "Press space bar to buy a chisel for 5 whiffles.";
+    		toSend["log"] += "Press space bar to buy a chisel for 5 whiffles.\n";
 
 	else if(itemToBuy == "hatchet")
-    		toSend["log"] = "Press space bar to buy a hatchet for 15 whiffles.";
+    		toSend["log"] += "Press space bar to buy a hatchet for 15 whiffles.\n";
 
 	else if(itemToBuy == "binoculars")
-    		toSend["log"] = "Press space bar to buy a pair of binoculars for 50 whiffles.";
+    		toSend["log"] += "Press space bar to buy a pair of binoculars for 50 whiffles.\n";
 
 	else if(itemToBuy == "boat")
-    		toSend["log"] = "Press space bar to buy a boat for 250 whiffles.";
+    		toSend["log"] += "Press space bar to buy a boat for 250 whiffles.\n";
 
 	else if(itemToBuy == "type-2-treasure-chest" || itemToBuy == "type-1-treasure-chest")
-		toSend["log"] = "Press space bar to open the treasure chest.";
+		toSend["log"] += "Press space bar to open the treasure chest.\n";
 
    	//Paul Hubbard ^^
 
