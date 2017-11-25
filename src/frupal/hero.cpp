@@ -157,7 +157,7 @@ bool Hero::useItem(string itemName)
         }
     }
 
-    if(itemName.compare("powerbar") == 0)
+    if(itemName.compare("power-bar") == 0)
     {
         if(inventory.powerbar >= 1)
         {
@@ -239,7 +239,7 @@ void Hero::addItem(string itemName)
         return;
     }
 
-    if(itemName.compare("powerbar") == 0)
+    if(itemName.compare("power-bar") == 0)
     {
         ++inventory.powerbar;
         return;
@@ -340,77 +340,69 @@ bool Hero::buyItem(string itemName)
     }
     else if("type-1-treasure-chest" == itemName)
     {
-	whiffles += 100;
-	return true;
+    	changeWhiffles(100);
+    	return true;
     }
     else if("type-2-treasure-chest" == itemName)
     {
-	if(whiffles > 100)
-	{
-		whiffles -= 100;
-		return true;
-	}
-	else
-	{
-		whiffles = 0;
-		return true;
-	}
+    	changeWhiffles(-100);
+        return true;
     }
-    else if("chisel" == itemName)
+	else if("chisel" == itemName)
     {
-	if(whiffles >= 5)
-	{
-		++inventory.chisel;
-		whiffles -= 5;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+        if(whiffles >= 5)
+        {
+            ++inventory.chisel;
+            whiffles -= 5;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     else if("hatchet" == itemName)
     {
-	if(whiffles >= 15)
-	{
-		++inventory.hatchet;
-		whiffles -= 15;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+        if(whiffles >= 15)
+        {
+            ++inventory.hatchet;
+            whiffles -= 15;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }	
     else if("sledge" == itemName)
     {
-	if(whiffles >= 25)
-	{
-		++inventory.sledge;
-		whiffles -= 25;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+        if(whiffles >= 25)
+        {
+            ++inventory.sledge;
+            whiffles -= 25;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     else if("shears" == itemName)
     {
-	if(whiffles >= 35)
-	{
-		++inventory.shears;
-		whiffles -= 35;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+        if(whiffles >= 35)
+        {
+            ++inventory.shears;
+            whiffles -= 35;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     else
     {
-	return false;
+        return false;
     }
     
 }

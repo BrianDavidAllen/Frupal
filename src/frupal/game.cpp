@@ -209,11 +209,11 @@ bool Game::terrainCanBeTraversed()
 	//string nextContent = nextGrovnick->getContent();
 	int nextTerrain = nextGrovnick->getTerrain();
         if(nextTerrain == 3){
-		toSend["log"] = "You walked into a wall!";
+		toSend["log"] += "You walked into a wall!\n";
 		return false;
 	}
 	if(nextTerrain == 2 && !hero.hasBoat()){
-		toSend["log"] = "You can't get into the water without a boat!";
+		toSend["log"] += "You can't get into the water without a boat!\n";
 		return false;
 	} 
 	else
@@ -229,15 +229,19 @@ void Game::tryToBuy()
 
 	if(hero.buyItem(itemToBuy))
 	{
-		if("type-2-treasure-chest" == itemToBuy)
+        if("type-1-treasure-chest" == itemToBuy)
+        {
+            toSend["log"] += "You discovered 100 whiffles!\n";
+        }
+        if("type-2-treasure-chest" == itemToBuy)
 		{
-			toSend["log"] = "OH NO!! THE CHEST EXPLODED!!!";
+			toSend["log"] += "OH NO!! THE CHEST EXPLODED!!! You lost some whiffles.\n";
 		}
 		grovnick->clearContent();
 	}
 	else
 	{
-	    toSend["log"] = "Can't buy";
+	    toSend["log"] += "Can't buy.\n";
 	}
 
 	//Paul Hubbard ^^
