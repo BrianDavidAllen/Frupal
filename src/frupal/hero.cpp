@@ -252,9 +252,11 @@ void Hero::addItem(string itemName)
 
 //Buy an item and add the item to the inventory, pass in the item name to add it to the inventory
 //Make sure you pass in the correct itemName!
+
+//Function by Ben Portis and Paul Hubbard
 bool Hero::buyItem(string itemName)
 {
-    if(itemName.compare("binoculars") == 0)
+    if("binoculars" == itemName)
     {
         if(whiffles >= 50)
         {
@@ -266,7 +268,7 @@ bool Hero::buyItem(string itemName)
             return false;
     }
 
-    if(itemName.compare("boat") == 0)
+    else if("boat" == itemName)
     {
         if(whiffles >= 250)
         {
@@ -275,10 +277,10 @@ bool Hero::buyItem(string itemName)
             return true;
         }
         else
-            false;
+            return false;
     }
 
-    if(itemName.compare("axe") == 0)
+    else if("axe" == itemName)
     {
         if(whiffles >= 30)
         {
@@ -289,8 +291,7 @@ bool Hero::buyItem(string itemName)
         else
             return false;
     }
-
-    if(itemName.compare("chainsaw") == 0)
+    else if("chainsaw" == itemName)
     {
         if(whiffles >= 60)
         { 
@@ -302,7 +303,7 @@ bool Hero::buyItem(string itemName)
             return false;
     }
 
-    if(itemName.compare("jackhammer") == 0)
+    else if("jackhammer" == itemName)
     {
         if(whiffles >= 100)
         {
@@ -314,7 +315,7 @@ bool Hero::buyItem(string itemName)
             return false;
     }
 
-    if(itemName.compare("machete") == 0)
+    else if("machete" == itemName)
     {
         if(whiffles >= 25)
         {
@@ -326,7 +327,7 @@ bool Hero::buyItem(string itemName)
             return false;
     }
 
-    if(itemName.compare("powerbar") == 0)
+    else if("power-bar" == itemName)
     {
         if(whiffles >= 1)
         {
@@ -337,11 +338,83 @@ bool Hero::buyItem(string itemName)
         else
             return false;
     }
-
-    cout << "Unknown Item passed in " << endl;
+    else if("type-1-treasure-chest" == itemName)
+    {
+	whiffles += 100;
+	return true;
+    }
+    else if("type-2-treasure-chest" == itemName)
+    {
+	if(whiffles > 100)
+	{
+		whiffles -= 100;
+		return true;
+	}
+	else
+	{
+		whiffles = 0;
+		return true;
+	}
+    }
+    else if("chisel" == itemName)
+    {
+	if(whiffles >= 5)
+	{
+		++inventory.chisel;
+		whiffles -= 5;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+    }
+    else if("hatchet" == itemName)
+    {
+	if(whiffles >= 15)
+	{
+		++inventory.hatchet;
+		whiffles -= 15;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+    }	
+    else if("sledge" == itemName)
+    {
+	if(whiffles >= 25)
+	{
+		++inventory.sledge;
+		whiffles -= 25;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+    }
+    else if("shears" == itemName)
+    {
+	if(whiffles >= 35)
+	{
+		++inventory.shears;
+		whiffles -= 35;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+    }
+    else
+    {
+	return false;
+    }
     
 }
-
+//Function by Ben Portis and Paul Hubbard ^^
 
 //Change the hero's energy, pass in a negative value to subtract, positive to add
 void Hero::changeEnergy(int newEnergy)
@@ -442,14 +515,28 @@ bool Hero::hasBoat()
 void Hero::loadState()
 {
 	string fileToOpen = "heroState.txt";
-	string xcord, ycord, whifflesString, energyString;
+	string xcord, ycord, whifflesString, energyString, axeCount, hatchetCount, 
+	       chainsawCount, chiselCount, sledgeCount, shearsCount, jackhammerCount, 
+	       macheteCount, powerbarCount, binocularsBool, boatBool;
 	ifstream stateFile(fileToOpen.c_str());
+	int binCount, boatCount;
 
 	//read in from the file
 	getline(stateFile, energyString);
 	getline(stateFile, whifflesString);
 	getline(stateFile, xcord);
 	getline(stateFile, ycord);
+	getline(stateFile, axeCount);
+	getline(stateFile, hatchetCount);
+	getline(stateFile, chainsawCount);
+	getline(stateFile, chiselCount);
+	getline(stateFile, sledgeCount);
+	getline(stateFile, shearsCount);
+	getline(stateFile, jackhammerCount);
+	getline(stateFile, macheteCount);
+	getline(stateFile, powerbarCount);
+	getline(stateFile, boatBool);
+	getline(stateFile, binocularsBool);
 
 	
 	//set the player's 
@@ -458,6 +545,27 @@ void Hero::loadState()
 	whiffles = atoi(whifflesString.c_str());
 	x = atoi(xcord.c_str());
 	y = atoi(ycord.c_str());
+	inventory.axe = atoi(axeCount.c_str());
+	inventory.hatchet = atoi(hatchetCount.c_str());
+	inventory.chainsaw = atoi(chainsawCount.c_str());
+	inventory.chisel = atoi(chiselCount.c_str());
+	inventory.sledge = atoi(sledgeCount.c_str());
+	inventory.shears = atoi(shearsCount.c_str());
+	inventory.jackhammer = atoi(jackhammerCount.c_str());
+	inventory.machete = atoi(macheteCount.c_str());
+	inventory.powerbar = atoi(powerbarCount.c_str());
+
+	binCount = atoi(binocularsBool.c_str());
+	boatCount = atoi(boatBool.c_str());
+	if(binCount == 0)
+		inventory.binoculars = false;
+	else
+		inventory.binoculars = true;
+
+	if(boatCount == 1)
+		inventory.boat == true;
+	else
+		inventory.boat == false;
 }
 
 //Function that takes the value
@@ -467,6 +575,21 @@ void Hero::saveState()
 {
 	string fileToOpen = "heroState.txt";
 	ifstream stateFile(fileToOpen.c_str());
+	int binocularBool, boatBool;
+	
+	//check the binoculars and 
+	//boat bool, and then convert
+	//them into an int. 1 for true
+	//and 0 for false
+	if(inventory.binoculars)
+		binocularBool = 1;
+	else 
+		binocularBool = 0;
+
+	if(inventory.boat)
+		boatBool = 1;
+	else
+		boatBool = 0;
 
 	//delete file
 	remove(fileToOpen.c_str());
@@ -480,7 +603,19 @@ void Hero::saveState()
 	newStateFile << energy << '\n'
 		     << whiffles << '\n'
 		     << x << '\n'
-		     << y << '\n';
+		     << y << '\n'
+		     << inventory.axe << '\n'
+		     << inventory.hatchet << '\n'
+		     << inventory.chainsaw << '\n'
+		     << inventory.chisel << '\n'
+		     << inventory.sledge << '\n' 
+		     << inventory.shears << '\n'
+		     << inventory.jackhammer << '\n'
+		     << inventory.machete << '\n'
+		     << inventory.powerbar << '\n'
+		     << boatBool << '\n'
+		     << binocularBool << '\n';
+
 	//close and save the file
 	newStateFile.close();
 
@@ -511,7 +646,18 @@ void Hero::resetState()
 	newStateFile << "100" << '\n'
 		     << "0" << '\n'
 		     << "11" << '\n'
-		     << "13" << '\n';
+		     << "13" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n'
+		     << "0" << '\n';
 
 	//close and save the file
 	newStateFile.close();

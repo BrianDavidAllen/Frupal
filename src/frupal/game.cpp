@@ -227,8 +227,19 @@ void Game::tryToBuy()
 	grovnick = map.getGrovnick(hero.getX(), hero.getY());	
 	string itemToBuy = grovnick->getContent();
 
-	//if(hero.buyItem(itemToBuy))
+	if(hero.buyItem(itemToBuy))
+	{
+		if("type-2-treasure-chest" == itemToBuy)
+		{
+			toSend["log"] = "OH NO!! THE CHEST EXPLODED!!!";
+		}
 		grovnick->clearContent();
+	}
+	else
+	{
+	    toSend["log"] = "Can't buy";
+	}
+
 	//Paul Hubbard ^^
 }
 
@@ -277,6 +288,8 @@ void Game::tryToMove(string command)
 	else if(itemToBuy == "boat")
     		toSend["log"] = "Press space bar to buy a boat for 250 whiffles.";
 
+	else if(itemToBuy == "type-2-treasure-chest" || itemToBuy == "type-1-treasure-chest")
+		toSend["log"] = "Press space bar to open the treasure chest.";
 
    	//Paul Hubbard ^^
 
