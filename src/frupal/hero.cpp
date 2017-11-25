@@ -467,6 +467,7 @@ json Hero::toJson()
    output["y"] = y;
    output["energy"] = energy;
    output["name"] = name;
+   output["whiffles"] = whiffles;
    output["axe"] = inventory.axe;
    output["hatchet"] = inventory.hatchet;
    output["chainsaw"] = inventory.chainsaw;
