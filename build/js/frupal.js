@@ -98,6 +98,8 @@ function Game() {
         var logElement = document.getElementById("log");
         if(data.log)
             logElement.innerHTML = data.log;
+	else
+	    logElement.innerHTML = "";
 
         //Print hero position
         var heroPosition = document.getElementById("coordinates");
