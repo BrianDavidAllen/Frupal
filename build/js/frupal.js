@@ -9,6 +9,8 @@ var mapDimensions = 25;
 var jsonVisible = false;
 var commandInProgress = false;
 var inputDelay = 200; //in ms
+var onObstacle = false; 
+
 
 var enableDebugMode = function() {
     var elements = document.getElementsByClassName("false");
@@ -20,6 +22,11 @@ var enableDebugMode = function() {
 var showJson = function() {
     var rawJsonElement = document.getElementById("rawJson");
     rawJsonElement.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+}
+
+function sendTool(element){
+	console.log(element.innerText);
+	
 }
 
 function Game() {
@@ -34,18 +41,39 @@ function Game() {
         var code = event.keyCode;
         var command;
         console.log("Key pressed");
-        if(code == 37) //Left
-            command = "left";
-        else if(code == 38) //Up
-            command = "up";
-        else if(code == 39) //Right
-            command = "right";
-        else if(code == 40) //Down
-            command = "down";
-        else if(code == 32) //Spacebar
-            command = "space";
-        else
-            return;  //Ignore if some other key is pressed
+	onObstacle = data.obstacle;
+	if(onObstacle == "true"){
+		document.getElementById('toolButtons').style.display = 'block'; 
+		document.getElementById("tool1").innerText = data.tool1;
+		document.getElementById("tool2").innerText = data.tool2;
+		document.getElementById("tool3").innerText = data.tool3;
+		document.getElementById("noTool").innerText = data.noTool;
+		if(code == 49) 
+			command = "tool1";
+		else if(code == 50)
+			command = "tool2";
+		else if(code == 51)
+			command = "tool3";
+		else if(code == 52)
+			command = "noTool";
+		else
+			return;
+	}
+	else{
+		document.getElementById("toolButtons").style.display = "none";
+		if(code == 37) //Left
+            		command = "left";
+        	else if(code == 38) //Up
+           		command = "up";
+        	else if(code == 39) //Right
+            		command = "right";
+        	else if(code == 40) //Down
+            		command = "down";
+        	else if(code == 32) //Spacebar
+           		command = "space";
+        	else
+            	return;  //Ignore if some other key is pressed
+	}
         
         this.sendCommand(command);
     }
@@ -132,5 +160,17 @@ function Game() {
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify({"command":command}));
         return false;
+    };
+    
+    this.generateNewMap = function() {
+        var req = new XMLHttpRequest();
+        var self = this;
+        req.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 500) {
+                self.sendCommand("right");
+            }
+        };
+        req.open("GET", "generatePerlinMap.cgi", true);
+        req.send();
     };
 }

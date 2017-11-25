@@ -13,7 +13,7 @@ a:hover {
 
 article {
     margin: 0 auto;
-    max-width: 516px;
+    /*max-width: 516px;*/
     padding: 1rem 7.5% 1rem;
 }
 
@@ -61,6 +61,8 @@ body {
 
 .false {
     background: black !important;
+    box-shadow: 0px 0px 1em 0.1em rgba(0,0,0,1);
+    z-index: 10;
 }
 
 .false .content {
@@ -110,6 +112,17 @@ html {
     width: 100%;
 }
 
+#inventory {
+    background: #333333;
+    color: #999999;
+    display: table-cell;
+    padding: .25em .5em;
+}
+
+#inventory h3 {
+    color: #fff;
+}
+
 .jackhammer {
     background-image: url('../images/tool.png');
 }
@@ -118,15 +131,26 @@ html {
     background-image: url('../images/tool.png');
 }
 
+#main {
+    display: table;
+    padding: 0px;
+}
+
+#main-row {
+    display: table-row;
+}
+
 #map {
-    height: 500px;
     overflow: hidden;
 }
 
 #mapContainer {
+    display: table-cell;
     overflow: hidden;
     padding: 0;
     position: relative;
+    width: 500px;
+    height: 482px;
 }
 
 p {

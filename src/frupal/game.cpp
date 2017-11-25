@@ -41,7 +41,7 @@ void Game::endGame()
 	if(!loadGameState(buffer, true))
 		log.write("Could not load from '" + defaultStateName + "'.");
 }
-
+//end the game if you find the royal diamonds -BDA
 void Game::endGameHappy(){
         int heroEnery = hero.getEnergy();
         if(heroEnery >= 1)
@@ -74,11 +74,27 @@ bool Game::gameStateExists(const string filename)
     stateFile.close();
     return false;
 }
-
+//returns true if an obstacle is blocking the way -BDA
 bool Game::isObstructed(){
 	string nextContent = nextGrovnick->getContent();
-	if( nextContent == "boulder" || nextContent == "blackberry-bush" || nextContent == "tree"){
+	if( nextContent == "boulder"){
+		toSend["tool1"] = "jackhammer";
+		toSend["tool2"] = "sledge";
+		toSend["tool3"] = "chisel";
+		toSend["noTool"] = "hands";
 		return true;
+	}
+	else if(nextContent == "blackberry-bush"){
+		toSend["tool1"] = "machete";
+		toSend["tool2"] = "shears";
+		toSend["tool3"] = "none";
+		toSend["noTool"] = "hands";
+	}
+	else if(nextContent == "tree"){
+		toSend["tool1"] = "chainsaw";
+		toSend["tool2"] = "axe";
+		toSend["tool3"] = "none";
+		toSend["noTool"] = "hands"; 
 	}
 	else{ 
 		return false;
@@ -229,6 +245,7 @@ void Game::tryToBuy()
 
 void Game::tryToMove(string command)
 {
+    toSend["log"] = " ";//to reset the message after a move
     setNextGrovnick(command);
     if(terrainCanBeTraversed())
     {
@@ -240,8 +257,13 @@ void Game::tryToMove(string command)
         int nextY = nextGrovnick->getY();
         log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
-
-        //Deduct terrain movement cost from hero energy
+	
+	//tells frupal.js to freeze until tool or hands gets used to remove obstacle
+	if(isObstructed()){
+		toSend["obstacle"] = "true";
+	}
+        
+	//Deduct terrain movement cost from hero energy
         hero.changeEnergy(-1);
     }
     else
