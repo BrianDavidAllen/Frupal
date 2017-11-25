@@ -15,9 +15,28 @@
             <p>Use the arrow keys to explore the map and find the Royal Jewels!</p>
             <p><a href="#" onclick="document.getElementById('instructions').style.display='none';">Hide instructions</a></p>
         </section>
-        <section id="mapContainer">
-            <div id="map"></div>
-            <div id="player"></div>
+        <section id="main">
+            <div id="main-row">
+                <div id="mapContainer">
+                    <div id="map"></div>
+                    <div id="player"></div>
+		        </div>
+                <div id="inventory">
+                    <h3>Inventory</h3>
+                    <table>
+                        <tr><td>Axe</td><td id="axe"></td></tr>
+                        <tr><td>Binoculars</td><td id="binoculars"></td></tr>
+                        <tr><td>Boat</td><td id="boat"></td></tr>
+                        <tr><td>Chainsaw</td><td id="chainsaw"></td></tr>
+                        <tr><td>Chisel</td><td id="chisel"></td></tr>
+                        <tr><td>Hatchet</td><td id="hatchet"></td></tr>
+                        <tr><td>Jackhammer</td><td id="jackhammer"></td></tr>
+                        <tr><td>Machete</td><td id="machete"></td></tr>
+                        <tr><td>Shears</td><td id="shears"></td></tr>
+                        <tr><td>Sledge Hammer</td><td id="sledge"></td></tr>
+                    </table>
+                </div>
+            </div>
         </section>
 	<section id ="toolButtons" style="display:none">
 		<button type="button" id="tool1" onClick = "sendTool(this);"> </button>
@@ -25,19 +44,6 @@
 		<button type="button" id="tool3" onClick = "sendTool(this);"></button>
 		<button type="button" id="noTool" onClick = "sendTool(this);"></button>
 	</section>
-		<section id="inventory">
-			<h3>Inventory</h3>
-			<p>Axe x <span id="axe"></span></p>
-			<p>Binoculars x <span id="binoculars"></span></p>
-			<p>Boat x <span id="boat"></span></p>
-			<p>Chainsaw x <span id="chainsaw"></span></p>
-			<p>Chisel x <span id="chisel"></span></p>
-			<p>Hatchet x <span id="hatchet"></span></p>
-			<p>Jackhammer x <span id="jackhammer"></span></p>
-			<p>Machete x <span id="machete"></span></p>
-			<p>Shears x <span id="shears"></span></p>
-			<p>Sledge Hammer x <span id="sledge"></span></p>
-		</section>
         <section>
             <h3>Messages</h3>
             <div id="log"></div>
