@@ -2,6 +2,11 @@
  * Styles for web client
  */
 
+@font-face {
+    font-family: gamefont;
+    src: url(font.ttf);
+}
+
 a, a:link, a:visited, a:hover {
     color: #2facff;
     text-decoration: none;
@@ -36,7 +41,7 @@ article {
 body {
     background: #f1f1f1;
     color: #414344;
-    font-family: galaxie_polarisbook, sans-serif;
+    font-family: sans-serif;
     height: 100%;
     line-height: 1.4rem;
     margin: 0;
@@ -133,6 +138,7 @@ html {
 
 #main {
     display: table;
+    font-family: gamefont;
     padding: 0px;
 }
 

@@ -256,8 +256,8 @@ void Game::tryToMove(string command)
         //Do lots more checking in here for items/objects
         //...
 
-	//Paul Hubbard
-	string itemToBuy = nextGrovnick->getContent();   
+    	//Paul Hubbard
+    	string itemToBuy = nextGrovnick->getContent();   
  
     	if(itemToBuy == "machete")
     		toSend["log"] += "Press space bar to buy a " + itemToBuy + " for 25 whiffles.\n";
@@ -271,31 +271,31 @@ void Game::tryToMove(string command)
     	else if(itemToBuy == "power-bar")
     		toSend["log"] += "Press space bar to buy power bar for 1 whiffle.\n";
 
-	else if(itemToBuy == "sledge")
+	    else if(itemToBuy == "sledge")
     		toSend["log"] += "Press space bar to buy a sledge hammer for 25 whiffles.\n";
 
-	else if(itemToBuy == "axe")
+    	else if(itemToBuy == "axe")
     		toSend["log"] += "Press space bar to buy an axe for 30 whiffles.\n";
 
-	else if(itemToBuy == "chainsaw")
+	    else if(itemToBuy == "chainsaw")
     		toSend["log"] += "Press space bar to buy a chainsaw for 60 whiffles.\n";
 
-	else if(itemToBuy == "chisel")
+	    else if(itemToBuy == "chisel")
     		toSend["log"] += "Press space bar to buy a chisel for 5 whiffles.\n";
 
-	else if(itemToBuy == "hatchet")
+    	else if(itemToBuy == "hatchet")
     		toSend["log"] += "Press space bar to buy a hatchet for 15 whiffles.\n";
 
-	else if(itemToBuy == "binoculars")
+	    else if(itemToBuy == "binoculars")
     		toSend["log"] += "Press space bar to buy a pair of binoculars for 50 whiffles.\n";
 
-	else if(itemToBuy == "boat")
+	    else if(itemToBuy == "boat")
     		toSend["log"] += "Press space bar to buy a boat for 250 whiffles.\n";
 
-	else if(itemToBuy == "type-2-treasure-chest" || itemToBuy == "type-1-treasure-chest")
-		toSend["log"] += "Press space bar to open the treasure chest.\n";
+	    else if(itemToBuy == "type-2-treasure-chest" || itemToBuy == "type-1-treasure-chest")
+		    toSend["log"] += "Press space bar to open the treasure chest.\n";
 
-   	//Paul Hubbard ^^
+     	//Paul Hubbard ^^
 
         //nextGrovnick->setVisited();
         int nextX = nextGrovnick->getX();
@@ -303,25 +303,30 @@ void Game::tryToMove(string command)
         log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
 	
-	//tells frupal.js to freeze until tool or hands gets used to remove obstacle
-	if(isObstructed()){
-		toSend["obstacle"] = "true";
-	}
-        
-	//Deduct terrain movement cost from hero energy
-        hero.changeEnergy(-1);
-    }
-    else
-    {
-        hero.changeEnergy(-1);
-    }
-        string contentString = nextGrovnick->getContent();
-
-        if(onRoyalDiamond(contentString)){
-            endGameHappy();
+        //tells frupal.js to freeze until tool or hands gets used to remove obstacle
+        if(isObstructed())
+        {
+            toSend["obstacle"] = "true";
         }
-    checkHeroEnergy();
+            
+        //Deduct extra energy if bog or swamp
+        int terrainType = nextGrovnick->getTerrain();
+        if(terrainType == 4 || terrainType == 5)
+        {
+            toSend["log"] += "You lose more energy traversing the difficult terrain.\n";
+            hero.changeEnergy(-1);
+        }
+    }
 
+    //Deduct one energy for trying to move regardless
+    hero.changeEnergy(-1);
+
+    string contentString = nextGrovnick->getContent();
+    if(onRoyalDiamond(contentString))
+    {
+        endGameHappy();
+    }
+    checkHeroEnergy();
 }
 
 bool Game::onRoyalDiamond(string content){
