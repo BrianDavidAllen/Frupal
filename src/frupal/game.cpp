@@ -174,29 +174,11 @@ void Game::selectMap()
 
 void Game::sendData()
 {
-   //Paul Hubbard
-    Grovnick * currentGrovnick;
-    currentGrovnick = map.getGrovnick(hero.getX(), hero.getY());
-    string itemToBuy = currentGrovnick->getContent();
-    
-    if(itemToBuy == "machete")
-    	toSend["log"] += "Press space bar to buy " + currentGrovnick->getContent() + " for x whiffles.";
-
-    else if(itemToBuy == "shears")
-    	toSend["log"] += "Press space bar to buy " + currentGrovnick->getContent() + " for x whiffles.";
-
-    else if(itemToBuy == "jackhammer")
-    	toSend["log"] += "Press space bar to buy the Jack Hammer for x whiffles.";
-
-    else if(itemToBuy == "power-bar")
-    	toSend["log"] += "Press space bar to buy Power Bar for x whiffles.";
-
-   //Paul Hubbard ^^
-    toSend["hero"] = hero.toJson();
     toSend["map"] = map.toJson();
-
-    //Send the header and json 
+    toSend["hero"] = hero.toJson();
     cout << "Content-Type:application/json; charset=utf-8" << endl << endl;
+   
+    //Send the header and json 
     cout << toSend.dump();
 
 }
@@ -251,6 +233,24 @@ void Game::tryToMove(string command)
     {
         //Do lots more checking in here for items/objects
         //...
+	//Paul Hubbard
+	//Grovnick * currentGrovnick;
+	//currentGrovnick = map.getGrovnick(hero.getX(), hero.getY());
+	string itemToBuy = nextGrovnick->getContent();   
+ 
+    	if(itemToBuy == "machete")
+    		toSend["log"] = "Press space bar to buy " + itemToBuy + " for x whiffles.";
+
+    	else if(itemToBuy == "shears")
+    		toSend["log"] = "Press space bar to buy " + itemToBuy + " for x whiffles.";
+
+    	else if(itemToBuy == "jackhammer")
+    		toSend["log"] = "Press space bar to buy the Jack Hammer for x whiffles.";
+
+    	else if(itemToBuy == "power-bar")
+    		toSend["log"] = "Press space bar to buy Power Bar for x whiffles.";
+
+   	//Paul Hubbard ^^
 
         //nextGrovnick->setVisited();
         int nextX = nextGrovnick->getX();
