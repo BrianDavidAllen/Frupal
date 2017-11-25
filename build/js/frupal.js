@@ -8,7 +8,7 @@ var debugMode = false;
 var mapDimensions = 25;
 var jsonVisible = false;
 var commandInProgress = false;
-var inputDelay = 200; //in ms
+var inputDelay = 50; //in ms
 var onObstacle = false; 
 
 
