@@ -62,3 +62,10 @@ json Grovnick::toJson()
    toSend["content"] = content;
    return toSend;
 }
+
+//Paul Hubbard: Function to set the content of a grovnick to 
+//              "none" when you buy an item
+void Grovnick::clearContent()
+{
+	content = "none";
+}

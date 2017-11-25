@@ -222,7 +222,14 @@ bool Game::terrainCanBeTraversed()
 
 void Game::tryToBuy()
 {
-    //Stub
+	//Paul Hubbard
+	Grovnick * grovnick;
+	grovnick = map.getGrovnick(hero.getX(), hero.getY());	
+	string itemToBuy = grovnick->getContent();
+
+	//if(hero.buyItem(itemToBuy))
+		grovnick->clearContent();
+	//Paul Hubbard ^^
 }
 
 void Game::tryToMove(string command)

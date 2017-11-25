@@ -22,6 +22,7 @@ class Grovnick {
 	string getContent();
 		string saveState() const;
         json toJson();
+	void clearContent();
     private:
 		int x, y;
 		bool visible;
