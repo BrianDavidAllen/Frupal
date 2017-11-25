@@ -109,6 +109,9 @@ function Game() {
 	var heroenergy = document.getElementById("hero_energy");
         heroenergy.innerHTML = data.hero.energy;
 
+	var herowhiffles = document.getElementById("whiffles");
+	herowhiffles.innerHTML = data.hero.whiffles;
+
 	if( data.alert )
                   alert( data.alert );
  
