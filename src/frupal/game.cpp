@@ -87,13 +87,13 @@ bool Game::isObstructed(){
 	else if(nextContent == "blackberry-bush"){
 		toSend["tool1"] = "machete";
 		toSend["tool2"] = "shears";
-		toSend["tool3"] = "none";
+		toSend["tool3"] = "hands";
 		toSend["noTool"] = "hands";
 	}
 	else if(nextContent == "tree"){
 		toSend["tool1"] = "chainsaw";
 		toSend["tool2"] = "axe";
-		toSend["tool3"] = "none";
+		toSend["tool3"] = "hands";
 		toSend["noTool"] = "hands"; 
 	}
 	else{ 
@@ -136,6 +136,11 @@ bool Game::loadGameState(stringstream &file, bool reloading)
 	else
 		return map.loadFile(identifier, dimensions, file);
 
+}
+
+void Game::message(string message)
+{
+    toSend["log"] += "<p>" + message + "</p>";
 }
 
 void Game::parseCommand(json input)
@@ -209,11 +214,11 @@ bool Game::terrainCanBeTraversed()
 	//string nextContent = nextGrovnick->getContent();
 	int nextTerrain = nextGrovnick->getTerrain();
         if(nextTerrain == 3){
-		toSend["log"] += "You walked into a wall!\n";
+		message("You walked into a wall!");
 		return false;
 	}
 	if(nextTerrain == 2 && !hero.hasBoat()){
-		toSend["log"] += "You can't get into the water without a boat!\n";
+		message("You can't get into the water without a boat!");
 		return false;
 	} 
 	else
@@ -222,30 +227,33 @@ bool Game::terrainCanBeTraversed()
 
 void Game::tryToBuy()
 {
-	//Paul Hubbard
+	//Paul Hubbard & Punam & Daniel
 	Grovnick * grovnick;
 	grovnick = map.getGrovnick(hero.getX(), hero.getY());	
 	string itemToBuy = grovnick->getContent();
 
-	if(hero.buyItem(itemToBuy))
+    if("type-1-treasure-chest" == itemToBuy)
+    {
+        message("You discovered 100 whiffles!");
+        grovnick->clearContent();
+    }
+    else if("type-2-treasure-chest" == itemToBuy)
+    {
+        message("OH NO!! THE CHEST EXPLODED!!! You lost some whiffles.");
+        grovnick->clearContent();
+    }
+    else if("power-bar" == itemToBuy)
 	{
-        if("type-1-treasure-chest" == itemToBuy)
-        {
-            toSend["log"] += "You discovered 100 whiffles!\n";
-        }
-        if("type-2-treasure-chest" == itemToBuy)
-		{
-			toSend["log"] += "OH NO!! THE CHEST EXPLODED!!! You lost some whiffles.\n";
-		}
-		grovnick->clearContent();
-	}
-	if("power-bar" == itemToBuy)
+	    message("You gained 20 units of Energy and lost one Wiffle.");
+        grovnick->clearContent();
+    }
+    else if(hero.buyItem(itemToBuy))
 	{
-		toSend["log"] += "You gained 20 units of Energy and lost one Wiffle.";
+        grovnick->clearContent();
 	}
 	else
 	{
-	    toSend["log"] += "Can't buy.\n";
+	    message("Insufficient whiffles.");
 	}
 
 	//Paul Hubbard ^^
@@ -253,7 +261,6 @@ void Game::tryToBuy()
 
 void Game::tryToMove(string command)
 {
-    //toSend["log"] = " ";//to reset the message after a move
     setNextGrovnick(command);
     if(terrainCanBeTraversed())
     {
@@ -264,40 +271,40 @@ void Game::tryToMove(string command)
     	string itemToBuy = nextGrovnick->getContent();   
  
     	if(itemToBuy == "machete")
-    		toSend["log"] += "Press space bar to buy a " + itemToBuy + " for 25 whiffles.\n";
+    		message("Press space bar to buy a " + itemToBuy + " for 25 whiffles.");
 
     	else if(itemToBuy == "shears")
-    		toSend["log"] += "Press space bar to buy a pair of " + itemToBuy + " for 35 whiffles.\n";
+    		message("Press space bar to buy a pair of " + itemToBuy + " for 35 whiffles.");
 
     	else if(itemToBuy == "jackhammer")
-    		toSend["log"] += "Press space bar to buy a jack hammer for 100 whiffles.\n";
+    		message("Press space bar to buy a jack hammer for 100 whiffles.");
 
     	else if(itemToBuy == "power-bar")
-    		toSend["log"] += "Press space bar to buy power bar for 1 whiffle and gain 20 units of Energy.\n";
+    		message("Press space bar to buy power bar for 1 whiffle and gain 20 units of Energy.");
 
 	    else if(itemToBuy == "sledge")
-    		toSend["log"] += "Press space bar to buy a sledge hammer for 25 whiffles.\n";
+    		message("Press space bar to buy a sledge hammer for 25 whiffles.");
 
     	else if(itemToBuy == "axe")
-    		toSend["log"] += "Press space bar to buy an axe for 30 whiffles.\n";
+    		message("Press space bar to buy an axe for 30 whiffles.");
 
 	    else if(itemToBuy == "chainsaw")
-    		toSend["log"] += "Press space bar to buy a chainsaw for 60 whiffles.\n";
+    		message("Press space bar to buy a chainsaw for 60 whiffles.");
 
 	    else if(itemToBuy == "chisel")
-    		toSend["log"] += "Press space bar to buy a chisel for 5 whiffles.\n";
+    		message("Press space bar to buy a chisel for 5 whiffles.");
 
     	else if(itemToBuy == "hatchet")
-    		toSend["log"] += "Press space bar to buy a hatchet for 15 whiffles.\n";
+    		message("Press space bar to buy a hatchet for 15 whiffles.");
 
 	    else if(itemToBuy == "binoculars")
-    		toSend["log"] += "Press space bar to buy a pair of binoculars for 50 whiffles.\n";
+    		message("Press space bar to buy a pair of binoculars for 50 whiffles.");
 
 	    else if(itemToBuy == "boat")
-    		toSend["log"] += "Press space bar to buy a boat for 250 whiffles.\n";
+    		message("Press space bar to buy a boat for 250 whiffles.");
 
 	    else if(itemToBuy == "type-2-treasure-chest" || itemToBuy == "type-1-treasure-chest")
-		    toSend["log"] += "Press space bar to open the treasure chest.\n";
+		    message("Press space bar to open the treasure chest.");
 
      	//Paul Hubbard ^^
 
@@ -317,7 +324,7 @@ void Game::tryToMove(string command)
         int terrainType = nextGrovnick->getTerrain();
         if(terrainType == 4 || terrainType == 5)
         {
-            toSend["log"] += "You lose more energy traversing the difficult terrain.\n";
+            message("You lose more energy traversing the difficult terrain.");
             hero.changeEnergy(-1);
         }
     }

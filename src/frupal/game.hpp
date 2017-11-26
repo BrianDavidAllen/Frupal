@@ -40,7 +40,8 @@ class Game
 	bool onRoyalDiamond(string content);
 
     private:
-		json current;
+        void message(string message);
+        json current;
         json toSend;
         Hero hero;
         Logger log;
