@@ -239,6 +239,10 @@ void Game::tryToBuy()
 		}
 		grovnick->clearContent();
 	}
+	if("power-bar" == itemToBuy)
+	{
+		toSend["log"] += "You gained 20 units of Energy and lost one Wiffle.";
+	}
 	else
 	{
 	    toSend["log"] += "Can't buy.\n";
@@ -269,7 +273,7 @@ void Game::tryToMove(string command)
     		toSend["log"] += "Press space bar to buy a jack hammer for 100 whiffles.\n";
 
     	else if(itemToBuy == "power-bar")
-    		toSend["log"] += "Press space bar to buy power bar for 1 whiffle.\n";
+    		toSend["log"] += "Press space bar to buy power bar for 1 whiffle and gain 20 units of Energy.\n";
 
 	    else if(itemToBuy == "sledge")
     		toSend["log"] += "Press space bar to buy a sledge hammer for 25 whiffles.\n";

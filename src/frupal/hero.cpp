@@ -331,8 +331,10 @@ bool Hero::buyItem(string itemName)
     {
         if(whiffles >= 1)
         {
-            ++inventory.powerbar;
+//            ++inventory.powerbar;
             whiffles = whiffles - 1;
+	    changeEnergy(20);
+	    
             return true;
         }
         else
