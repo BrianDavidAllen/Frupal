@@ -232,20 +232,14 @@ void Game::tryToBuy()
 	grovnick = map.getGrovnick(hero.getX(), hero.getY());	
 	string itemToBuy = grovnick->getContent();
 
-    if("type-1-treasure-chest" == itemToBuy)
-    {
-        message("You discovered 100 whiffles!");
-    }
-    if("type-2-treasure-chest" == itemToBuy)
-    {
-        message("OH NO!! THE CHEST EXPLODED!!! You lost some whiffles.");
-    }
-    if("power-bar" == itemToBuy)
-	{
-	    message("You gained 20 units of Energy and lost one Wiffle.");
-    }
     if(hero.buyItem(itemToBuy))
 	{
+        if("type-1-treasure-chest" == itemToBuy)
+            message("You discovered 100 whiffles!");
+        if("type-2-treasure-chest" == itemToBuy)
+            message("OH NO!! THE CHEST EXPLODED!!! You lost some whiffles.");
+        if("power-bar" == itemToBuy)
+            message("You gained 20 units of Energy and lost one Wiffle.");
         grovnick->clearContent();
 	}
 	else
