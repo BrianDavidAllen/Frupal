@@ -93,7 +93,7 @@ bool Game::isObstructed(){
 	else if(nextContent == "tree"){
 		toSend["tool1"] = "chainsaw";
 		toSend["tool2"] = "axe";
-		toSend["tool3"] = "hands";
+		toSend["tool3"] = "hatchet";
 		toSend["noTool"] = "hands"; 
 	}
 	else{ 
@@ -146,7 +146,9 @@ void Game::message(string message)
 void Game::parseCommand(json input)
 {
     string command = input["command"];
-    if(command == "up" ||
+    if(command == "tool")
+        parseTool(input);
+    else if(command == "up" ||
         command == "down" ||
         command == "left" ||
         command == "right")
@@ -160,6 +162,18 @@ void Game::parseCommand(json input)
 
     map.setHeroVisited(hero.getX(), hero.getY());
     map.setHeroVision(hero.getX(), hero.getY(), hero.hasBinoculars()); 
+}
+
+void Game::parseTool(json input){
+    string tool = input["tool"];
+    int currX = hero.getX();
+    int currY = hero.getY();
+    nextGrovnick = map.getGrovnick(currX , currY); 
+    //message(tool);
+    if(!hero.useItem(tool))
+        message("You don't have that item");
+    else
+	nextGrovnick->clearContent();
 }
 
 bool Game::saveGameState(ofstream &file)

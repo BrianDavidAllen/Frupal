@@ -28,6 +28,7 @@ class Game
 	bool isObstructed();
         bool loadGameState(stringstream &file, bool reloading = false);
         void parseCommand(json input);
+	void parseTool(json input);
         bool playerIsDead();
         bool saveGameState(ofstream &file);
         void sendData();
