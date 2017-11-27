@@ -171,6 +171,19 @@ bool Hero::useItem(string itemName)
         }
     }
 
+    if(itemName.compare("shears") == 0)
+    {
+        if(inventory.shears >= 1)
+        {
+            --inventory.shears; 
+            energy = energy - 2;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     //else return false
     return false;
 }
