@@ -184,6 +184,35 @@ bool Hero::useItem(string itemName)
             return false;
         }
     }
+
+    if(itemName.compare("chisel") == 0)
+    {
+        if(inventory.chisel >= 1)
+        {
+            --inventory.chisel; 
+            energy = energy - 2;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    if(itemName.compare("sledge") == 0)
+    {
+        if(inventory.sledge >= 1)
+        {
+            --inventory.sledge; 
+            energy = energy - 12;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     //else return false
     return false;
 }
