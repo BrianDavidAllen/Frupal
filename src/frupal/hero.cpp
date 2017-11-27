@@ -105,7 +105,7 @@ bool Hero::useItem(string itemName)
     {
         if(inventory.hatchet >= 1)
         {
-            --inventory.axe; 
+            --inventory.hatchet; 
             energy = energy - 8;
             return true;
         }
