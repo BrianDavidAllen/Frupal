@@ -20,6 +20,15 @@
                 <div id="mapContainer">
                     <div id="map"></div>
                     <div id="player"></div>
+	                <div id ="toolButtons" style="display:none">
+                        <p>You have encountered an obstacle! Press the number of the tool you wish to use to remove it.</p>
+                        <ol>
+                            <li><button type="button" id="tool1" onClick = "sendTool(this);"> </button></li>
+                            <li><button type="button" id="tool2" onClick = "sendTool(this);"></button></li>
+                            <li><button type="button" id="tool3" onClick = "sendTool(this);"></button></li>
+                            <li><button type="button" id="noTool" onClick = "sendTool(this);"></button></li>
+                        </ol>
+                    </div>
 		        </div>
                 <div id="inventory">
 					<div id="hero">
@@ -50,12 +59,6 @@
                 </div>
             </div>
         </section>
-	<section id ="toolButtons" style="display:none">
-		<button type="button" id="tool1" onClick = "sendTool(this);"> </button>
-		<button type="button" id="tool2" onClick = "sendTool(this);"></button>
-		<button type="button" id="tool3" onClick = "sendTool(this);"></button>
-		<button type="button" id="noTool" onClick = "sendTool(this);"></button>
-	</section>
         <section>
             <h3>Messages</h3>
             <div id="log"></div>

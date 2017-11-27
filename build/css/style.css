@@ -178,9 +178,6 @@ p {
     z-index: 1000
 }
 
-#inventory {
-}
-
 .power-bar {
     background-image: url('../images/power.png');
 }
@@ -215,6 +212,22 @@ section + section {
     height: 20px;
     position: absolute;
     width: 20px;
+}
+
+#toolButtons {
+    background: #333333;
+    color: #ffffff;
+    font-size: 140%;
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    padding: .25em .5em;
+    width: 200px;
+    z-index: 1500;
+}
+
+#toolButtons p {
+    color: #ffffff;
 }
 
 .tree {
