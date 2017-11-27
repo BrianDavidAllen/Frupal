@@ -173,12 +173,12 @@ p {
     background-image: url('../images/hero.png');
     background-size: 100% 100%;
     height: 20px;
+    left: 0px;
     position: absolute;
+    top: 0px;
+    transition: all .15s linear;
     width: 20px;
     z-index: 1000
-}
-
-#inventory {
 }
 
 .power-bar {
@@ -215,6 +215,22 @@ section + section {
     height: 20px;
     position: absolute;
     width: 20px;
+}
+
+#toolButtons {
+    background: #333333;
+    color: #ffffff;
+    font-size: 140%;
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    padding: .25em .5em;
+    width: 200px;
+    z-index: 1500;
+}
+
+#toolButtons p {
+    color: #ffffff;
 }
 
 .tree {
