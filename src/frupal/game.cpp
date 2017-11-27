@@ -235,19 +235,16 @@ void Game::tryToBuy()
     if("type-1-treasure-chest" == itemToBuy)
     {
         message("You discovered 100 whiffles!");
-        grovnick->clearContent();
     }
-    else if("type-2-treasure-chest" == itemToBuy)
+    if("type-2-treasure-chest" == itemToBuy)
     {
         message("OH NO!! THE CHEST EXPLODED!!! You lost some whiffles.");
-        grovnick->clearContent();
     }
-    else if("power-bar" == itemToBuy)
+    if("power-bar" == itemToBuy)
 	{
 	    message("You gained 20 units of Energy and lost one Wiffle.");
-        grovnick->clearContent();
     }
-    else if(hero.buyItem(itemToBuy))
+    if(hero.buyItem(itemToBuy))
 	{
         grovnick->clearContent();
 	}
