@@ -81,20 +81,20 @@ bool Game::isObstructed(){
 		toSend["tool1"] = "jackhammer";
 		toSend["tool2"] = "sledge";
 		toSend["tool3"] = "chisel";
-		toSend["noTool"] = "hands";
+		toSend["noTool"] = "suplex";
 		return true;
 	}
 	else if(nextContent == "blackberry-bush"){
 		toSend["tool1"] = "machete";
 		toSend["tool2"] = "shears";
-		toSend["tool3"] = "hands";
-		toSend["noTool"] = "hands";
+		toSend["tool3"] = "karate chop";
+		toSend["noTool"] = "karate kick";
 	}
 	else if(nextContent == "tree"){
 		toSend["tool1"] = "chainsaw";
 		toSend["tool2"] = "axe";
 		toSend["tool3"] = "hatchet";
-		toSend["noTool"] = "hands"; 
+		toSend["noTool"] = "tackle"; 
 	}
 	else{ 
 		return false;
