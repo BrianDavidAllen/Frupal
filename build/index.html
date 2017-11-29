@@ -31,7 +31,7 @@
                     </div>
 		        </div>
                 <div id="inventory">
-					<div id="hero">
+                    <div id="hero">
 						<h3>Hero Information</h3>
 						<table>
 							<tr><td>Location</td><td id="coordinates"></td></tr>
@@ -57,6 +57,8 @@
 						</table>
 					</div>
                 </div>
+                <div id="inventoryCloseButton" onclick="document.getElementById('main').className += ' hide';">&lt;</div>
+                <div id="inventoryOpenButton" onclick="document.getElementById('main').classList.remove('hide');">&gt;</div>
             </div>
         </section>
         <section>
