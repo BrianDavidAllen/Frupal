@@ -92,7 +92,7 @@ bool Hero::useItem(string itemName)
         if(inventory.axe >= 1)
         {
             --inventory.axe;  
-            energy = energy - 6;
+            changeEnergy(-6);
             return true;
         }
         else
@@ -106,7 +106,7 @@ bool Hero::useItem(string itemName)
         if(inventory.hatchet >= 1)
         {
             --inventory.hatchet; 
-            energy = energy - 8;
+            changeEnergy(-8);
             return true;
         }
         else
@@ -120,7 +120,7 @@ bool Hero::useItem(string itemName)
         if(inventory.chainsaw >= 1)
         {
             --inventory.chainsaw; 
-            energy = energy - 2;
+            changeEnergy(-2);
             return true;
         }
         else
@@ -134,7 +134,7 @@ bool Hero::useItem(string itemName)
         if(inventory.jackhammer >= 1)
         {
             --inventory.jackhammer; 
-            energy = energy - 4;
+            changeEnergy(-4);
             return true;
         }
         else
@@ -148,7 +148,7 @@ bool Hero::useItem(string itemName)
         if(inventory.machete >= 1)
         {
             --inventory.machete; 
-            energy = energy - 2;
+            changeEnergy(-2);
             return true;
         }
         else
@@ -162,7 +162,7 @@ bool Hero::useItem(string itemName)
         if(inventory.powerbar >= 1)
         {
             --inventory.powerbar; 
-            energy = energy + 20;
+            changeEnergy(20);
             return true;
         }
         else
@@ -176,7 +176,7 @@ bool Hero::useItem(string itemName)
         if(inventory.shears >= 1)
         {
             --inventory.shears; 
-            energy = energy - 2;
+            changeEnergy(-2);
             return true;
         }
         else
@@ -190,7 +190,7 @@ bool Hero::useItem(string itemName)
         if(inventory.chisel >= 1)
         {
             --inventory.chisel; 
-            energy = energy - 15;
+            changeEnergy(-15);
             return true;
         }
         else
@@ -204,7 +204,7 @@ bool Hero::useItem(string itemName)
         if(inventory.sledge >= 1)
         {
             --inventory.sledge; 
-            energy = energy - 12;
+            changeEnergy(-12);
             return true;
         }
         else
@@ -214,18 +214,18 @@ bool Hero::useItem(string itemName)
     }
     if(itemName.compare("suplex") == 0)
     {
-        energy = energy - 16;
-	return true;
+        changeEnergy(-16);
+    	return true;
     }
     if(itemName.compare("karate chop") == 0 || itemName.compare("karate kick") == 0)
     {
-	energy = energy - 4;
-	return true;
+	    changeEnergy(-4);
+    	return true;
     } 
     if(itemName.compare("tackle") == 0)
     {
-        energy = energy - 10;
-	return true;
+        changeEnergy(-10);
+	    return true;
     }
     //else return false
     return false;
