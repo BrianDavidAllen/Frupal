@@ -172,8 +172,10 @@ void Game::parseTool(json input){
     //message(tool);
     if(!hero.useItem(tool))
         message("You don't have that item");
-    else
-	nextGrovnick->clearContent();
+    else{
+		nextGrovnick->clearContent();
+		message("Obstacle removed");
+	}
 }
 
 bool Game::saveGameState(ofstream &file)
