@@ -10,11 +10,6 @@
 <body>
     <article>
         <div id="titleScreen"></div>
-        <section id="instructions">
-            <h2>Instructions</h2>
-            <p>Use the arrow keys to explore the map and find the Royal Jewels!</p>
-            <p><a href="#" onclick="document.getElementById('instructions').style.display='none';">Hide instructions</a></p>
-        </section>
         <section id="main">
             <div id="main-row">
                 <div id="mapContainer">
@@ -77,7 +72,7 @@
         document.onkeydown = function(event) {
             game.handleKeys(event); return false;
         }
-        game.sendCommand("space");
+        game.sendCommand("start");
     </script>
 </body>
 </html>

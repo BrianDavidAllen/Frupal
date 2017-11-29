@@ -35,10 +35,7 @@ function sendTool(element){
     this.postTool(aTool);	
 }
 
-
-
 function Game() {
-
 
     //This function gets called on every key press, and if a valid key is found, sendCommand() is called with the corresponding command.
     this.handleKeys = function(event) {
@@ -135,8 +132,10 @@ function Game() {
     	var herowhiffles = document.getElementById("whiffles");
     	herowhiffles.innerHTML = data.hero.whiffles;
 
-    	if( data.alert )
+    	if( data.alert ){
             alert( data.alert );
+            data.alert = null;
+        }
  
         //Redraw the tiles
         var mapElement = document.getElementById("map");

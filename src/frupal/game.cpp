@@ -50,6 +50,7 @@ void Game::endGame()
 	defaultState.close();
 	if(!loadGameState(buffer, true))
 		log.write("Could not load from '" + defaultStateName + "'.");
+    message("Welcome to the island of Frupal! Explore the map and search for treasure. Discover the Royal Diamonds to win the game!");
 }
 //end the game if you find the royal diamonds -BDA
 void Game::endGameHappy(){
@@ -166,8 +167,8 @@ void Game::parseCommand(json input)
         tryToBuy();
     else if(command == "map")
         selectMap();
-    else
-        log.write("Command not recognized.");
+    else if(command == "start")
+        message("Welcome to the island of Frupal! Explore the map and search for treasure. Discover the Royal Diamonds to win the game!");
 
     map.setHeroVisited(hero.getX(), hero.getY());
     map.setHeroVision(hero.getX(), hero.getY(), hero.hasBinoculars()); 
