@@ -11,6 +11,14 @@ var commandInProgress = false;
 var inputDelay = 50; //in ms
 var onObstacle = false; 
 var tools = {};
+var sounds = {};
+sounds.die = new Audio('./files/die.wav');
+sounds.explode = new Audio('./files/explode.wav');
+sounds.item = new Audio('./files/item.wav');
+sounds.remove = new Audio('./files/remove.wav');
+sounds.step = new Audio('./files/step.wav');
+sounds.whiffle = new Audio('./files/whiffle.wav');
+sounds.win = new Audio('./files/win.wav');
 
 setTimeout(function(){ document.getElementById("titleScreen").className += " close"; }, 2000);
 
@@ -85,7 +93,22 @@ function Game() {
     //Redraw all the updatable parts of the screen with new data
     this.redraw = function() {
         console.log("Redrawing.");
-        
+
+        // Look for audio to play
+        if(data.sound != undefined)
+        {
+            var sound = sounds[data.sound];
+            if(sound.duration > 0 && !sound.paused){
+                sound.pause();
+                sound.currentTime = 0;
+                sound.play();
+            }
+            else
+            {
+                sound.play();
+            }
+        }
+
         // Display obstacle if necessary
         if(data.obstacle){
             tools["tool1"] = data.tool1;

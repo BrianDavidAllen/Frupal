@@ -38,6 +38,8 @@ void Game::checkHeroEnergy()
 
 void Game::endGame()
 {
+    toSend["sound"] = "die";
+
     //Punam, alert box here maybe?
 	toSend["alert"] = "You died!";
 
@@ -51,9 +53,13 @@ void Game::endGame()
 	if(!loadGameState(buffer, true))
 		log.write("Could not load from '" + defaultStateName + "'.");
     message("Welcome to the island of Frupal! Explore the map and search for treasure. Discover the Royal Diamonds to win the game!");
+    map.setHeroVisited(hero.getX(), hero.getY());
+    map.setHeroVision(hero.getX(), hero.getY(), hero.hasBinoculars()); 
 }
 //end the game if you find the royal diamonds -BDA
 void Game::endGameHappy(){
+    toSend["sound"] = "win";
+
     int heroEnery = hero.getEnergy();
     if(heroEnery >= 1)
         toSend["alert"] = "You've found the Royal Diamonds! You win!";
@@ -68,6 +74,8 @@ void Game::endGameHappy(){
     defaultState.close();
     if(!loadGameState(buffer, true))
         log.write("Could not load from '" + defaultStateName + "'.");
+    map.setHeroVisited(hero.getX(), hero.getY());
+    map.setHeroVision(hero.getX(), hero.getY(), hero.hasBinoculars()); 
 }
 
 bool Game::gameStateExists(const string filename)
@@ -192,7 +200,8 @@ void Game::parseTool(json input){
         toSend["obstacle"] = true;
     }
     else{
-		nextGrovnick->clearContent();
+        toSend["sound"] = "remove";
+        nextGrovnick->clearContent();
 		message("Obstacle removed");
 	}
 }
@@ -270,11 +279,20 @@ void Game::tryToBuy()
     if(hero.buyItem(itemToBuy))
 	{
         if("type-1-treasure-chest" == itemToBuy)
+        {
+            toSend["sound"] = "whiffle";
             message("You discovered 100 whiffles!");
+        }
         if("type-2-treasure-chest" == itemToBuy)
+        {
+            toSend["sound"] = "explode";
             message("OH NO!! THE CHEST EXPLODED!!! You lost all your whiffles.");
+        }
         if("power-bar" == itemToBuy)
+        {
+            toSend["sound"] = "item";
             message("You gained 20 units of Energy and lost one Wiffle.");
+        }
         grovnick->clearContent();
 	}
 	else
@@ -287,6 +305,8 @@ void Game::tryToBuy()
 
 void Game::tryToMove(string command)
 {
+    toSend["sound"] = "step";
+    
     setNextGrovnick(command);
     if(terrainCanBeTraversed())
     {
