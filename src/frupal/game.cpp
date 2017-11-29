@@ -176,6 +176,8 @@ void Game::parseCommand(json input)
     //This catches obstacles we have just run into, as well as those
     //we were unable to remove by selecting an item you don't have.
     checkForObstacles();
+
+    checkHeroEnergy();
 }
 
 void Game::parseTool(json input){
@@ -270,7 +272,7 @@ void Game::tryToBuy()
         if("type-1-treasure-chest" == itemToBuy)
             message("You discovered 100 whiffles!");
         if("type-2-treasure-chest" == itemToBuy)
-            message("OH NO!! THE CHEST EXPLODED!!! You lost some whiffles.");
+            message("OH NO!! THE CHEST EXPLODED!!! You lost all your whiffles.");
         if("power-bar" == itemToBuy)
             message("You gained 20 units of Energy and lost one Wiffle.");
         grovnick->clearContent();
@@ -355,7 +357,6 @@ void Game::tryToMove(string command)
     {
         endGameHappy();
     }
-    checkHeroEnergy();
 }
 
 bool Game::onRoyalDiamond(string content){

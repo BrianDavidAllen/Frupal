@@ -403,7 +403,7 @@ bool Hero::buyItem(string itemName)
     }
     else if("type-2-treasure-chest" == itemName)
     {
-    	changeWhiffles(-100);
+    	setWhiffles(0);
         return true;
     }
 	else if("chisel" == itemName)
