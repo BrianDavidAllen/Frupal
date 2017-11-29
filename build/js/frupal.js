@@ -27,8 +27,29 @@ var showJson = function() {
 }
 
 function sendTool(element){
-	console.log(element.innerText);
-	
+	var aTool = element.innerText;
+        console.log("element " + element);
+        console.log("element.innerText " + element.innerText);
+        console.log("Tool: " + aTool);
+
+this.postTool = function(tool){
+        console.log("Sending comand: " + tool);
+
+        var self = game;
+        var req = new XMLHttpRequest();
+        req.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                data = JSON.parse(req.responseText);
+                self.redraw();
+            }
+        };
+
+        req.open("POST", "frupal.cgi");
+        req.setRequestHeader("Content-Type", "application/json");
+        req.send(JSON.stringify({"command":"tool" , "tool" : tool}));
+        return false;
+    };
+        this.postTool(aTool);	
 }
 
 function Game() {

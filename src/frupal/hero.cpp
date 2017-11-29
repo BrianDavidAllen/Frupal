@@ -190,7 +190,7 @@ bool Hero::useItem(string itemName)
         if(inventory.chisel >= 1)
         {
             --inventory.chisel; 
-            energy = energy - 2;
+            energy = energy - 15;
             return true;
         }
         else
@@ -212,7 +212,21 @@ bool Hero::useItem(string itemName)
             return false;
         }
     }
-
+    if(itemName.compare("suplex") == 0)
+    {
+        energy = energy - 16;
+	return true;
+    }
+    if(itemName.compare("karate chop") == 0 || itemName.compare("karate kick") == 0)
+    {
+	energy = energy - 4;
+	return true;
+    } 
+    if(itemName.compare("tackle") == 0)
+    {
+        energy = energy - 10;
+	return true;
+    }
     //else return false
     return false;
 }
