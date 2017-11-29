@@ -12,6 +12,8 @@ var inputDelay = 50; //in ms
 var onObstacle = false; 
 
 
+setTimeout(function(){ document.getElementById("titleScreen").className += " close"; }, 2000);
+
 var enableDebugMode = function() {
     var elements = document.getElementsByClassName("false");
     for(element in elements)
