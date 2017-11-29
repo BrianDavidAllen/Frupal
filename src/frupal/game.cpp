@@ -305,8 +305,6 @@ void Game::tryToBuy()
 
 void Game::tryToMove(string command)
 {
-    toSend["sound"] = "step";
-    
     setNextGrovnick(command);
     if(terrainCanBeTraversed())
     {

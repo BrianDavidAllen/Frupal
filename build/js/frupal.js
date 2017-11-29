@@ -16,7 +16,6 @@ sounds.die = new Audio('./files/die.wav');
 sounds.explode = new Audio('./files/explode.wav');
 sounds.item = new Audio('./files/item.wav');
 sounds.remove = new Audio('./files/remove.wav');
-sounds.step = new Audio('./files/step.wav');
 sounds.whiffle = new Audio('./files/whiffle.wav');
 sounds.win = new Audio('./files/win.wav');
 
