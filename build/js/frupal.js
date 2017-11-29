@@ -10,7 +10,7 @@ var jsonVisible = false;
 var commandInProgress = false;
 var inputDelay = 50; //in ms
 var onObstacle = false; 
-
+var tools = {};
 
 setTimeout(function(){ document.getElementById("titleScreen").className += " close"; }, 2000);
 
@@ -28,29 +28,14 @@ var showJson = function() {
 
 function sendTool(element){
 	var aTool = element.innerText;
-        console.log("element " + element);
-        console.log("element.innerText " + element.innerText);
-        console.log("Tool: " + aTool);
+    console.log("element " + element);
+    console.log("element.innerText " + element.innerText);
+    console.log("Tool: " + aTool);
 
-this.postTool = function(tool){
-        console.log("Sending comand: " + tool);
-
-        var self = game;
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status == 200) {
-                data = JSON.parse(req.responseText);
-                self.redraw();
-            }
-        };
-
-        req.open("POST", "frupal.cgi");
-        req.setRequestHeader("Content-Type", "application/json");
-        req.send(JSON.stringify({"command":"tool" , "tool" : tool}));
-        return false;
-    };
-        this.postTool(aTool);	
+    this.postTool(aTool);	
 }
+
+
 
 function Game() {
 
@@ -61,49 +46,64 @@ function Game() {
             return;
         commandInProgress = true;
         setTimeout(function(){ commandInProgress = false; }, inputDelay);
+
         var code = event.keyCode;
         var command;
         console.log("Key pressed");
-	onObstacle = data.obstacle;
-	if(onObstacle == "true"){
-		document.getElementById('toolButtons').style.display = 'block'; 
-		document.getElementById("tool1").innerText = data.tool1;
-		document.getElementById("tool2").innerText = data.tool2;
-		document.getElementById("tool3").innerText = data.tool3;
-		document.getElementById("noTool").innerText = data.noTool;
-		if(code == 49) 
-			command = "tool1";
-		else if(code == 50)
-			command = "tool2";
-		else if(code == 51)
-			command = "tool3";
-		else if(code == 52)
-			command = "noTool";
-		else
-			return;
-	}
-	else{
-		document.getElementById("toolButtons").style.display = "none";
-		if(code == 37) //Left
-            		command = "left";
+
+        if(data.obstacle){  //If we are blocked
+            if(code == 49) 
+                command = tools["tool1"];
+            else if(code == 50)
+                command = tools["tool2"];
+            else if(code == 51)
+                command = tools["tool3"];
+            else if(code == 52)
+                command = tools["noTool"];
+            else
+            {
+                document.getElementById("log").innerHTML = "You must choose a tool.";
+                return;
+            }
+            this.sendTool(command);
+    	}
+        else  //If we are not blocked
+        {
+    		if(code == 37) //Left
+       		    command = "left";
         	else if(code == 38) //Up
            		command = "up";
         	else if(code == 39) //Right
-            		command = "right";
+           		command = "right";
         	else if(code == 40) //Down
             		command = "down";
         	else if(code == 32) //Spacebar
            		command = "space";
         	else
             	return;  //Ignore if some other key is pressed
-	}
-        
-        this.sendCommand(command);
+            this.sendCommand(command);
+        }
     }
 
     //Redraw all the updatable parts of the screen with new data
     this.redraw = function() {
         console.log("Redrawing.");
+        
+        // Display obstacle if necessary
+        if(data.obstacle){
+            tools["tool1"] = data.tool1;
+            tools["tool2"] = data.tool2;
+            tools["tool3"] = data.tool3;
+            tools["noTool"] = data.noTool;
+    		document.getElementById("tool1").innerText = tools["tool1"];
+    		document.getElementById("tool2").innerText = tools["tool2"];
+    		document.getElementById("tool3").innerText = tools["tool3"];
+    		document.getElementById("noTool").innerText = tools["noTool"];
+    		document.getElementById('toolButtons').style.display = 'block'; 
+        }
+	    else{
+    		document.getElementById("toolButtons").style.display = "none";
+        }
 
 		// Display inventory -Austin
 		document.getElementById("axe").innerHTML = data.hero.axe;
@@ -122,21 +122,21 @@ function Game() {
         var logElement = document.getElementById("log");
         if(data.log)
             logElement.innerHTML = data.log;
-	else
-	    logElement.innerHTML = "";
+    	else
+    	    logElement.innerHTML = "";
 
         //Print hero position
         var heroPosition = document.getElementById("coordinates");
         heroPosition.innerHTML = "(" + data.hero.x + ", " + (mapDimensions - data.hero.y - 1) + ")"; 
 
-	var heroenergy = document.getElementById("hero_energy");
+    	var heroenergy = document.getElementById("hero_energy");
         heroenergy.innerHTML = data.hero.energy;
 
-	var herowhiffles = document.getElementById("whiffles");
-	herowhiffles.innerHTML = data.hero.whiffles;
+    	var herowhiffles = document.getElementById("whiffles");
+    	herowhiffles.innerHTML = data.hero.whiffles;
 
-	if( data.alert )
-                  alert( data.alert );
+    	if( data.alert )
+            alert( data.alert );
  
         //Redraw the tiles
         var mapElement = document.getElementById("map");
@@ -189,6 +189,25 @@ function Game() {
         return false;
     };
     
+    //Sends the tool command along with the chosen tool
+    this.sendTool = function(tool){
+        console.log("Sending comand: " + tool);
+
+        var self = this;
+        var req = new XMLHttpRequest();
+        req.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                data = JSON.parse(req.responseText);
+                self.redraw();
+            }
+        };
+
+        req.open("POST", "frupal.cgi");
+        req.setRequestHeader("Content-Type", "application/json");
+        req.send(JSON.stringify({"command":"tool","tool":tool}));
+        return false;
+    };
+
     this.generateNewMap = function() {
         var req = new XMLHttpRequest();
         var self = this;

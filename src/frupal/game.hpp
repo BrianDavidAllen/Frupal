@@ -21,6 +21,7 @@ class Game
     public:
         Game();
         ~Game();
+        void checkForObstacles();
         void checkHeroEnergy();
         void endGame();
 	void endGameHappy();

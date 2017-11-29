@@ -17,6 +17,16 @@ Game::~Game()
 {
 }
 
+void Game::checkForObstacles()
+{
+    //tells frupal.js to freeze until tool or hands gets used to remove obstacle
+    if(isObstructed())
+    {
+        message("An obstacle blocks your way!");
+        toSend["obstacle"] = true;
+    }
+}
+
 void Game::checkHeroEnergy()
 {
     //Punam, check hero energy in here please
@@ -43,21 +53,20 @@ void Game::endGame()
 }
 //end the game if you find the royal diamonds -BDA
 void Game::endGameHappy(){
-        int heroEnery = hero.getEnergy();
-        if(heroEnery >= 1)
-                toSend["alert"] = "You've found the Royal Diamonds! You win!";
-        else
-                toSend["alert"] = "With their last dying breath the hero touches the royal diamonds and saves all of frutopia";
-        hero.resetState();
+    int heroEnery = hero.getEnergy();
+    if(heroEnery >= 1)
+        toSend["alert"] = "You've found the Royal Diamonds! You win!";
+    else
+        toSend["alert"] = "With their last dying breath the hero touches the royal diamonds and saves all of frutopia";
+    hero.resetState();
 
-        string defaultStateName = "default.txt";
-        ifstream defaultState(defaultStateName);
-        stringstream buffer;
-        buffer << defaultState.rdbuf();
-        defaultState.close();
-        if(!loadGameState(buffer, true))
-                log.write("Could not load from '" + defaultStateName + "'.");
-
+    string defaultStateName = "default.txt";
+    ifstream defaultState(defaultStateName);
+    stringstream buffer;
+    buffer << defaultState.rdbuf();
+    defaultState.close();
+    if(!loadGameState(buffer, true))
+        log.write("Could not load from '" + defaultStateName + "'.");
 }
 
 bool Game::gameStateExists(const string filename)
@@ -76,30 +85,30 @@ bool Game::gameStateExists(const string filename)
 }
 //returns true if an obstacle is blocking the way -BDA
 bool Game::isObstructed(){
-	string nextContent = nextGrovnick->getContent();
-	if( nextContent == "boulder"){
+    Grovnick * current = map.getGrovnick(hero.getX(), hero.getY());
+    string content = current->getContent();
+	if( content == "boulder"){
 		toSend["tool1"] = "jackhammer";
 		toSend["tool2"] = "sledge";
 		toSend["tool3"] = "chisel";
 		toSend["noTool"] = "suplex";
-		return true;
 	}
-	else if(nextContent == "blackberry-bush"){
+	else if(content == "blackberry-bush"){
 		toSend["tool1"] = "machete";
 		toSend["tool2"] = "shears";
 		toSend["tool3"] = "karate chop";
 		toSend["noTool"] = "karate kick";
-	}
-	else if(nextContent == "tree"){
+    }
+	else if(content == "tree"){
 		toSend["tool1"] = "chainsaw";
 		toSend["tool2"] = "axe";
 		toSend["tool3"] = "hatchet";
 		toSend["noTool"] = "tackle"; 
-	}
+    }
 	else{ 
 		return false;
 	}
-
+    return true;
 }
 
 bool Game::loadGameState(stringstream &file, bool reloading)
@@ -162,6 +171,10 @@ void Game::parseCommand(json input)
 
     map.setHeroVisited(hero.getX(), hero.getY());
     map.setHeroVision(hero.getX(), hero.getY(), hero.hasBinoculars()); 
+
+    //This catches obstacles we have just run into, as well as those
+    //we were unable to remove by selecting an item you don't have.
+    checkForObstacles();
 }
 
 void Game::parseTool(json input){
@@ -171,7 +184,10 @@ void Game::parseTool(json input){
     nextGrovnick = map.getGrovnick(currX , currY); 
     //message(tool);
     if(!hero.useItem(tool))
+    {
         message("You don't have that item");
+        toSend["obstacle"] = true;
+    }
     else{
 		nextGrovnick->clearContent();
 		message("Obstacle removed");
@@ -321,12 +337,6 @@ void Game::tryToMove(string command)
         log.write("X/Y from nextGrovnick->getX/Y(): " + to_string(nextX) + ", " + to_string(nextY));
         hero.setCoords(nextX, nextY);
 	
-        //tells frupal.js to freeze until tool or hands gets used to remove obstacle
-        if(isObstructed())
-        {
-            toSend["obstacle"] = "true";
-        }
-            
         //Deduct extra energy if bog or swamp
         int terrainType = nextGrovnick->getTerrain();
         if(terrainType == 4 || terrainType == 5)

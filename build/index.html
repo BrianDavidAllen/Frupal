@@ -23,10 +23,10 @@
 	                <div id ="toolButtons" style="display:none">
                         <p>You have encountered an obstacle! Press the number of the tool you wish to use to remove it.</p>
                         <ol>
-                            <li><button type="button" id="tool1" onClick = "sendTool(this);"> </button></li>
-                            <li><button type="button" id="tool2" onClick = "sendTool(this);"></button></li>
-                            <li><button type="button" id="tool3" onClick = "sendTool(this);"></button></li>
-                            <li><button type="button" id="noTool" onClick = "sendTool(this);"></button></li>
+                            <li><button type="button" id="tool1" onClick="game.sendTool(this.innerText);"> </button></li>
+                            <li><button type="button" id="tool2" onClick="game.sendTool(this.innerText);"></button></li>
+                            <li><button type="button" id="tool3" onClick="game.sendTool(this.innerText);"></button></li>
+                            <li><button type="button" id="noTool" onClick="game.sendTool(this.innerText);"></button></li>
                         </ol>
                     </div>
 		        </div>
